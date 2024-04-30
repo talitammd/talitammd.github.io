@@ -106,7 +106,7 @@ article p {
   line-height: 24px;
 }
 article code {
-  background-color: rgba(27,31,35,0.05);
+  background-color: #fff5f5;
   border-radius: 10px;
   font-size: 85%;
   padding: 0.2em 0.4em;
@@ -117,7 +117,7 @@ article code::-webkit-scrollbar {
 }
 article code::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #888;
+  background-color: #fff5f5;
 }
 article pre {
   border-radius: 15px;
@@ -127,33 +127,15 @@ article pre {
   margin: 25px 0;
   padding: 15px;
   position: relative;
-  background: #282c34;
+  background: #fff5f5;
   line-height: 1.3em;
+  text-align: left;
 }
 article pre::before {
-  background: #282c34;
+  background: #fff5f5;
   height: 32px;
   margin-bottom: 0;
   display: block;
-}
-article pre::after {
-  position: absolute;
-  border-radius: 50%;
-  background: #ff5f56;
-  width: 12px;
-  height: 12px;
-  top: 0;
-  left: 12px;
-  margin-top: 12px;
-  -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-}
-article pre code {
-  position: relative;
-  border: none;
-  border-radius: 0;
-  font-size: 100%;
-  font-family: Consolas;
 }
 article pre code::after {
   color: #5c6370;
@@ -167,7 +149,28 @@ article pre code::after {
   overflow: hidden;
   padding: 1px 0;
   padding-left: 12px;
-  background: #282c34;
+  background: #fff5f5;
+}
+article pre::after {
+  position: absolute;
+  border-radius: 50%;
+  background: #ff5f56;
+  width: 12px;
+  height: 12px;
+  text-align: left;
+  top: 0;
+  left: 12px;
+  margin-top: 12px;
+  -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+}
+article pre code {
+  position: relative;
+  border: none;
+  border-radius: 0;
+  font-size: 100%;
+  font-family: Consolas;
+  text-align: left;
 }
 article a {
   -webkit-transition: all 0.35s ease-out;

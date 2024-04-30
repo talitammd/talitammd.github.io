@@ -3,7 +3,7 @@ code {
   padding: 1px 5px;
   font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
   /* font-size: 0.91rem; */
-  color: #e96900;
+  color: #f783ac;
   background-color: #f8f8f8;
   border-radius: 2px;
 }
@@ -72,6 +72,8 @@ pre::after {
 code {
   padding: 1px 5px;
   font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  text-align: left;
+  width: 1000px;
   font-size: 0.91rem;
   color: #e96900;
   background-color: #f8f8f8;
