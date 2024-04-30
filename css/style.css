@@ -1218,7 +1218,7 @@ photos img {
   flex: none;
   width: 60px;
   padding: 5px 0;
-  background-color: #f8bbd0;
+  background-color: #f06292;
   transform: rotate(0deg);
   border-radius: 50%;
   color: #fff;
@@ -1232,7 +1232,7 @@ photos img {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: #f8bbd0;
+  background-color: #f06292;
 }
 #nexmoe-header .nexmoe-count .nexmoe-count-item .item-right {
   left: auto;
@@ -1242,7 +1242,7 @@ photos img {
   color: #fff;
 }
 #nexmoe-header .nexmoe-list .nexmoe-list-item.active {
-  background-color: #f8bbd0;
+  background-color: #f06292;
   box-shadow: 0 2px 12px #f48fb1;
 }
 #nexmoe-header .nexmoe-search input {
@@ -1275,7 +1275,7 @@ photos img {
   color: #333;
 }
 #nexmoe-header #local-search-result .search-result-list .search-result-list-item a:hover {
-  color: #f8bbd0;
+  color: #f06292;
 }
 @-moz-keyframes anim {
   0% {
@@ -1314,14 +1314,14 @@ photos img {
   overflow: inherit;
 }
 #nexmoe-header .nexmoe-widget-wrap .nexmoe-widget .category-list-count {
-  color: #f8bbd0;
-  background-color: #f06292;
+  color: #f06292;
+  background-color: #ffebee;
 }
 #nexmoe-header .nexmoe-widget-wrap .nexmoe-widget .archive-list-count {
-  color: #f8bbd0;
+  color: #f06292;
 }
 #nexmoe-header .nexmoe-copyright a {
-  color: #f8bbd0;
+  color: #f06292;
 }
 #nexmoe-content .nexmoe-posts .nexmoe-post {
   position: relative;
@@ -1334,9 +1334,9 @@ photos img {
   padding: 0 10px;
   font-size: 14px;
   border-radius: 15px 0 8px 0;
-  background-color: #f06292;
+  background-color: #ffebee;
   height: 30px;
-  color: #f8bbd0;
+  color: #f06292;
   display: flex;
   align-items: center;
 }
@@ -1351,7 +1351,7 @@ photos img {
   width: 300px;
 }
 #nexmoe-pendant .nexmoe-pd .clock {
-  border: solid 2.8vh #f8bbd0;
+  border: solid 2.8vh #f06292;
   box-shadow: 0 1.4vh 2.8vh #f48fb1;
 }
 #nexmoe-pendant .nexmoe-pd .clock .memory {
@@ -1361,7 +1361,7 @@ photos img {
   background-image: url("/images/background/cangshu.png");
 }
 #nexmoe-pendant .nexmoe-pd .qweather #he-plugin-standard {
-  border: 2px solid #f8bbd0;
+  border: 2px solid #f06292;
   box-shadow: 0 1px 0 0 #f48fb1, 0 1px 2px 0 #f48fb1;
 }
 #nexmoe-pendant .nexmoe-pd .qweather #he-plugin-standard .wv-lt-refresh {
@@ -1374,31 +1374,31 @@ photos img {
   background-image: url("/images/background/cangshu.png");
 }
 article a {
-  color: #f8bbd0;
+  color: #f06292;
 }
 article h2:after {
-  background: #f8bbd0;
+  background: #f06292;
   box-shadow: 0 2px 12px #f48fb1;
 }
 article h4:before,
 article h5:before,
 article h6:before {
-  color: #f8bbd0;
+  color: #f06292;
 }
 article ol li::before {
-  color: #f8bbd0;
-  background-color: #f06292;
+  color: #f06292;
+  background-color: #ffebee;
 }
 article pre .text,
 article pre .txt {
   color: #abb2bf;
 }
 .nexmoe-archives li::before {
-  background: #f8bbd0;
+  background: #f06292;
 }
 .nexmoe-rainbow a:nth-child(7n+1) {
-  background: #f06292;
-  color: #f8bbd0;
+  background: #ffebee;
+  color: #f06292;
 }
 #nexmoe-content .nexmoe-post .nexmoe-py .aplayer {
   background-image: url("/images/background/chichi.jpg");
@@ -1407,11 +1407,11 @@ article pre .txt {
   background-repeat: no-repeat;
 }
 #nexmoe-content .nexmoe-post .nexmoe-py p em {
-  color: #f8bbd0;
+  color: #f06292;
   font-size: 17px;
 }
 #nexmoe-content .nexmoe-post .nexmoe-comment .v a::before {
-  background: #f8bbd0;
+  background: #f06292;
 }
 #nexmoe-content .nexmoe-post .nexmoe-comment .v .veditor {
   background-image: url("/images/background/papa.jpg");
@@ -1421,19 +1421,19 @@ article pre .txt {
   background-color: #fff;
 }
 #nexmoe-content .nexmoe-post .nexmoe-comment .v .vlist .vcard .vhead .vnick {
-  color: #f8bbd0;
+  color: #f06292;
 }
 #nexmoe-content .nexmoe-post .nexmoe-comment .v .vlist .vcard .vhead .vnick::before {
-  background: #f8bbd0;
+  background: #f06292;
 }
 #nexmoe-content .nexmoe-post .nexmoe-comment .v button {
-  background: #f06292;
-  color: #f8bbd0;
+  background: #ffebee;
+  color: #f06292;
 }
 #nexmoe-content .nexmoe-post .nexmoe-comment .v button:hover {
-  background: #f8bbd0;
+  background: #f06292;
   color: #fff;
-  border-color: #f8bbd0;
+  border-color: #f06292;
 }
 #nexmoe-content .nexmoe-post .nexmoe-comment .v .vcontrol .col-20 a {
   display: none;
@@ -1442,11 +1442,11 @@ article pre .txt {
   display: none;
 }
 #nexmoe-content .nexmoe-post .nexmoe-post-copyright a {
-  color: #f8bbd0;
+  color: #f06292;
 }
 #nexmoe-content .nexmoe-primary .nexmoe-page-nav .current {
-  background: #f8bbd0;
-  box-shadow: 0 2px 12px #f06292;
+  background: #f06292;
+  box-shadow: 0 2px 12px #ffebee;
 }
 #daodream-container .daodream-launcher {
   right: 60px !important;
@@ -1456,46 +1456,46 @@ article pre .txt {
   display: none;
 }
 #daodream-container .daodream-sheet-header {
-  background-image: linear-gradient(0deg, #f06292, #f06292) !important;
-  box-shadow: 0 1px 0 0 #f06292, 0 1px 2px 0 #f06292 !important;
-  color: #f8bbd0;
+  background-image: linear-gradient(0deg, #ffebee, #ffebee) !important;
+  box-shadow: 0 1px 0 0 #ffebee, 0 1px 2px 0 #ffebee !important;
+  color: #f06292;
 }
 #daodream-container .daodream-sheet-header .daodream-sheet-header-generic-title {
-  color: #f8bbd0;
+  color: #f06292;
   font-weight: bold;
 }
 #daodream-container .daodream-composer-textarea textarea {
-  color: #f8bbd0 !important;
+  color: #f06292 !important;
 }
 #daodream-container .daodream-composer-textarea textarea:focus {
   outline: none;
-  border: 1px solid #f8bbd0 !important;
+  border: 1px solid #f06292 !important;
 }
 #daodream-container .daodream-composer-send-button {
-  background-image: linear-gradient(180deg, #f8bbd0, #f8bbd0) !important;
-  background: #f8bbd0 !important;
+  background-image: linear-gradient(180deg, #f06292, #f06292) !important;
+  background: #f06292 !important;
 }
 #daodream-container .daodream-conversations-item-user-avatar {
-  background-color: #f8bbd0 !important;
+  background-color: #f06292 !important;
 }
 #daodream-container .daodream-conversations-new-conversation-button {
-  background-image: linear-gradient(180deg, #f8bbd0, #f8bbd0) !important;
-  background: #f8bbd0 !important;
+  background-image: linear-gradient(180deg, #f06292, #f06292) !important;
+  background: #f06292 !important;
 }
 #daodream-container .daodream-comment-card .notification-input {
-  border: 1px solid #f8bbd0 !important;
+  border: 1px solid #f06292 !important;
 }
 #daodream-container .daodream-comment-card .notification-submit {
-  background-color: #f8bbd0 !important;
+  background-color: #f06292 !important;
 }
 #daodream-container .daodream-comment-card .daodream-comment-avatar {
   content: url("/images/head/head.jpg") !important;
 }
 #daodream-container .daodream-comment-by-user .daodream-comment-body-container {
-  background-color: #f8bbd0 !important;
+  background-color: #f06292 !important;
 }
 #daodream-container .daodream-comment-by-user .daodream-comment-caret:before {
-  background-color: #f8bbd0 !important;
+  background-color: #f06292 !important;
 }
 #daodream-container .daodream-sheet-spinner {
   border-radius: 50% !important;
@@ -1505,7 +1505,7 @@ article pre .txt {
 #daodream-container .daodream-launcher-button {
   width: 80px !important;
   height: 80px !important;
-  background-color: #f8bbd0 !important;
+  background-color: #f06292 !important;
   background-image: url("/images/head/call.jpg") !important;
   background-size: 100% 100% !important;
   border-radius: 50% !important;
