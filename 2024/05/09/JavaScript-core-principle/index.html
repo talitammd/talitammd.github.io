@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/05/09/JavaScript-core-principle/Untitled.png">
 <meta property="article:published_time" content="2024-05-09T14:17:53.000Z">
-<meta property="article:modified_time" content="2024-05-09T14:22:04.353Z">
+<meta property="article:modified_time" content="2024-05-09T14:42:26.487Z">
 <meta property="article:author" content="Talita">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -38,7 +38,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1715265544480">
+  <link rel="stylesheet" href="/css/style.css?v=1715265942934">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -349,7 +349,7 @@
 </li>
 <li><p><strong><code>Promise</code> 链</strong>：多个 <code>.then()</code> 调用可以组成 <code>Promise</code> 链，每个 <code>.then()</code> 的回调函数都会接收前一个 <code>Promise</code> 的结果作为参数。</p>
 </li>
-<li><p><strong>静态方法</strong>：为了满足更多业务需要，又诞生了6个promise的静态方法。</p>
+<li><p><strong>静态方法</strong>：为了满足更多业务需要，又诞生了6个<code>promise</code>的静态方法。</p>
 <ul>
 <li><code>promise.all()</code>等待所有<code>Promise</code>执行成功，一个不成功都算失败</li>
 <li><code>promise.allSettled()</code>等待所有<code>Promise</code>执行完成，无论成功还是失败</li>
@@ -357,10 +357,10 @@
 <li><code>promise.race()</code>等待第一个promise完成</li>
 <li><code>promise.reject(reason)</code>返回一个状态为<code>rejected</code>的<code>Promise</code>对象</li>
 <li><code>Promise.resolve()</code>它会接受四种类型的参数：<ol>
-<li>一个promise实例——直接返回</li>
-<li>具有then方法的对象——转为promise对象，并立即执行then方法</li>
-<li>普通对象或不是对象——返回一个新的promise对象，将参数传给下一个then</li>
-<li>不带任何参数——状态为resolved的promise对象</li>
+<li>一个<code>promise</code>实例——直接返回</li>
+<li>具有<code>then</code>方法的对象——转为<code>promise</code>对象，并立即执行<code>then</code>方法</li>
+<li>普通对象或不是对象——返回一个新的<code>promise</code>对象，将参数传给下一个<code>then</code></li>
+<li>不带任何参数——状态为<code>resolved</code>的<code>promise</code>对象</li>
 </ol>
 </li>
 </ul>
@@ -1198,7 +1198,7 @@
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1715265544481"></script>
+<script src="/js/app.js?v=1715265942935"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -1217,8 +1217,6 @@
 <!-- hexo injector body_end start -->
 <script src="/js/clock.js"></script>
 
-<script src="/js/webapp.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script src="/js/search.js"></script>
@@ -1234,6 +1232,8 @@
 <script src="/lib/codeBlock/codeShrink.js"></script>
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
+
+<script src="/js/webapp.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 

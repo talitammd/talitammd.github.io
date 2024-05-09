@@ -31,7 +31,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1715265544484">
+  <link rel="stylesheet" href="/css/style.css?v=1715265942939">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -244,7 +244,7 @@
         </div>
         
         <article>
-            <!-- 
+            
                 <h2 id="JavaScript-执行机制"><a href="#JavaScript-执行机制" class="headerlink" title="JavaScript 执行机制"></a>JavaScript 执行机制</h2><p>JavaScript 的执行机制主要涉及到其单线程特性、事件循环以及任务队列等概念。下面详细解释这些概念以及它们如何共同影响 JavaScript 的执行。</p>
 <h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a><strong>单线程</strong></h3><p>JavaScript 是单线程的，这意味着它一次只能执行一个任务。这确保了代码执行的顺序性和一致性，但同时也带来了一个问题：当遇到需要等待的操作（如 I&#x2F;O 操作、定时器、网络请求等）时，整个线程会被阻塞，直到该操作完成。</p>
 <h3 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a><strong>异步编程</strong></h3><p>为了解决这个问题，JavaScript 引入了异步编程的概念。异步编程允许 JavaScript 在等待某个操作完成的同时执行其他任务。但如果同步代码依赖的是异步任务执行完的结果，怎么办呢？</p>
@@ -331,7 +331,7 @@
 </li>
 <li><p><strong><code>Promise</code> 链</strong>：多个 <code>.then()</code> 调用可以组成 <code>Promise</code> 链，每个 <code>.then()</code> 的回调函数都会接收前一个 <code>Promise</code> 的结果作为参数。</p>
 </li>
-<li><p><strong>静态方法</strong>：为了满足更多业务需要，又诞生了6个promise的静态方法。</p>
+<li><p><strong>静态方法</strong>：为了满足更多业务需要，又诞生了6个<code>promise</code>的静态方法。</p>
 <ul>
 <li><code>promise.all()</code>等待所有<code>Promise</code>执行成功，一个不成功都算失败</li>
 <li><code>promise.allSettled()</code>等待所有<code>Promise</code>执行完成，无论成功还是失败</li>
@@ -339,10 +339,10 @@
 <li><code>promise.race()</code>等待第一个promise完成</li>
 <li><code>promise.reject(reason)</code>返回一个状态为<code>rejected</code>的<code>Promise</code>对象</li>
 <li><code>Promise.resolve()</code>它会接受四种类型的参数：<ol>
-<li>一个promise实例——直接返回</li>
-<li>具有then方法的对象——转为promise对象，并立即执行then方法</li>
-<li>普通对象或不是对象——返回一个新的promise对象，将参数传给下一个then</li>
-<li>不带任何参数——状态为resolved的promise对象</li>
+<li>一个<code>promise</code>实例——直接返回</li>
+<li>具有<code>then</code>方法的对象——转为<code>promise</code>对象，并立即执行<code>then</code>方法</li>
+<li>普通对象或不是对象——返回一个新的<code>promise</code>对象，将参数传给下一个<code>then</code></li>
+<li>不带任何参数——状态为<code>resolved</code>的<code>promise</code>对象</li>
 </ol>
 </li>
 </ul>
@@ -425,7 +425,7 @@
 <p>因此，当我们说 <code>person1.sayHello()</code> 时，JavaScript 首先在 <code>person1</code> 对象自身上查找 <code>sayHello</code> 属性，由于没找到，所以会沿着原型链（即 <code>person1.__proto__</code>，也就是 <code>Person.prototype</code>）继续查找，最终在 <code>Person.prototype</code> 上找到了 <code>sayHello</code> 方法并执行。</p>
 <p>需要注意的是，虽然 <code>__proto__</code> 属性在大多数现代浏览器中都可以访问，但它并不是 JavaScript 语言规范的一部分，而是某些浏览器为了实现原型链而提供的。在编写可移植的代码时，应该使用符合JavaScript 语言规范的 <code>Object.getPrototypeOf()</code> 和 <code>Object.setPrototypeOf()</code> 方法来访问和修改对象的原型。</p>
 
-             -->
+            
         </article>
     </div>
     
@@ -446,7 +446,7 @@
         </div>
         
         <article>
-            <!-- 
+            
                 <h2 id="什么是模块化？"><a href="#什么是模块化？" class="headerlink" title="什么是模块化？"></a><strong>什么是模块化？</strong></h2><p>概括：模块化的目的是当系统的规模和复杂度上升后，将代码拆分成多个独立、可重用的单元，<u>提升代码的复用性，避免全局变量污染</u></p>
 <p>阐述：将一些共有或者私有的变量和方法封装为一个模块后导出，来让别的模块引用。每个模块都具有特定的功能和职责，并且可以与其他模块进行交互。</p>
 <p>总结：一个模块的基本内容是：依赖的模块、自己要做的事情、要导出的变量&#x2F;方法</p>
@@ -542,7 +542,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export const a = 1</span><br></pre></td></tr></table></figure>
 
-             -->
+            
         </article>
     </div>
     
@@ -563,7 +563,7 @@
         </div>
         
         <article>
-            <!-- 
+            
                 <p>npm（全称 Node Package Manager）是 Node.js 的包管理工具，它是一个基于命令行的工具，用于帮助开发者在自己的项目中安装、升级、移除和管理依赖项。</p>
 <hr>
 <h2 id="Node-Package-Manager"><a href="#Node-Package-Manager" class="headerlink" title="Node Package Manager"></a>Node Package Manager</h2><h3 id="Package-json"><a href="#Package-json" class="headerlink" title="Package json"></a>Package json</h3><p>执行<code>npm init</code>便可以初始化一个package.json，括号内为默认选项，加上<code>-y</code>参数则将所有选项填充为默认值。</p>
@@ -766,7 +766,7 @@
 
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7261872148213415994">具体过程参照</a></p>
 
-             -->
+            
         </article>
     </div>
     
@@ -787,7 +787,7 @@
         </div>
         
         <article>
-            <!-- 
+            
                 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ol>
 <li><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">NodeJs</a>不是<code>JavaScript</code>应用，也不是编程语言，因为编程语言用的是<code>JavaScript</code>，Nodejs是 <code>JavaScript</code>的运行时的环境。</p>
 </li>
@@ -895,7 +895,7 @@
 <p><em>安装成功后可以输入<code>node -v &amp;&amp; npm -v &amp;&amp; npx -v</code> 来查看是否安装成功及安装版本</em></p>
 </blockquote>
 
-             -->
+            
         </article>
     </div>
     
@@ -916,7 +916,7 @@
         </div>
         
         <article>
-            <!-- 
+            
                 <p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>是目前世界上最先进的分布式版本控制系统：</p>
 <ul>
 <li><strong>版本控制系统：</strong> 记录文件的变化，以便进行追踪和管理</li>
@@ -1136,7 +1136,7 @@
 
 <p>再进行push时，会提示输入用户名密码，输入完成之后&#x2F;Users&#x2F;xxx&#x2F; 文件夹下会生成一个新的文件.git-credentials，里面保存了你的用户名密码等信息。</p>
 
-             -->
+            
         </article>
     </div>
     
@@ -1855,7 +1855,7 @@
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1715265544484"></script>
+<script src="/js/app.js?v=1715265942940"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -1874,8 +1874,6 @@
 <!-- hexo injector body_end start -->
 <script src="/js/clock.js"></script>
 
-<script src="/js/webapp.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script src="/js/search.js"></script>
@@ -1891,6 +1889,8 @@
 <script src="/lib/codeBlock/codeShrink.js"></script>
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
+
+<script src="/js/webapp.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
