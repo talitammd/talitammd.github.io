@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  
+  <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
+  <title>JavaScript核心原理 - 卷不过没事了</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+    <!-- Site Verification -->
+    <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
+
+  <link rel="shortcut icon" href="/images/head/head.jpg" type="image/png" />
+  <meta name="description" content="JavaScript 执行机制JavaScript 的执行机制主要涉及到其单线程特性、事件循环以及任务队列等概念。下面详细解释这些概念以及它们如何共同影响 JavaScript 的执行。 单线程JavaScript 是单线程的，这意味着它一次只能执行一个任务。这确保了代码执行的顺序性和一致性，但同时也带来了一个问题：当遇到需要等待的操作（如 I&#x2F;O 操作、定时器、网络请求等）时，整个线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript核心原理">
+<meta property="og:url" content="http://example.com/2024/05/09/JavaScript-core-principle/index.html">
+<meta property="og:site_name" content="卷不过没事了">
+<meta property="og:description" content="JavaScript 执行机制JavaScript 的执行机制主要涉及到其单线程特性、事件循环以及任务队列等概念。下面详细解释这些概念以及它们如何共同影响 JavaScript 的执行。 单线程JavaScript 是单线程的，这意味着它一次只能执行一个任务。这确保了代码执行的顺序性和一致性，但同时也带来了一个问题：当遇到需要等待的操作（如 I&#x2F;O 操作、定时器、网络请求等）时，整个线程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/05/09/JavaScript-core-principle/Untitled.png">
+<meta property="og:image" content="http://example.com/2024/05/09/JavaScript-core-principle/Untitled1.png">
+<meta property="article:published_time" content="2024-05-09T14:17:53.000Z">
+<meta property="article:modified_time" content="2024-05-09T15:41:45.440Z">
+<meta property="article:author" content="Talita">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/05/09/JavaScript-core-principle/Untitled.png">
+  <link rel="stylesheet" href="https://lib.baomitu.com/highlight.js/9.15.8/styles/atom-one-dark.min.css" crossorigin>
+  <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css">
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+  <link rel="stylesheet" href="/lib/fancybox/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://lib.baomitu.com/justifiedGallery/3.8.1/css/justifiedGallery.min.css">
+  
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1715338618020">
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(/images/background/xiaomai.png)"></div>
+    <div class="nexmoe-small" style="background-image: url(/images/background/lihui.jpeg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Talita" class="mdui-btn mdui-btn-icon"><img src="/images/head/me.jpeg" alt="Talita"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Talita">
+            <img src="/images/head/me.jpeg" alt="Talita" alt="Talita">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div class="nexmoe-count-item"><span>文章</span>5 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
+        <div class="nexmoe-count-item"><span>标签</span>3<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+        <div class="nexmoe-count-item"><span>分类</span>3<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-meishi"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-hanbao1"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-jiubei1"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friend.html" title="友链">
+            <i class="mdui-list-item-icon nexmoefont icon-cola"></i>
+            <div class="mdui-list-item-content">
+                友链
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/download.html" title="下载中心">
+            <i class="mdui-list-item-icon nexmoefont icon-tangguo"></i>
+            <div class="mdui-list-item-content">
+                下载中心
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  
+<!-- 站内搜索 -->
+
+<div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search" >
+        <form id="search-form">
+            <label><input type="text" id="local-search-input" name="q" results="0" placeholder="站内搜索" class="input form-control" autocomplete="off" autocorrect="off"/></label>
+            <!-- 清空/重置搜索框 -->
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+        </form>
+    </div>
+    <div id="local-search-result"></div> <!-- 搜索结果区 -->
+    <!-- <p class='no-result'></p> 无匹配时显示，注意在 CSS 中设置默认隐藏 -->
+</div>
+
+
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="http://wpa.qq.com/msgrd?v=3&uin=2120252100&site=qq&menu=yes" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(64, 196, 255);background-color: rgba(64, 196, 255, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="mailto:tangyuxian@vip.qq.com" target="_blank" mdui-tooltip="{content: 'mail'}" style="color: rgb(249,8,8);background-color: rgba(249,8,8,.1);">
+            <i class="nexmoefont icon-mail-fill"></i>
+        </a><a class="mdui-ripple" href="https://blog.csdn.net/qq_40621378?type=blog" target="_blank" mdui-tooltip="{content: 'CSDN'}" style="color: rgb(199,29,35);background-color: rgba(199,29,35,.1);">
+            <i class="nexmoefont icon-csdn"></i>
+        </a><a class="mdui-ripple" href="https://www.cnblogs.com/lovetangyuxian/" target="_blank" mdui-tooltip="{content: '博客园'}" style="color: rgb(66, 214, 29);background-color: rgba(66, 214, 29, .1);">
+            <i class="nexmoefont icon-bokeyuan"></i>
+        </a><a class="mdui-ripple" href="https://github.com/tangyuxian/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/tangyuxian" target="_blank" mdui-tooltip="{content: 'gitee'}" style="color: rgb(255, 255, 255);background-color: rgb(199,29,35);">
+            <i class="nexmoefont icon-mayun"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Node-js/">Node.js</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/代码管理/">代码管理</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/node/" style="font-size: 20px;">node</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+<style>
+.nexmoe-widget .archive-list-count{
+	position : absolute;
+	right: 15px;
+	top:9px;
+	color: #DDD;
+}
+</style>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 Talita
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/tangyuxian/hexo-theme-tangyuxian" target="_blank">Tangyuxian</a><br/>
+        <a href="http://beian.miit.gov.cn" target="_blank">辽ICP备2021002341号</a><br/>
+        
+        <div style="font-size: 12px">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            本站总访问量  <a id="busuanzi_value_site_pv"></a> 次<br />
+            本站访客数<a id="busuanzi_value_site_uv"></a>人次
+        </div>
+        
+        
+    </div>
+
+</div><!-- .nexmoe-drawer -->
+
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 26.666666666666668%;">
+            <img data-src="/images/post/JavaScript.jpeg" data-sizes="auto" alt="JavaScript核心原理"
+                 class="lazyload">
+            <h1>JavaScript核心原理</h1>
+        </div>
+    
+
+        <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月09日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.7k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 20 分钟</a>
+</div>
+
+        <div class="nexmoe-post-right">
+            
+                <div class="nexmoe-fixed">
+                    <div class="nexmoe-valign">
+                        <div class="nexmoe-toc">
+                            
+                            
+                                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">JavaScript 执行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">单线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">异步编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97"><span class="toc-number">1.3.</span> <span class="toc-text">任务队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.4.</span> <span class="toc-text">事件循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">2.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-%E5%92%8C-await"><span class="toc-number">3.</span> <span class="toc-text">async 和 await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">4.</span> <span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">作用域类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="toc-number">4.2.</span> <span class="toc-text">作用域链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">4.3.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">4.4.</span> <span class="toc-text">原型和原型链</span></a></li></ol></li></ol>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+
+        <article>
+            <h2 id="JavaScript-执行机制"><a href="#JavaScript-执行机制" class="headerlink" title="JavaScript 执行机制"></a>JavaScript 执行机制</h2><p>JavaScript 的执行机制主要涉及到其单线程特性、事件循环以及任务队列等概念。下面详细解释这些概念以及它们如何共同影响 JavaScript 的执行。</p>
+<h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a><strong>单线程</strong></h3><p>JavaScript 是单线程的，这意味着它一次只能执行一个任务。这确保了代码执行的顺序性和一致性，但同时也带来了一个问题：当遇到需要等待的操作（如 I&#x2F;O 操作、定时器、网络请求等）时，整个线程会被阻塞，直到该操作完成。</p>
+<h3 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a><strong>异步编程</strong></h3><p>为了解决这个问题，JavaScript 引入了异步编程的概念。异步编程允许 JavaScript 在等待某个操作完成的同时执行其他任务。但如果同步代码依赖的是异步任务执行完的结果，怎么办呢？</p>
+<p>给出的解决方法就是回调函数，当你调用一个异步API并传递一个回调函数时，一旦异步操作完成，事件循环会收到通知，并自动将相应的回调函数推入任务队列。</p>
+<p><strong>常见的异步任务有：</strong></p>
+<ol>
+<li>定时器：<code>setTimeout</code> 和 <code>setInterval</code></li>
+<li>建立网络连接：<code>fetch</code> API 、 <code>XMLHttpReques</code>、 <code>http</code>、<code>https</code> 或其他第三方库（如 <code>axios</code>、<code>request</code>）</li>
+<li>读取网络流数据</li>
+<li>向文件写入数据：<code>fs</code></li>
+<li>Ajax提交</li>
+<li>请求数据库服务</li>
+<li>动态import()</li>
+</ol>
+<p><strong>异步操作在Node.js中的执行环境：</strong></p>
+<ol>
+<li><strong>事件循环</strong>：与浏览器环境不同的是，Node.js的事件循环包括更多的阶段（如timers、pending callbacks、idle, prepare、poll、check、close callbacks等），这些阶段用于处理不同类型的异步任务。</li>
+<li><strong>多线程</strong>：虽然JavaScript在Node.js中仍然是单线程执行的，但Node.js内部使用了多线程来处理某些类型的异步任务。这些线程由Node.js的底层库管理，当Node.js代码执行一个异步I&#x2F;O操作时，它会将任务委托给libuv库，然后立即返回并继续执行后续的代码。libuv库会根据操作系统的功能（例如，Linux的epoll、Windows的IOCP等）来高效地处理这些异步I&#x2F;O任务。当异步I&#x2F;O操作完成时，libuv库会通知Node.js，然后Node.js会将相应的回调函数放入事件循环的队列中等待执行。所以，虽然V8引擎是Node.js的核心部分，用于执行JavaScript代码，但异步I&#x2F;O操作是由libuv库和底层操作系统来处理的，而不是由V8引擎直接处理。这种设计使得Node.js能够高效地处理大量并发连接和异步操作，从而成为构建高性能网络应用的理想选择。</li>
+</ol>
+<h3 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a><strong>任务队列</strong></h3><p>在JavaScript中，宏任务（MacroTasks）和微任务（MicroTasks）是事件循环中处理异步操作的两类主要任务。</p>
+<p><strong>宏任务</strong></p>
+<ul>
+<li><strong>script（全局任务）</strong>：这是代码的主入口，整个的script标签内都是宏任务。</li>
+<li><strong>setTimeout</strong>：延迟一段时间后执行的任务。</li>
+<li><strong>setInterval</strong>：每隔一段时间执行的任务。</li>
+<li><strong>setImmediate</strong>（Node.js环境）：在I&#x2F;O事件后执行的任务，在Node.js中与setTimeout类似，但在浏览器中没有这个函数。</li>
+<li><strong>I&#x2F;O操作</strong>：如Node.js中的文件读写、网络请求等。</li>
+<li><strong>UI渲染</strong>（浏览器环境）：浏览器在空闲时会进行页面的渲染。</li>
+</ul>
+<p><strong>微任务</strong></p>
+<ul>
+<li><strong>Promise</strong>：Promise的回调函数是微任务。当Promise的状态改变（从pending变为fulfilled或rejected）时，其then或catch方法中的回调函数会被放入微任务队列。</li>
+<li><strong>process.nextTick</strong>（Node.js环境）：Node.js特有的API，用于在当前执行栈的末尾立即执行回调。但如果在Vue.js中，则为DOM更新之后立即执行。</li>
+<li><strong>MutationObserver</strong>（浏览器环境）：用于监视DOM更改的API，其回调函数也是微任务。</li>
+</ul>
+<p>当JavaScript代码执行时，如果是在浏览器环境中，会先执行script（或称为全局任务）中的同步代码，然后执行微任务队列中的回调，最后才执行宏任务队列中的回调。这个过程会一直重复，直到所有的任务都被执行完毕。</p>
+<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a><strong>事件循环</strong></h3><p>事件循环是 JavaScript 引擎处理异步任务和更新 UI 的主要方式。它的工作原理大致如下：</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/05/09/JavaScript-core-principle/Untitled.png" alt="Untitled" class="lazyload"></p>
+<ol>
+<li><p><strong>执行栈（Call Stack）</strong>：JavaScript 引擎有一个执行栈，用于存储函数调用和返回的结果。当执行栈为空时，事件循环会查看任务队列和微任务队列。</p>
+<ul>
+<li>同步代码：立即放入JS引擎（主线程）执行，并原地等待结果</li>
+<li>异步代码：先放入宿主环境（浏览器&#x2F;Node)，不必原地等待结果，并不阻塞主线程继续往下执行，回调函数在等到异步结果之后再执行</li>
+</ul>
+<p>于是，调用栈中放主线任务，宿主环境来执行异步任务，在执行完后会通知主线程，并自动把回调函数推送到任务队列中，等执行栈中任务空了，就会从任务队列中拿回调。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/05/09/JavaScript-core-principle/Untitled1.png" alt="Untitled" class="lazyload"></p>
+<p>同样是异步任务的回调函数，有的回调是需要连贯执行的，为了优化这个体验，又分为了<strong>微任务（需要立即连贯执行）</strong>和<strong>宏任务（不需要立即连贯执行）</strong></p>
+<p>事件循环中任务队列的过程可以分为先检查微任务队列，再检查宏任务队列</p>
+</li>
+<li><p><strong>检查微任务队列</strong>：在每次事件循环迭代中，JavaScript 引擎会首先查看微任务队列。如果微任务队列中有任务，它会执行这些任务，直到微任务队列为空。</p>
+</li>
+<li><p><strong>执行栈和微任务队列</strong>：在执行微任务的过程中，如果有新的微任务被添加到微任务队列，它们也会在当前事件循环迭代中被执行。只有当微任务队列完全为空时，JavaScript 引擎才会继续下一步。</p>
+</li>
+<li><p><strong>检查宏任务队列</strong>：当微任务队列为空时，JavaScript 引擎会查看宏任务队列。如果宏任务队列中有任务，它会取出第一个任务并将其推入执行栈中执行。这个过程会一直重复，直到任务队列为空。</p>
+</li>
+<li><p><strong>渲染</strong>：在执行完一个事件循环迭代中的所有任务后，浏览器会更新 UI 并进行渲染。</p>
+</li>
+<li><p><strong>下一轮事件循环</strong>：然后，事件循环会开始新一轮的迭代，再次检查微任务队列和任务队列中的任务。</p>
+</li>
+</ol>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a><code>Promise</code></h2><p>当一个请求，它依赖于上一个请求的结果的时候，就需要来调用回调函数，如果这样的请求多了，就会变成这样：</p>
+<pre><code class="jsx">请求1(function(res1)&#123;
+    请求2(function(res2)&#123;
+        请求3(function(res3)&#123;
+            请求4(function(res4)&#123;
+                ......
+            &#125;)
+        &#125;)
+    &#125;)
+&#125;)
+</code></pre>
+<p>这就是回调地狱，为了优雅的表示异步回调，便有了<code>Promise</code>。</p>
+<p><code>Promise</code> 是 JavaScript 中的一个对象，它的构造函数为<code>new Promise(fn)</code>，<code>fn</code>为回调函数，它接收两个参数<code>resolve</code>和<code>reject</code>。</p>
+<p>以下是 Promise 的一些基本概念和特性：</p>
+<ol>
+<li><p><strong>状态</strong>：Promise 有三种状态：</p>
+<ul>
+<li><code>pending</code>（待定）：初始状态，既不是成功，也不是失败状态。</li>
+<li><code>fulfilled</code>（已实现）：意味着操作成功完成。</li>
+<li><code>rejected</code>（已拒绝）：意味着操作失败。</li>
+</ul>
+</li>
+<li><p><strong>执行器（Executor）</strong>：<code>Promise</code> 构造函数接受一个执行器函数作为参数，<strong>异步操作会放在该执行器函数内</strong>。执行器函数有两个参数：<code>resolve</code> 和 <code>reject</code>，它们是两个函数，分别用于将 Promise 的状态从 <code>pending</code> 变为 <code>fulfilled</code> 或 <code>rejected</code>。这两个函数为<code>Promise</code>对象的内置函数，无需自己定义。</p>
+<pre><code class="jsx">const promise = new Promise((resolve, reject) =&gt; &#123;  
+  // 假设这是一个异步操作，例如从服务器获取数据  
+  setTimeout(() =&gt; &#123;  
+    // 模拟异步操作成功，我们调用 resolve 函数，并传递一个值  
+    const data = &#39;成功获取的数据&#39;;  
+    resolve(data);  
+  &#125;, 1000);  
+  
+  // 注意：在实际应用中，你可能需要在某个错误处理回调中调用 reject 函数  
+  // 例如，网络请求失败时  
+&#125;);  
+</code></pre>
+<p><code>**resolve</code> 函数被用来在异步操作成功时传递一个值给 Promise 的成功处理函数。这个值会成为 <code>then</code> 方法第一个回调函数的参数。**如果异步操作失败，你应该用 <code>reject</code> 函数，并传递一个表示错误原因的值给 Promise 的失败处理函数（即 <code>then</code> 方法的第二个参数，或者更常见的 <code>catch</code> 方法）。</p>
+</li>
+<li><p><strong>链式调用（Chaining）</strong>：<code>Promise</code> 提供了 <code>.then()</code> 和 <code>.catch()</code> 方法，用于注册成功和失败的回调函数。这两个方法都返回新的 Promise 对象，因此可以链式调用。</p>
+<pre><code class="jsx">// 使用 then 方法处理 Promise 的结果  
+promise.then(  
+  value =&gt; &#123;  
+    console.log(value); // 输出：成功获取的数据  
+    // 在这里，你可以对获取到的数据做进一步的处理  
+  &#125;,  
+  error =&gt; &#123;  
+    // 这个回调函数会在 Promise 被 reject 时调用  
+    // 但在这个示例中，因为我们从未调用 reject，所以这个回调函数不会被执行  
+    console.error(&#39;出现错误：&#39;, error);  
+  &#125;  
+);
+</code></pre>
+</li>
+<li><p><strong>错误处理</strong>：每一步都写<code>reject</code>特别麻烦，为了简化任务需要，我们诞生了<code>catch</code>方法，来捕获<code>resolve</code>时的异常，这样就可以省略<code>reject</code>方法了。</p>
+</li>
+<li><p><strong><code>Promise</code> 链</strong>：多个 <code>.then()</code> 调用可以组成 <code>Promise</code> 链，每个 <code>.then()</code> 的回调函数都会接收前一个 <code>Promise</code> 的结果作为参数。</p>
+</li>
+<li><p><strong>静态方法</strong>：为了满足更多业务需要，又诞生了6个<code>promise</code>的静态方法。</p>
+<ul>
+<li><code>promise.all()</code>等待所有<code>Promise</code>执行成功，一个不成功都算失败</li>
+<li><code>promise.allSettled()</code>等待所有<code>Promise</code>执行完成，无论成功还是失败</li>
+<li><code>promise.any()</code>任意一个promise成功就行</li>
+<li><code>promise.race()</code>等待第一个promise完成</li>
+<li><code>promise.reject(reason)</code>返回一个状态为<code>rejected</code>的<code>Promise</code>对象</li>
+<li><code>Promise.resolve()</code>它会接受四种类型的参数：<ol>
+<li>一个<code>promise</code>实例——直接返回</li>
+<li>具有<code>then</code>方法的对象——转为<code>promise</code>对象，并立即执行<code>then</code>方法</li>
+<li>普通对象或不是对象——返回一个新的<code>promise</code>对象，将参数传给下一个<code>then</code></li>
+<li>不带任何参数——状态为<code>resolved</code>的<code>promise</code>对象</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p>下面是一个简单的 Promise 示例：</p>
+<pre><code class="jsx">function fetchData() &#123;  
+  return new Promise((resolve, reject) =&gt; &#123;  
+    // 模拟异步操作，例如 AJAX 请求  
+    setTimeout(() =&gt; &#123;  
+      // 模拟成功获取数据  
+      const data = &#39;Hello, World!&#39;;  
+      resolve(data); // 将 Promise 状态设置为 fulfilled，并传递数据  
+    &#125;, 1000);  
+  
+    // 如果发生错误，可以调用 reject 函数  
+    // reject(new Error(&#39;Failed to fetch data&#39;));  
+  &#125;);  
+&#125;  
+  
+// 使用 Promise  
+fetchData()  
+  .then(data =&gt; &#123;  
+    console.log(data); // 输出 &#39;Hello, World!&#39;  
+    // 返回新的 Promise 或值，可以继续链式调用  
+    return &#39;Another data point&#39;;  
+  &#125;)  
+  .then(data =&gt; &#123;  
+    console.log(data); // 输出 &#39;Another data point&#39;  
+  &#125;)  
+  .catch(error =&gt; &#123;  
+    console.error(&#39;An error occurred:&#39;, error);  
+  &#125;);
+</code></pre>
+<h2 id="async-和-await"><a href="#async-和-await" class="headerlink" title="async 和 await"></a><code>async</code> 和 <code>await</code></h2><p><code>async</code> 和 <code>await</code> 是 JavaScript 中用于处理异步操作的关键字，它们主要用在 <code>Promise</code> 和基于 <code>Promise</code> 的技术中。使得异步代码能够以更直观、更易于理解的同步代码风格来编写。</p>
+<p><strong>async</strong></p>
+<ul>
+<li><code>async</code> 函数是声明一个函数是异步的。</li>
+<li>异步函数总是返回一个 <code>Promise</code>。</li>
+<li>如果 <code>async</code> 函数中有 <code>return</code> 语句，返回的值将被包装在一个 <code>Promise</code> 中。</li>
+<li>如果 <code>async</code> 函数中没有 <code>return</code> 语句，则返回的 <code>Promise</code> 将解析为 <code>undefined</code>。</li>
+</ul>
+<p><strong>await</strong></p>
+<ul>
+<li><code>await</code> 关键字只能在 <code>async</code> 函数内部使用。</li>
+<li><code>await</code> 会卡在当前的异步操作中等待 <code>Promise</code> 完成并返回结果，然后继续往下执行。</li>
+<li>如果等待的 Promise 被拒绝，<code>await</code> 表达式会抛出一个错误。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="jsx">async function fetchData() &#123;  
+  let response = await fetch(&#39;https://api.example.com/data&#39;);  
+  let data = await response.json();  
+  return data;  
+&#125;  
+  
+fetchData().then(data =&gt; &#123;  
+  console.log(data);  
+&#125;).catch(error =&gt; &#123;  
+  console.error(&#39;Error:&#39;, error);  
+&#125;);
+</code></pre>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>不要在非 <code>async</code> 函数中使用 <code>await</code>，否则会导致语法错误。</li>
+<li>当你需要处理一系列的异步操作，可以使用 <code>async/await</code> 的连续调用。</li>
+<li>尽管 <code>async/await</code> 使得代码更易于阅读和理解，但在某些情况下（如需要并行处理多个异步操作时），使用 Promise 的链式调用或 <code>Promise.all()</code> 可能更有效率。</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在JavaScript中，作用域（Scope）是代码执行上下文中的一个重要概念，它决定了变量、函数和表达式的可访问性和生命周期。作用域决定了在何处以及如何查找变量（标识符）的引用。</p>
+<h3 id="作用域类型"><a href="#作用域类型" class="headerlink" title="作用域类型"></a><strong>作用域类型</strong></h3><p>JavaScript中有两种主要的作用域类型：</p>
+<ol>
+<li><strong>全局作用域</strong>：不在任何函数内部的变量或函数，也就是定义在windows下的变量范围，在任何地方都可以访问。容易导致全局污染，命名冲突，对bug查找不利。</li>
+<li><strong>局部作用域</strong>：只在函数内部定义的变量范围。<ul>
+<li><strong>函数作用域</strong>：在ES6之前，JavaScript只有函数作用域，这意味着变量在函数内部是局部的，在函数外部是不可见的。</li>
+<li><strong>块级作用域（Block Scope）</strong>：ES6引入了<code>let</code>和<code>const</code>关键字，它们提供了块级作用域。在<code>&#123;&#125;</code>中声明的变量或常量仅在该块内部是可访问的。</li>
+</ul>
+</li>
+</ol>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a><strong>作用域链</strong></h3><p>作用域链就是由最内部的作用域往最外部查找变量的过程，形成的链条就是作用域链。</p>
+<p>作用域链是一种数据结构，它保存了当前执行上下文中所有变量和函数引用的有序列表。这个列表从当前作用域开始，然后是其父级作用域，然后是更高级别的父级作用域，直到全局作用域。如果变量未在任何作用域中找到，那么将抛出一个引用错误（ReferenceError）。</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包（Closure）允许函数记住并访问其所在的词法环境，即使在函数执行完毕并返回后，这些词法环境中的数据仍然可以被闭包内部的代码所访问。闭包有几个主要的应用场景：</p>
+<ol>
+<li><p><strong>数据封装和私有变量</strong>：</p>
+<p>闭包可以用来封装数据，并通过特定的接口（函数）来访问这些数据，从而实现数据的私有性。</p>
+<pre><code class="jsx">function createCounter() &#123;  
+    let count = 0; // 私有变量，不通过return暴露  
+    return &#123;  
+        increment: function() &#123;  
+            count++;  
+        &#125;,  
+        getCount: function() &#123;  
+            return count;  
+        &#125;  
+    &#125;;  
+&#125;  
+const counter = createCounter();  
+counter.increment();  
+console.log(counter.getCount()); // 输出：1
+</code></pre>
+</li>
+<li><p><strong>回调函数和高阶函数</strong>：</p>
+<p>闭包经常作为回调函数使用，因为它们可以记住自己的词法环境，包括this、变量等。在高阶函数中，闭包也非常有用，因为它们可以接收函数作为参数，并返回函数作为结果。</p>
+<pre><code class="jsx">function greet(name) &#123;  
+    return function(greeting) &#123;  
+        console.log(greeting + &#39;, &#39; + name);  
+    &#125;;  
+&#125;  
+
+const helloJohn = greet(&#39;John&#39;);  
+helloJohn(&#39;Hello&#39;); // 输出：Hello, John
+</code></pre>
+</li>
+<li><p><strong>实现装饰器&#x2F;函数修饰器</strong>：</p>
+<p>闭包可以用来创建装饰器，它们可以修改或增强函数的行为。</p>
+<pre><code class="jsx">function logCalls(func) &#123;  
+    return function() &#123;  
+        console.log(&#39;Calling: &#39; + func.name);  
+        func.apply(this, arguments);  
+    &#125;;  
+&#125;  
+const originalFunc = function() &#123;  
+    console.log(&#39;Inside original function&#39;);  
+&#125;;  
+const loggedFunc = logCalls(originalFunc);  
+loggedFunc(); // 输出：Calling: originalFunc, Inside original function
+</code></pre>
+</li>
+<li><p><strong>实现模块模式</strong>：</p>
+<p>闭包可以用来模拟私有属性和方法，从而创建模块。这有助于避免全局命名空间的污染，并提供了一种组织代码的方式。</p>
+<pre><code class="jsx">var myModule = (function() &#123;  
+    var privateVar = &#39;Hello&#39;;  
+    function privateFunc() &#123;  
+        return privateVar;  
+    &#125;  
+    return &#123;  
+        publicFunc: function() &#123;  
+            return privateFunc();  
+        &#125;  
+    &#125;;  
+&#125;)();  
+console.log(myModule.publicFunc()); // 输出：Hello
+</code></pre>
+</li>
+<li><p><strong>事件监听器</strong>：</p>
+<p>在事件驱动的编程中，闭包经常被用作事件监听器的回调函数，因为它们可以记住与特定事件相关的数据或状态。</p>
+<pre><code class="jsx">button.addEventListener(&#39;click&#39;, function() &#123;  
+    // 这个匿名函数是一个闭包，它可以访问外部变量  
+    console.log(&#39;Button clicked!&#39;);  
+&#125;);
+</code></pre>
+</li>
+</ol>
+<h3 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链"></a>原型和原型链</h3><p>在 JavaScript 中，每个函数都有一个 <code>prototype</code> 属性，这个属性是一个指针，指向一个对象。这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法，可以通过 <code>Object.getPrototypeOf()</code> 访问。</p>
+<p>当你创建一个函数（即一个类构造函数）时，JavaScript 会自动为这个函数添加一个 <code>prototype</code> 属性，这个属性是一个对象，通常被称为该函数的原型对象。</p>
+<pre><code class="jsx">function Person(name) &#123;  
+    this.name = name;  
+&#125;  
+Person.prototype.sayHello = function() &#123;  
+    console.log(`Hello, my name is $&#123;this.name&#125;`);  
+&#125;;    
+const person1 = new Person(&#39;Alice&#39;);  
+person1.sayHello(); // 输出: Hello, my name is Alice
+</code></pre>
+<p>在这个例子中，<code>Person.prototype</code> 就是 <code>Person</code> 构造函数的原型对象，而 <code>sayHello</code> 方法就定义在这个原型对象上。因此，当我们使用 <code>new Person(&#39;Alice&#39;)</code> 创建一个 <code>Person</code> 的实例时，这个实例（即 <code>person1</code>）可以访问到定义在 <code>Person.prototype</code> 上的 <code>sayHello</code> 方法。</p>
+<p>原型链是 JavaScript 中实现继承的一种方式。当一个对象试图访问其某个属性或方法时，JavaScript 会首先在该对象自身的属性中查找，如果找不到，则会沿着该对象的原型链向上查找，直到找到为止（或者直到到达原型链的末尾，即 <code>Object.prototype</code>，此时如果还未找到，则返回 <code>undefined</code>）。</p>
+<p>在上面的例子中，<code>person1</code> 对象并没有直接定义 <code>sayHello</code> 方法，但是它可以访问到 <code>Person.prototype</code> 上的 <code>sayHello</code> 方法，这就是因为 <code>person1</code> 的原型链中包含了 <code>Person.prototype</code>。</p>
+<p>更具体地说，当我们使用 <code>new</code> 关键字创建一个新的对象时，JavaScript 会做以下几件事情：</p>
+<ol>
+<li>创建一个新的空对象。</li>
+<li>将这个新对象的 <code>__proto__</code>指向构造函数的 <code>prototype</code> 对象。</li>
+<li>将这个新对象作为 <code>this</code> 上下文传入构造函数并执行，从而设置新对象的属性。</li>
+<li>返回这个新对象。</li>
+</ol>
+<p>因此，当我们说 <code>person1.sayHello()</code> 时，JavaScript 首先在 <code>person1</code> 对象自身上查找 <code>sayHello</code> 属性，由于没找到，所以会沿着原型链（即 <code>person1.__proto__</code>，也就是 <code>Person.prototype</code>）继续查找，最终在 <code>Person.prototype</code> 上找到了 <code>sayHello</code> 方法并执行。</p>
+<p>需要注意的是，虽然 <code>__proto__</code> 属性在大多数现代浏览器中都可以访问，但它并不是 JavaScript 语言规范的一部分，而是某些浏览器为了实现原型链而提供的。在编写可移植的代码时，应该使用符合JavaScript 语言规范的 <code>Object.getPrototypeOf()</code> 和 <code>Object.setPrototypeOf()</code> 方法来访问和修改对象的原型。</p>
+
+        </article>
+
+        
+            
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Talita<br>
+    
+    <strong>本文链接：</strong><a href="http://example.com/2024/05/09/JavaScript-core-principle/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;05&#x2F;09&#x2F;JavaScript-core-principle&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;05&#x2F;09&#x2F;JavaScript-core-principle&#x2F;</a><br>
+
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+        
+
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/JavaScript/">JavaScript</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+    
+</div>
+
+    <div class="nexmoe-post-footer">
+        <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://lib.baomitu.com/valine/1.3.9/Valine.min.js'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'r5zxC0st0DDjPA9auXzMV7HY-gzGzoHsz',
+        appKey: '3bqCsovpyfTPHUzTHovd3V3V'
+    })
+</script>
+</section>
+    </div>
+</div>
+
+
+        <div class="nexmoe-post-right">
+          
+            <div class="nexmoe-fixed">
+              <div class="nexmoe-tool">
+                <a href="#" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+              </div>
+            </div>
+          
+        </div>
+    </div>
+  </div>
+  <div id="nexmoe-pendant">
+    <div class="nexmoe-drawer mdui-drawer nexmoe-pd" id="drawer">
+        
+            <div class="nexmoe-pd-item">
+                <div class="clock">
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="needle" id="hours"></div>
+        <div class="needle" id="minutes"></div>
+        <div class="needle" id="seconds"></div>
+        <div class="clock_logo">
+
+        </div>
+
+    </div>
+<style>
+    .clock {
+        background-color: #ffffff;
+        width: 70vw;
+        height: 70vw;
+        max-width: 70vh;
+        max-height: 70vh;
+        border: solid 2.8vw #242424;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        box-sizing: border-box;
+        box-shadow: 0 1.4vw 2.8vw rgba(0, 0, 0, 0.8);
+        zoom:0.2
+    }
+
+    .memory {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+    }
+
+    .memory:nth-child(1) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(0deg) translateY(-520%);
+    }
+
+    .memory:nth-child(2) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(6deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(3) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(12deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(4) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(18deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(5) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(24deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(6) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(30deg) translateY(-520%);
+    }
+
+    .memory:nth-child(7) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(36deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(8) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(42deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(9) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(48deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(10) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(54deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(11) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(60deg) translateY(-520%);
+    }
+
+    .memory:nth-child(12) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(66deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(13) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(72deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(14) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(78deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(15) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(84deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(16) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(90deg) translateY(-520%);
+    }
+
+    .memory:nth-child(17) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(96deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(18) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(102deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(19) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(108deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(20) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(114deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(21) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(120deg) translateY(-520%);
+    }
+
+    .memory:nth-child(22) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(126deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(23) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(132deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(24) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(138deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(25) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(144deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(26) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(150deg) translateY(-520%);
+    }
+
+    .memory:nth-child(27) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(156deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(28) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(162deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(29) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(168deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(30) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(174deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(31) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(180deg) translateY(-520%);
+    }
+
+    .memory:nth-child(32) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(186deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(33) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(192deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(34) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(198deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(35) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(204deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(36) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(210deg) translateY(-520%);
+    }
+
+    .memory:nth-child(37) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(216deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(38) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(222deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(39) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(228deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(40) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(234deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(41) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(240deg) translateY(-520%);
+    }
+
+    .memory:nth-child(42) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(246deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(43) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(252deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(44) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(258deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(45) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(264deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(46) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(270deg) translateY(-520%);
+    }
+
+    .memory:nth-child(47) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(276deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(48) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(282deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(49) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(288deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(50) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(294deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(51) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(300deg) translateY(-520%);
+    }
+
+    .memory:nth-child(52) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(306deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(53) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(312deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(54) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(318deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(55) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(324deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(56) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(330deg) translateY(-520%);
+    }
+
+    .memory:nth-child(57) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(336deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(58) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(342deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(59) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(348deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(60) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(354deg) translateY(-1461%);
+    }
+
+    .needle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+    }
+
+    .needle#hours {
+        background-color: #1f1f1f;
+        width: 4%;
+        height: 30%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#hours.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#hours:after {
+        content: '';
+        background-color: #1f1f1f;
+        width: 4vw;
+        height: 4vw;
+        max-width: 4vh;
+        max-height: 4vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .needle#minutes {
+        background-color: #1f1f1f;
+        width: 2%;
+        height: 45%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#minutes.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#minutes:after {
+        content: '';
+        background-color: #1f1f1f;
+        width: 4vw;
+        height: 4vw;
+        max-width: 4vh;
+        max-height: 4vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .needle#seconds {
+        background-color: #cb2f2f;
+        width: 1%;
+        height: 50%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#seconds.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#seconds:after {
+        content: '';
+        background-color: #cb2f2f;
+        width: 2.5vw;
+        height: 2.5vw;
+        max-width: 2.5vh;
+        max-height: 2.5vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .clock_logo{
+        width: 10vw;
+        height: 10vw;
+        max-width: 10vh;
+        max-height: 10vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    @media (min-width: 100vh) {
+        .clock {
+            border: solid 2.8vh #242424;
+            box-shadow: 0 1.4vh 2.8vh rgba(0, 0, 0, 0.8);
+        }
+    }
+
+</style>
+
+
+
+
+
+            </div>
+        
+            <div class="nexmoe-pd-item">
+                <div class="qweather" >
+    <div id="he-plugin-standard"></div>
+    <div class="qweather-logo">
+
+    </div>
+
+</div>
+<style>
+    .qweather{
+        position: relative;
+    }
+    .qweather-logo{
+        position: absolute;
+        right: 0;
+        top: -15px;
+        width: 40px;
+        height: 40px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+</style>
+<script>
+  WIDGET = {
+    "CONFIG": {
+      "layout": "2",
+      "width": "260",
+      "height": "220",
+      "background": "5",
+      "dataColor": "e67249",
+      "borderRadius": "15",
+      "key": "f74d1e1690e6432d801e97fa2f05a162"
+    }
+  }
+</script>
+<script src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"></script>
+
+            </div>
+        
+</div>
+<style>
+    .nexmoe-pd {
+        left: auto;
+        top: 40px;
+        right: 0;
+    }
+    .nexmoe-pd-item{
+       display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+</style>
+
+  </div>
+  <script src="https://lib.baomitu.com/lazysizes/5.1.0/lazysizes.min.js"></script>
+<script src="https://lib.baomitu.com/highlight.js/10.0.0/highlight.min.js"></script>
+<script src="https://lib.baomitu.com/mdui/0.4.3/js/mdui.min.js"></script>
+
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://lib.baomitu.com/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/app.js?v=1715338618021"></script>
+
+<script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+<!-- hexo injector body_end start -->
+<script src="/js/clock.js"></script>
+
+<script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script src="/lib/codeBlock/codeBlockFuction.js"></script>
+
+<script src="/lib/codeBlock/codeLang.js"></script>
+
+<script src="/lib/codeBlock/codeCopy.js"></script>
+
+<script src="/lib/codeBlock/codeShrink.js"></script>
+
+<link rel="stylesheet" href="/lib/codeBlock/matery.css">
+
+<script src="/js/webapp.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script src="/js/search.js"></script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/250cb4aa.js","daovoice")</script>
+<script>
+  daovoice('init', {
+    app_id: "250cb4aa"
+  });
+  daovoice('update');
+</script>
+
