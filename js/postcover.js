@@ -10,7 +10,7 @@ module.exports =  {
   java:"/images/post/java.jpg",
   echarts:"/images/post/echarts.jpg",
   微信小程序:"/images/post/wechat_applet.jpg",
-  浏览器:"/images/post/browser.jpeg",
+  浏览器:"/images/post/browser.png",
   算法:"/images/post/algorithm.jpeg",
   数据结构:"/images/post/data.jpg",
   工具:"/images/post/editor.jpeg",
