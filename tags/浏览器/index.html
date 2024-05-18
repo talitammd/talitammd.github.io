@@ -31,14 +31,14 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1715787362471">
+  <link rel="stylesheet" href="/css/style.css?v=1716045121471">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
   
   <div id="nexmoe-background">
     <div class="nexmoe-bg" style="background-image: url(/images/background/xiaomai.png)"></div>
-    <div class="nexmoe-small" style="background-image: url(/images/background/lihui.jpeg)"></div>
+    <div class="nexmoe-small" style="background-image: url(/images/background/lihui.png)"></div>
     <div class="mdui-appbar mdui-shadow-0">
       <div class="mdui-toolbar">
         <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
@@ -246,16 +246,16 @@
         
         <div class="nexmoe-post-meta nexmoe-rainbow">
             <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月15日</a>
-            <a><i class="nexmoefont icon-areachart"></i>2.2k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 9 分钟</a>
+            <a><i class="nexmoefont icon-areachart"></i>5.9k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 25 分钟</a>
         </div>
         
         <article>
             <!-- 
-                <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/05/15/DB/Untitled.png" alt="Untitled" class="lazyload"></p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>DOM</strong> 是英文<em>Document Object Model</em>的缩写，即文档对象模型。它是一种跨平台的、独立于编程语言的API，它把HTML、XHTML或XML文档当作一个树结构，而每个节点视为一个对象，这些对象可以被编程语言操作，进而改变文档的结构，映射到文档的显示。</p>
+                <h2 id="Document-Object-Model"><a href="#Document-Object-Model" class="headerlink" title="Document Object Model"></a><strong>Document Object Model</strong></h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/05/15/DB/Untitled.png" alt="Untitled" class="lazyload"></p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>DOM</strong>，即文档对象模型。它是一种跨平台的、独立于编程语言的API，它把HTML、XHTML或XML文档当作一个树结构，而每个节点视为一个对象，这些对象可以被编程语言操作，进而改变文档的结构，映射到文档的显示。</p>
 <p>简单来说，DOM就是我们为了方便编程语言对HTML等文档进行操作，把HTML文档中的节点全部视为一个个的对象，所有可用于操作和创建网页的属性、方法和事件都被组织到对象中，这些对象依照层级关系形成一棵树，这棵树就命名为DOM树。有了对象，编程就方便多了，只要一层层拿到对象就可以优雅地改变对象的属性进而动态地改变HTML等文档的展示。</p>
-<p>例如，DOM 中指定下面代码中的 <code>querySelectorAll</code> 方法必须要返回文档中所有 <code>[&lt;p&gt;](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/p)</code> 元素组成的列表：</p>
+<p>例如，DOM 中指定下面代码中的 <code>querySelectorAll</code> 方法必须要返回文档中所有 <code>&lt;p&gt;</code> 元素组成的列表：</p>
 <pre><code class="jsx">const paragraphs = document.querySelectorAll(&quot;p&quot;);
 // paragraphs[0] 是第一个 &lt;p&gt; 元素
 // paragraphs[1] 是第二个 &lt;p&gt; 元素，依此类推
@@ -394,21 +394,21 @@ rel=&quot;noopener noreferrer&quot;&gt;链接文本&lt;/a&gt;
 </li>
 <li><strong>网页加载优化</strong>：为了提高网页的加载性能，开发者可以采取一系列优化措施，如压缩HTML、CSS和JavaScript文件、使用CDN（内容分发网络）来加速资源的加载、通过异步加载和延迟加载来减少阻塞等</li>
 </ol>
-<h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a><strong>DOM API</strong></h2><p><strong>（1）创建元素</strong></p>
-<pre><code class="jsx">**var** el2 **=** document.createElement(&#39;input&#39;);
-**var** node **=** document.createTextNode(&#39;hello world!&#39;);
+<h3 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a><strong>DOM API</strong></h3><p><strong>（1）创建DOM对象</strong></p>
+<pre><code class="jsx">var el2 = document.createElement(&#39;input&#39;);
+var node = document.createTextNode(&#39;hello world!&#39;);
 </code></pre>
-<p><strong>（2）查找元素</strong></p>
+<p><strong>（2）查找DOM对象</strong></p>
 <pre><code class="jsx">*// 返回当前文档中第一个类名为 &quot;myclass&quot; 的元素*
-**var** el **=** document.querySelector(&quot;.myclass&quot;);
+var el = document.querySelector(&quot;.myclass&quot;);
 
 *// 返回一个文档中所有的class为&quot;note&quot;或者 &quot;alert&quot;的div元素*
-**var** els **=** document.querySelectorAll(&quot;div.note, div.alert&quot;);
+var els = document.querySelectorAll(&quot;div.note, div.alert&quot;);
 
 *// 获取元素*
-**var** el **=** document.getElementById(&#39;xxx&#39;);
-**var** els **=** document.getElementsByClassName(&#39;highlight&#39;);
-**var** els **=** document.getElementsByTagName(&#39;td&#39;);
+var el = document.getElementById(&#39;xxx&#39;);
+var els = document.getElementsByClassName(&#39;highlight&#39;);
+var els = document.getElementsByTagName(&#39;td&#39;);
 
 // 获取父元素、父节点
 var parent = ele.parentElement;
@@ -429,7 +429,7 @@ var el = ele.lastElementChild;
 var el = ele.nextElementSibling;
 var el = ele.previousElementSibling;
 </code></pre>
-<p><strong>（3）更改元素</strong></p>
+<p><strong>（3）更改DOM对象</strong></p>
 <pre><code class="jsx">*// 添加、删除子元素*
 ele.appendChild(el);
 ele.removeChild(el);
@@ -440,12 +440,12 @@ ele.replaceChild(el1, el2);
 *// 插入子元素*
 parentElement.insertBefore(newElement, referenceElement);
 </code></pre>
-<p><strong>（4）操作属性</strong></p>
+<p><strong>（4）操作DOM对象的属性</strong></p>
 <pre><code class="jsx">*// 获取一个&#123;name, value&#125;的数组*
-**var** attrs **=** el.attributes;
+var attrs = el.attributes;
 
 *// 获取、设置属性*
-**var** c **=** el.getAttribute(&#39;class&#39;);
+var c = el.getAttribute(&#39;class&#39;);
 el.setAttribute(&#39;class&#39;, &#39;highlight&#39;);
 
 *// 判断、移除属性*
@@ -455,6 +455,266 @@ el.removeAttribute(&#39;class&#39;);
 *// 是否有属性设置*
 el.hasAttributes();
 </code></pre>
+<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>简单来讲，事件就是一个动作，而 HTML 为这些动作指定了特定的对象，和 DOM 对象一样，事件不属于任何一门语言，但是可以作为元素（DOM对象）的属性嵌入元素中，也就是指定该元素为触发对象，当在该元素中触发了指定的事件时，就可以执行该事件绑定在该元素上的JavaScript代码。</p>
+<p><strong>DOM中的事件是如何触发的？</strong></p>
+<ol>
+<li><strong>事件源</strong>：事件的触发首先需要一个事件源，也就是引发事件的HTML元素。例如，当用户点击一个按钮时，这个按钮就是事件源。</li>
+<li><strong>事件类型</strong>：每个事件都有一个类型，如“click”、“keydown”等。当事件源上发生与事件类型匹配的动作时，事件就会被触发。</li>
+<li><strong>事件监听器</strong>：为了处理事件，需要在事件源上注册一个或多个事件监听器（也称为事件处理器）。事件监听器是一个函数，当事件被触发时，这个函数会被调用。在JavaScript中，通常使用<code>addEventListener()</code>方法为元素添加事件监听器。</li>
+<li><strong>事件流</strong>：DOM事件流描述了事件从发生到被处理的过程。这个过程包括三个阶段：捕获阶段、目标阶段和冒泡阶段。<ul>
+<li><strong>捕获阶段</strong>：从document对象开始，沿着DOM树向下传播，直到到达事件源。在捕获阶段，事件监听器可以被注册在DOM树的任何节点上，但默认情况下，事件监听器不会在捕获阶段被触发（除非在注册时特别指定）。</li>
+<li><strong>目标阶段</strong>：当事件到达事件源时，会触发注册在该元素上的事件监听器。</li>
+<li><strong>冒泡阶段</strong>：事件从事件源开始，沿着DOM树向上传播，直到回到document对象。在冒泡阶段，所有经过的节点（包括事件源本身）上注册的事件监听器都会被触发。<em>举个例子，两个元素A和B绑定了不同的点击事件，并且B元素在A元素的内部，那么在点击了B时，B事件会先发生，然后A事件发生。</em></li>
+</ul>
+</li>
+<li><strong>事件处理</strong>：当事件监听器被触发时，会执行相应的函数。这个函数可以执行任何需要的操作，如修改页面内容、发送网络请求等。</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ol>
+<li>不同浏览器对DOM事件的支持可能有所不同。例如，一些较旧的浏览器可能不支持某些事件类型或事件流特性</li>
+<li>DOM 0级事件（直接在HTML元素上添加事件监听器，如<code>element.onclick = function() &#123;...&#125;;</code>）和DOM 2级事件（使用<code>addEventListener()</code>方法添加事件监听器）在事件处理机制上也有所不同。DOM 0级事件只能在事件的目标阶段处理事件，而DOM 2级事件则可以在捕获阶段、目标阶段和冒泡阶段处理事件。</li>
+</ol>
+<p>以下是一些常见的DOM事件：</p>
+<ol>
+<li><strong>鼠标事件</strong>：<ul>
+<li><code>click</code>：当用户在元素上单击鼠标按钮时触发。</li>
+<li><code>dblclick</code>：当用户在元素上双击鼠标按钮时触发。</li>
+<li><code>mousedown</code>：当用户在元素上按下鼠标按钮时触发。</li>
+<li><code>mouseup</code>：当用户在元素上释放鼠标按钮时触发。</li>
+<li><code>mousemove</code>：当鼠标指针在元素内部移动时触发。</li>
+<li><code>mouseover</code>：当鼠标指针从元素外部移动到元素内部时触发。</li>
+<li><code>mouseout</code>：当鼠标指针从元素内部移动到元素外部时触发。</li>
+<li><code>contextmenu</code>：当用户在元素上右键点击时触发（通常用于显示上下文菜单）。</li>
+</ul>
+</li>
+<li><strong>键盘事件</strong>：<ul>
+<li><code>keydown</code>：当用户在键盘上按下某个键时触发。</li>
+<li><code>keyup</code>：当用户在键盘上释放某个键时触发。</li>
+<li><code>keypress</code>：当用户在键盘上按下并释放一个键时触发（通常用于处理文本输入）。</li>
+</ul>
+</li>
+<li><strong>表单事件</strong>：<ul>
+<li><code>submit</code>：当表单提交时触发（常用于验证表单数据）。</li>
+<li><code>reset</code>：当表单重置时触发。</li>
+<li><code>focus</code>：当元素获得焦点时触发（例如，用户点击输入框）。</li>
+<li><code>blur</code>：当元素失去焦点时触发（例如，用户离开输入框）。</li>
+<li><code>change</code>：当元素的值发生变化且失去焦点时触发（常用于输入框和下拉列表）。</li>
+</ul>
+</li>
+<li><strong>文档&#x2F;窗口事件</strong>：<ul>
+<li><code>load</code>：当页面或图片加载完成时触发。</li>
+<li><code>unload</code>：当用户离开页面时触发（例如，关闭页面或跳转到其他页面）。</li>
+<li><code>scroll</code>：当用户滚动页面时触发。</li>
+<li><code>resize</code>：当浏览器窗口大小发生变化时触发。</li>
+</ul>
+</li>
+<li><strong>触摸事件</strong>（主要针对移动设备）：<ul>
+<li><code>touchstart</code>：当用户触摸屏幕时触发。</li>
+<li><code>touchmove</code>：当用户在屏幕上移动手指时触发。</li>
+<li><code>touchend</code>：当用户从屏幕上移开手指时触发。</li>
+<li><code>touchcancel</code>：当系统取消触摸事件时触发（例如，电话呼入）。</li>
+</ul>
+</li>
+<li><strong>拖放事件</strong>：<ul>
+<li><code>dragstart</code>：当用户开始拖动元素时触发。</li>
+<li><code>drag</code>：当用户在拖动元素时触发。</li>
+<li><code>dragend</code>：当用户结束拖动元素时触发。</li>
+<li><code>dragenter</code>：当拖动的元素进入目标元素时触发。</li>
+<li><code>dragover</code>：当拖动的元素在目标元素上移动时触发。</li>
+<li><code>dragleave</code>：当拖动的元素离开目标元素时触发。</li>
+<li><code>drop</code>：当用户在目标元素上释放拖动的元素时触发。</li>
+</ul>
+</li>
+<li><strong>其他事件</strong>：<ul>
+<li><code>error</code>：当发生错误时触发（例如，图片加载失败）。</li>
+<li><code>abort</code>：当加载被中止时触发（例如，用户停止加载页面）。</li>
+<li><code>beforeunload</code>：当页面即将卸载（关闭、刷新或跳转到其他页面）时触发。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Browser-Object-Model"><a href="#Browser-Object-Model" class="headerlink" title="Browser Object Model"></a><strong>Browser Object Model</strong></h2><p>BOM是浏览器对象模型，DOM 是将HTML文档中的各个元素封装成一个对象（Document），而 <strong>BOM</strong> 则是将一个浏览器的各个组成部分封装成对象（Browser）供调用使用。</p>
+<p>BOM的核心对象是<code>window</code>，它表示浏览器的一个实例（通常就是浏览器窗口或标签页）。由于<code>window</code>是BOM的顶层对象，其他BOM对象都是它的子对象或者方法。</p>
+<h3 id="BOM的组成部分"><a href="#BOM的组成部分" class="headerlink" title="BOM的组成部分"></a>BOM的组成部分</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/05/15/DB/Untitled1.png" alt="Untitled" class="lazyload"></p>
+<p>图中看出，BOM 对象大致包含五个部分：</p>
+<ul>
+<li>Window 对象：浏览器窗口对象</li>
+<li>Navigator：浏览器对象</li>
+<li>Screen：浏览器所处客户端的显示器屏幕对象</li>
+<li>History：浏览器当前窗口的访问历史记录对象</li>
+<li>Location：浏览器当前窗口的地址栏对象</li>
+</ul>
+<h3 id="窗口对象window"><a href="#窗口对象window" class="headerlink" title="窗口对象window"></a><strong>窗口对象window</strong></h3><p>BOM 的核心是 <code>window</code> 窗口对象对象，表示浏览器的实例。<code>window</code> 对象在浏览器中有两重身份，一个是全局对象，另一个就是浏览器窗口的 JavaScript 接口。这意味着网页中定义的所有对象、变量和函数都以 <code>window</code> 作为其 Global 对象，都可以访问其上定义全局方法。</p>
+<p>window对象不需要创建可以直接使用，<code>window.方法名();</code>，甚至可以把window直接省略<code>方法名();</code></p>
+<pre><code class="jsx">window.alert(&quot;hello window&quot;);
+//两种写法都可以
+alert(&quot;hello window&quot;);
+</code></pre>
+<p>以下是一些常见的Window对象方法：</p>
+<ol>
+<li><p><code>alert()</code>：显示一个带有指定消息和OK按钮的警告框</p>
+</li>
+<li><p><code>confirm()</code>：显示一个带有指定消息以及确定和取消按钮的对话框。如果用户点击确定按钮，则返回<code>true</code>；如果用户点击取消按钮或关闭对话框，则返回<code>false</code></p>
+<pre><code class="jsx">var userInput = window.confirm(&quot;你确定要继续吗?&quot;);  
+if (userInput) &#123;  
+  console.log(&quot;用户点击确定&quot;);  
+&#125; else &#123;  
+  console.log(&quot;用户点击取消或关闭&quot;);  
+&#125;
+</code></pre>
+</li>
+<li><p><code>prompt()</code>：显示一个对话框，提示用户输入一些文本。对话框包含一个确定按钮和一个取消按钮。如果用户点击确定按钮，则返回用户输入的文本；如果用户点击取消按钮或关闭对话框，则返回<code>null</code></p>
+<pre><code class="jsx">var userName = window.prompt(&quot;请输入你的姓名:&quot;, &quot;默认姓名&quot;);  
+if (userName != null) &#123;  
+  console.log(&quot;你好，&quot; + userName + &quot;!&quot;);  
+&#125; else &#123;  
+  console.log(&quot;用户未输入姓名或点击了取消&quot;);  
+&#125;
+</code></pre>
+</li>
+<li><p><code>open()</code>：打开一个新的浏览器窗口或查找一个已命名的窗口。此方法接收 4个参数：要加载的 URL、目标窗口、特性字符串和表示新窗口在浏览器历史记录中是否替代当前加载页面的布尔值</p>
+<pre><code class="jsx">window.open(&quot;https://www.example.com&quot;, 
+&quot;_blank&quot;, 
+&quot;width=500,height=500&quot;);
+</code></pre>
+</li>
+<li><p><code>close()</code>：关闭当前窗口或指定的窗口。但是，需要注意的是，此方法只对通过JavaScript打开的窗口有效，对于用户直接打开的窗口（如浏览器中的标签页）则不起作用</p>
+<pre><code class="jsx">&lt;button id=&quot;openWindow&quot;&gt;打开窗口&lt;/button&gt;
+&lt;button id=&quot;closeWindow&quot;&gt;关闭窗口&lt;/button&gt;
+&lt;script&gt;
+    var openWindow = document.getElementById(&quot;openWindow&quot;);
+    var newWindow; //全局变量，对新创建的窗口进行操作
+    openWindow.onclick = function()&#123;
+        newWindow = open(&quot;https://www.baidu.com&quot;); //打开指定url的窗口
+    &#125;
+        
+    var closeWindow = document.getElementById(&quot;closeWindow&quot;);
+    closeWindow.onclick = function()&#123;
+        newWindow.close(); //关闭调用它的窗口
+    &#125;
+&lt;/script&gt;
+</code></pre>
+</li>
+<li><p><code>setTimeout()</code> 和 <code>clearTimeout()</code>：用于在指定的毫秒数后调用函数或计算表达式。<code>clearTimeout()</code> 方法用于取消由 <code>setTimeout()</code> 方法设置的 <code>timeout</code></p>
+<pre><code class="jsx">var myTimer = setTimeout(function() &#123;  
+  console.log(&quot;Hello, World!&quot;);  
+&#125;, 2000); // 2秒后执行  
+  
+// 取消定时器  
+clearTimeout(myTimer);
+</code></pre>
+</li>
+<li><p><code>setInterval()</code> 和 <code>clearInterval()</code>：与 <code>setTimeout()</code> 类似，但 <code>setInterval()</code> 是在每个指定的间隔重复执行指定的函数或代码。<code>clearInterval()</code> 方法用于取消由 <code>setInterval()</code> 方法设置的间隔</p>
+</li>
+<li><p><code>resizeTo()</code>：调整窗口大小，有两个参数，分别设置窗口的高度和宽度。</p>
+</li>
+<li><p><code>moveTo()</code>：移动窗口，两个参数，接收的是新位置的x和y坐标值。</p>
+</li>
+</ol>
+<h3 id="window对象中的属性"><a href="#window对象中的属性" class="headerlink" title="window对象中的属性"></a><strong>window对象中的属性</strong></h3><ul>
+<li><p>第一类：<code>window</code>中的属性包括其他对象</p>
+<ul>
+<li><p><code>history</code>：该对象保存着用户上网的历史记录。出于安全方面的考虑，开发人员无法得知用户浏览过的URL，不过借由用户访问过的页面列表，同样可以在不知道实际URL的情况下实现后退前进</p>
+<ul>
+<li><code>length</code>：返回历史列表中的网址数</li>
+<li><code>back()</code>：加载 <code>history</code> 列表中的前一个 URL</li>
+<li><code>forward()</code>：加载 <code>history</code> 列表中的下一个 URL</li>
+<li><code>go()</code>：加载 <code>history</code> 列表中的某个具体页面，负数表示向后跳转，正数表示向前跳转</li>
+</ul>
+</li>
+<li><p><code>location</code>：浏览器当前窗口的<strong>地址栏对象，</strong>通过<code>window.location</code>对象，可以解析URL、重定向浏览器到新的页面、重新加载当前页面等</p>
+<ul>
+<li><code>window.location.href</code>：获取或设置当前页面的完整URL。</li>
+<li><code>window.location.protocol</code>：获取URL的协议部分（如 <code>&quot;http:&quot;</code> 或 <code>&quot;https:&quot;</code>）。</li>
+<li><code>window.location.host</code>：获取URL的主机名和端口号（如果有）。</li>
+<li><code>window.location.hostname</code>：获取URL的主机名。</li>
+<li><code>window.location.pathname</code>：获取URL的路径名。</li>
+<li><code>window.location.search</code>：获取URL的查询字符串部分（包括问号）。</li>
+<li><code>window.location.hash</code>：获取URL的哈希（锚点）部分。</li>
+</ul>
+<p><strong>location对象中的方法：</strong></p>
+<pre><code class="jsx">&lt;button&gt;跳转页面&lt;/button&gt;
+&lt;button&gt;替换页面&lt;/button&gt;
+&lt;button&gt;刷新页面&lt;/button&gt;
+&lt;script&gt;
+  var btn = document.getElementsByTagName(&#39;button&#39;);//返回值为一个类数组
+  btn[0].onclick = function () &#123;
+    location.assign(&#39;./test2.html&#39;)
+  &#125;
+  btn[1].onclick = function () &#123;
+    location.replace(&#39;./test2.html&#39;)
+  &#125;
+  btn[2].onclick = function () &#123;
+    location.reload()
+  &#125;
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li><code>assign()</code>：传递一个url参数，打开新url，替换当前页面，并在浏览记录中生成一条记录，页面替换后可以返回上一个页面</li>
+<li><code>replace()</code>：参数为一个url，打开新url，替换当前页面，不会在历史记录中生成新记录，替换页面后无法再次返回之前页面</li>
+<li><code>reload()</code>：重新加载当前显示的页面，参数可以为<code>boolean</code>类型，默认为<code>false</code>，表示以最有效方式重新加载，可能从缓存中直接加载。如果参数为<code>true</code>，强制从服务器中重新加载</li>
+</ul>
+</li>
+<li><p><code>navigator</code>：浏览器对象，提供了与浏览器相关的信息和操作接口。在前端开发中，通常使用<code>Navigator</code>对象来获取用户浏览器的相关信息，例如浏览器的名称、版本、语言设置、设备类型、操作系统等。这些信息对于实现浏览器兼容性、设备适配等功能非常重要。<code>Navigator</code>对象还包含了一些方法和属性，用于获取当前设备的地理位置信息、访问设备的媒体设备等</p>
+<ul>
+<li><code>navigator.appName</code>：浏览器名称；注意：<code>“Netscape”</code>是 IE11、Chrome、Firefox 以及 Safari 的应用程序名称的统称；</li>
+<li><code>navigator.appVersion</code>：浏览器版本；</li>
+<li><code>navigator.appCodeName</code>：返回浏览器的应用程序代码名称</li>
+<li><code>navigator.language</code>：浏览器设置的语言；</li>
+<li><code>navigator.platform</code>：操作系统类型；</li>
+<li><code>navigator.userAgent</code>：返回用户代理头的字符串表示（通常是浏览器类型、版本和操作系统信息）；</li>
+<li><code>navigator.cookieEnabled</code>：返回一个布尔值，表示是否启用<code>cookie</code>；</li>
+<li><code>navigator.product</code>：返回浏览器引擎的产品名称</li>
+</ul>
+</li>
+<li><p><code>screen</code></p>
+<ul>
+<li><code>screen.width</code>和<code>screen.height</code>：屏幕总宽度&#x2F;高度</li>
+<li><code>screen.availWidth</code>和<code>screen.availHeight</code>：可用宽度&#x2F;高度，（即减去系统界面元素后的宽度和高度）</li>
+<li><code>screen.colorDepth</code>：颜色深度</li>
+<li><code>screen.pixelDepth</code>：颜色分辨率</li>
+</ul>
+</li>
+<li><p><code>document</code></p>
+</li>
+</ul>
+</li>
+<li><p>第二类：<code>window</code>窗口属性</p>
+<ul>
+<li><strong>滚动属性</strong><ul>
+<li><code>scrollY</code>（或<code>pageYOffset</code>）：返回文档在垂直方向已滚动的像素值。</li>
+<li><code>scrollTop</code>：元素顶部到视口可见内容顶部的距离（只读），通常用于获取或设置特定元素的滚动位置（如<code>&lt;div&gt;</code>或<code>&lt;body&gt;</code>）。</li>
+<li><code>scrollLeft</code>：元素左边到视口可见内容左边的距离（只读），同样用于获取或设置特定元素的滚动位置。</li>
+</ul>
+</li>
+<li><strong>尺寸属性</strong><ul>
+<li><code>innerWidth</code>：返回浏览器窗口的视口（viewport）宽度（以像素为单位），包括右边距（如果有）。</li>
+<li><code>innerHeight</code>：返回浏览器窗口的视口（viewport）高度（以像素为单位），包括下边距（如果有）。</li>
+<li><code>outerWidth</code>：返回整个浏览器窗口的宽度（包括工具栏和滚动条）。</li>
+<li><code>outerHeight</code>：返回整个浏览器窗口的高度（包括工具栏和滚动条）。</li>
+</ul>
+</li>
+<li><strong>位置属性</strong><ul>
+<li><code>screenX</code>（或<code>screenLeft</code>）：返回窗口相对于屏幕的X坐标（只读）。</li>
+<li><code>screenY</code>（或<code>screenTop</code>）：返回窗口相对于屏幕的Y坐标（只读）。</li>
+</ul>
+</li>
+<li><strong>窗口控制属性</strong><ul>
+<li><p><code>length</code>：返回当前窗口中的iframe数量，<code>&lt;iframe&gt;</code> 即内联框架，常用于嵌入网页、广告、视频播放器、地图等</p>
+</li>
+<li><p><code>frames</code>：返回当前窗口中的所有iframe的集合（类似于数组）</p>
+</li>
+</ul>
+</li>
+<li><strong>其他属性</strong><ul>
+<li><code>name</code>：设置或返回窗口的名称。</li>
+<li><code>status</code>：设置或返回窗口的状态栏文本（尽管现代浏览器可能不再支持或显示它）。</li>
+<li><code>history</code>：返回History对象，它提供了与浏览器历史记录相关的功能。</li>
+<li><code>document</code>：返回对Document对象的引用，该对象表示窗口中加载的网页。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
              -->
         </article>
@@ -1175,7 +1435,7 @@ el.hasAttributes();
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1715787362472"></script>
+<script src="/js/app.js?v=1716045121471"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -1192,6 +1452,14 @@ el.hasAttributes();
 
 
 <!-- hexo injector body_end start -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script src="/js/search.js"></script>
+
+<script src="/js/clock.js"></script>
+
+<script src="/js/webapp.js"></script>
+
 <script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
 
 <script src="/lib/codeBlock/codeBlockFuction.js"></script>
@@ -1203,14 +1471,6 @@ el.hasAttributes();
 <script src="/lib/codeBlock/codeShrink.js"></script>
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
-
-<script src="/js/webapp.js"></script>
-
-<script src="/js/clock.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-<script src="/js/search.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
