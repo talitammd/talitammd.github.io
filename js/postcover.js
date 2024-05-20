@@ -3,7 +3,7 @@ module.exports =  {
   JavaScript:"/images/post/JavaScript.jpeg",
   TypeScript:"/images/post/TypeScript.jpeg",
   css:"/images/post/css.jpeg",
-  node:"/images/post/nodejs.jpeg",
+  node:"/images/post/nodejs.png",
   vue:"/images/post/vue.jpeg",
   webpack:"/images/post/webpack.jpeg",
   git:"/images/post/git.jpeg",

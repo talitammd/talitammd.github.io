@@ -31,7 +31,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1716045238888">
+  <link rel="stylesheet" href="/css/style.css?v=1716211065040">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -57,8 +57,8 @@
     </div>
     <div class="nexmoe-count">
         <div class="nexmoe-count-item"><span>文章</span>5 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
-        <div class="nexmoe-count-item"><span>标签</span>4<div class="item-radius"></div><div class="item-radius item-right"></div></div>
-        <div class="nexmoe-count-item"><span>分类</span>4<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+        <div class="nexmoe-count-item"><span>标签</span>3<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+        <div class="nexmoe-count-item"><span>分类</span>3<div class="item-radius"></div><div class="item-radius item-right"></div></div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -151,7 +151,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
-          <span class="category-list-count">1</span>
+          <span class="category-list-count">2</span>
         </li>
 
         
@@ -169,13 +169,6 @@
         </li>
 
         
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/浏览器/">浏览器</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
       </ul>
 
     </div>
@@ -186,7 +179,7 @@
   
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/node/" style="font-size: 20px;">node</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a>
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/node/" style="font-size: 20px;">node</a>
     </div>
     
   </div>
@@ -237,8 +230,8 @@
     <div class="nexmoe-post">
         <a href="/2024/05/15/DB/">
             
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/browser.png" data-sizes="auto" alt="DOM和BOM" class="lazyload">
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;">
+                    <img data-src="/images/post/2.jpeg" data-sizes="auto" alt="DOM和BOM" class="lazyload">
                     <h1>DOM和BOM</h1>
                 </div>
             
@@ -246,8 +239,8 @@
         
         <div class="nexmoe-post-meta nexmoe-rainbow">
             <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月15日</a>
-            <a><i class="nexmoefont icon-areachart"></i>5.9k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 25 分钟</a>
+            <a><i class="nexmoefont icon-areachart"></i>8.1k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 35 分钟</a>
         </div>
         
         <article>
@@ -262,9 +255,241 @@
 alert(paragraphs[0].nodeName);
 </code></pre>
 <p><em><strong>DOM 不是一种编程语言，也不是 JavaScript 语言的一部分，而是用于建立网站的 Web API。DOM 被设计成与特定编程语言相独立，使文档的结构化表述可以通过单一，一致的 API 获得。</strong></em></p>
-<h3 id="HTML文档"><a href="#HTML文档" class="headerlink" title="HTML文档"></a>HTML文档</h3><p>在DOM树中，HTML文档中的每个元素都被表示为<strong>一个节点</strong>。这些节点具有属性和方法，允许你通过编程的方式与它们进行交互。</p>
-<p>当HTML文档被加载到浏览器中时，浏览器会解析HTML并创建一个DOM树，这个DOM树代表了整个HTML文档的结构。DOM树中的每个节点都对应着HTML文档中的一个元素或属性。</p>
-<p>以下是HTML中常见的元素节点类型及其分类列举：</p>
+<h3 id="网页加载过程"><a href="#网页加载过程" class="headerlink" title="网页加载过程"></a>网页加载过程</h3><ol>
+<li><strong>HTML下载到本地内存</strong>：当浏览器请求一个HTML页面时，会从服务器下载HTML文件并将其存储在本地内存中。这个过程是通过HTTP请求完成的，并且通常会遵循TCP&#x2F;IP协议</li>
+<li><strong>解析成DOM树</strong>：浏览器会解析HTML文档，将HTML标签和属性转换为DOM树</li>
+<li><strong>展示页面到屏幕</strong>：在构建DOM树的同时或之后，浏览器还会开始解析CSS并构建<code>CSSOM</code>（CSS对象模型）树。然后，它会将DOM树和CSSOM树合并成一个渲染树（<code>render tree</code>），这个渲染树包含了页面上需要显示的内容以及这些内容如何显示（例如颜色、字体大小等）。最后，浏览器会根据渲染树在屏幕上绘制页面</li>
+<li><strong>DOM API 动态修改</strong>：DOM API允许JavaScript等网络编程语言动态地访问和更新HTML文档的内容、结构和样式。例如，你可以使用JavaScript来修改DOM树中的元素、添加或删除元素、更改元素的属性或样式等<ul>
+<li><strong>在页面加载过程中</strong>：当浏览器接收到 HTML 文档并开始解析时，它会同时或随后构建一个 DOM 树。一旦 DOM 树构建完成，浏览器就可以开始渲染页面了，但此时页面可能还没有完全加载完成，比如可能还有 CSS 和 JavaScript 文件需要加载和执行。此时，JavaScript 可以使用 DOM API 来修改已经解析并添加到 DOM 树中的元素</li>
+<li><strong>在页面加载完成后</strong>：一旦页面完全加载并渲染完成（例如，所有图片都已加载），JavaScript 可以使用 DOM API 来添加新元素、删除现有元素或执行其他操作。这通常通过监听 <code>DOMContentLoaded</code> 或 <code>load</code> 事件来实现，这些事件会在页面加载的不同阶段触发</li>
+</ul>
+</li>
+<li><strong>网页加载优化</strong>：为了提高网页的加载性能，开发者可以采取一系列优化措施，如压缩HTML、CSS和JavaScript文件、使用CDN（内容分发网络）来加速资源的加载、通过异步加载和延迟加载来减少阻塞等</li>
+</ol>
+<h3 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h3><p>当浏览器载入 HTML 文档，浏览器会解析它并创建一个DOM树。在DOM树中，HTML文档中的每个元素都被表示为<strong>一个节点，</strong>根节点为 <strong><code>Document</code> 对象，</strong>使我们可以从脚本中对 HTML 页面中的所有元素进行访问。。这些节点具有属性和方法，允许你通过编程的方式与它们进行交互。</p>
+<p>在 HTML DOM (Document Object Model) 中 ，每一个元素都是<strong>节点</strong>:</p>
+<ul>
+<li>文档是一个<strong>文档节点</strong>。</li>
+<li>所有的HTML元素都是<strong>元素节点</strong>。</li>
+<li>所有 HTML 属性都是<strong>属性节点</strong>。</li>
+<li>文本插入到 HTML 元素是<strong>文本节点</strong>。</li>
+<li>注释是<strong>注释节点</strong>。</li>
+</ul>
+<blockquote>
+<p><code>Document</code> 对象是 <code>Window</code> 对象的一部分，可通过 <code>window.document</code>属性对其进行访问。</p>
+</blockquote>
+<p><strong>Document 对象属性和方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<p><strong>常用DOM API：</strong></p>
+<p><strong>（1）创建DOM对象</strong></p>
+<pre><code class="jsx">var el2 = document.createElement(&#39;input&#39;);
+var node = document.createTextNode(&#39;hello world!&#39;);
+</code></pre>
+<p><strong>（2）查找DOM对象</strong></p>
+<pre><code class="jsx">*// 返回当前文档中第一个类名为 &quot;myclass&quot; 的元素*
+var el = document.querySelector(&quot;.myclass&quot;);
+
+*// 返回一个文档中所有的class为&quot;note&quot;或者 &quot;alert&quot;的div元素*
+var els = document.querySelectorAll(&quot;div.note, div.alert&quot;);
+
+*// 获取元素*
+var el = document.getElementById(&#39;xxx&#39;);
+var els = document.getElementsByClassName(&#39;highlight&#39;);
+var els = document.getElementsByTagName(&#39;td&#39;);
+
+// 获取父元素、父节点
+var parent = ele.parentElement;
+var parent = ele.parentNode;
+
+// 获取子节点，子节点可以是任何一种节点，可以通过nodeType来判断
+var nodes = ele.children;    
+
+// 查询子元素
+var els = ele.getElementsByTagName(&#39;td&#39;);
+var els = ele.getElementsByClassName(&#39;highlight&#39;);
+
+// 当前元素的第一个/最后一个子元素节点
+var el = ele.firstElementChild;
+var el = ele.lastElementChild;
+
+// 下一个/上一个兄弟元素节点
+var el = ele.nextElementSibling;
+var el = ele.previousElementSibling;
+</code></pre>
+<p><strong>（3）更改DOM对象</strong></p>
+<pre><code class="jsx">*// 添加、删除子元素*
+ele.appendChild(el);
+ele.removeChild(el);
+
+*// 替换子元素*
+ele.replaceChild(el1, el2);
+
+*// 插入子元素*
+parentElement.insertBefore(newElement, referenceElement);
+</code></pre>
+<p><strong>（4）操作DOM对象的属性</strong></p>
+<pre><code class="jsx">*// 获取一个&#123;name, value&#125;的数组*
+var attrs = el.attributes;
+
+*// 获取、设置属性*
+var c = el.getAttribute(&#39;class&#39;);
+el.setAttribute(&#39;class&#39;, &#39;highlight&#39;);
+
+*// 判断、移除属性*
+el.hasAttribute(&#39;class&#39;);
+el.removeAttribute(&#39;class&#39;);
+
+*// 是否有属性设置*
+el.hasAttributes();
+</code></pre>
+<h3 id="元素对象"><a href="#元素对象" class="headerlink" title="元素对象"></a>元素对象</h3><p>以下是HTML中常见的元素节点类型及其分类列举：</p>
 <ol>
 <li><p><strong>文档结构元素</strong>：</p>
 <ul>
@@ -383,78 +608,307 @@ rel=&quot;noopener noreferrer&quot;&gt;链接文本&lt;/a&gt;
 </ul>
 </li>
 </ol>
-<h3 id="网页加载过程"><a href="#网页加载过程" class="headerlink" title="网页加载过程"></a>网页加载过程</h3><ol>
-<li><strong>HTML下载到本地内存</strong>：当浏览器请求一个HTML页面时，会从服务器下载HTML文件并将其存储在本地内存中。这个过程是通过HTTP请求完成的，并且通常会遵循TCP&#x2F;IP协议</li>
-<li><strong>解析成DOM树</strong>：浏览器会解析HTML文档，将HTML标签和属性转换为DOM树</li>
-<li><strong>展示页面到屏幕</strong>：在构建DOM树的同时或之后，浏览器还会开始解析CSS并构建<code>CSSOM</code>（CSS对象模型）树。然后，它会将DOM树和CSSOM树合并成一个渲染树（<code>render tree</code>），这个渲染树包含了页面上需要显示的内容以及这些内容如何显示（例如颜色、字体大小等）。最后，浏览器会根据渲染树在屏幕上绘制页面</li>
-<li><strong>DOM API 动态修改</strong>：DOM API允许JavaScript等网络编程语言动态地访问和更新HTML文档的内容、结构和样式。例如，你可以使用JavaScript来修改DOM树中的元素、添加或删除元素、更改元素的属性或样式等<ul>
-<li><strong>在页面加载过程中</strong>：当浏览器接收到 HTML 文档并开始解析时，它会同时或随后构建一个 DOM 树。一旦 DOM 树构建完成，浏览器就可以开始渲染页面了，但此时页面可能还没有完全加载完成，比如可能还有 CSS 和 JavaScript 文件需要加载和执行。此时，JavaScript 可以使用 DOM API 来修改已经解析并添加到 DOM 树中的元素</li>
-<li><strong>在页面加载完成后</strong>：一旦页面完全加载并渲染完成（例如，所有图片都已加载），JavaScript 可以使用 DOM API 来添加新元素、删除现有元素或执行其他操作。这通常通过监听 <code>DOMContentLoaded</code> 或 <code>load</code> 事件来实现，这些事件会在页面加载的不同阶段触发</li>
-</ul>
-</li>
-<li><strong>网页加载优化</strong>：为了提高网页的加载性能，开发者可以采取一系列优化措施，如压缩HTML、CSS和JavaScript文件、使用CDN（内容分发网络）来加速资源的加载、通过异步加载和延迟加载来减少阻塞等</li>
-</ol>
-<h3 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a><strong>DOM API</strong></h3><p><strong>（1）创建DOM对象</strong></p>
-<pre><code class="jsx">var el2 = document.createElement(&#39;input&#39;);
-var node = document.createTextNode(&#39;hello world!&#39;);
-</code></pre>
-<p><strong>（2）查找DOM对象</strong></p>
-<pre><code class="jsx">*// 返回当前文档中第一个类名为 &quot;myclass&quot; 的元素*
-var el = document.querySelector(&quot;.myclass&quot;);
-
-*// 返回一个文档中所有的class为&quot;note&quot;或者 &quot;alert&quot;的div元素*
-var els = document.querySelectorAll(&quot;div.note, div.alert&quot;);
-
-*// 获取元素*
-var el = document.getElementById(&#39;xxx&#39;);
-var els = document.getElementsByClassName(&#39;highlight&#39;);
-var els = document.getElementsByTagName(&#39;td&#39;);
-
-// 获取父元素、父节点
-var parent = ele.parentElement;
-var parent = ele.parentNode;
-
-// 获取子节点，子节点可以是任何一种节点，可以通过nodeType来判断
-var nodes = ele.children;    
-
-// 查询子元素
-var els = ele.getElementsByTagName(&#39;td&#39;);
-var els = ele.getElementsByClassName(&#39;highlight&#39;);
-
-// 当前元素的第一个/最后一个子元素节点
-var el = ele.firstElementChild;
-var el = ele.lastElementChild;
-
-// 下一个/上一个兄弟元素节点
-var el = ele.nextElementSibling;
-var el = ele.previousElementSibling;
-</code></pre>
-<p><strong>（3）更改DOM对象</strong></p>
-<pre><code class="jsx">*// 添加、删除子元素*
-ele.appendChild(el);
-ele.removeChild(el);
-
-*// 替换子元素*
-ele.replaceChild(el1, el2);
-
-*// 插入子元素*
-parentElement.insertBefore(newElement, referenceElement);
-</code></pre>
-<p><strong>（4）操作DOM对象的属性</strong></p>
-<pre><code class="jsx">*// 获取一个&#123;name, value&#125;的数组*
-var attrs = el.attributes;
-
-*// 获取、设置属性*
-var c = el.getAttribute(&#39;class&#39;);
-el.setAttribute(&#39;class&#39;, &#39;highlight&#39;);
-
-*// 判断、移除属性*
-el.hasAttribute(&#39;class&#39;);
-el.removeAttribute(&#39;class&#39;);
-
-*// 是否有属性设置*
-el.hasAttributes();
-</code></pre>
+<p>以下属性和方法可适用于所有 HTML 元素：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><em>如果你只需要在特定的元素上监听事件，那么使用 <code>element.addEventListener()</code> 通常是更好的选择，因为它更具体，并且可以减少不必要的计算。然而，如果你需要在整个文档中监听某种类型的事件（例如，点击任何元素或键盘输入），那么使用 <code>document.addEventListener()</code> 可能是更合适的选择。</em></p>
+</blockquote>
+<h3 id="属性对象"><a href="#属性对象" class="headerlink" title="属性对象"></a>属性对象</h3><p>所有主流浏览器都支持 Attr 对象，以下是一些常见的属性对象的属性和方法：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
 <h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>简单来讲，事件就是一个动作，而 HTML 为这些动作指定了特定的对象，和 DOM 对象一样，事件不属于任何一门语言，但是可以作为元素（DOM对象）的属性嵌入元素中，也就是指定该元素为触发对象，当在该元素中触发了指定的事件时，就可以执行该事件绑定在该元素上的JavaScript代码。</p>
 <p><strong>DOM中的事件是如何触发的？</strong></p>
 <ol>
@@ -469,12 +923,14 @@ el.hasAttributes();
 </li>
 <li><strong>事件处理</strong>：当事件监听器被触发时，会执行相应的函数。这个函数可以执行任何需要的操作，如修改页面内容、发送网络请求等。</li>
 </ol>
-<p><strong>注意：</strong></p>
-<ol>
-<li>不同浏览器对DOM事件的支持可能有所不同。例如，一些较旧的浏览器可能不支持某些事件类型或事件流特性</li>
-<li>DOM 0级事件（直接在HTML元素上添加事件监听器，如<code>element.onclick = function() &#123;...&#125;;</code>）和DOM 2级事件（使用<code>addEventListener()</code>方法添加事件监听器）在事件处理机制上也有所不同。DOM 0级事件只能在事件的目标阶段处理事件，而DOM 2级事件则可以在捕获阶段、目标阶段和冒泡阶段处理事件。</li>
-</ol>
-<p>以下是一些常见的DOM事件：</p>
+<aside>
+💡 *1. 不同浏览器对DOM事件的支持可能有所不同。例如，一些较旧的浏览器可能不支持某些事件类型或事件流特性。
+2. DOM 0级事件（直接在HTML元素上添加事件监听器，如`element.onclick = function() {...};`）和DOM 2级事件（使用`addEventListener()`方法添加事件监听器）在事件处理机制上也有所不同。DOM 0级事件只能在事件的目标阶段处理事件，而DOM 2级事件则可以在捕获阶段、目标阶段和冒泡阶段处理事件。*
+
+
+</aside>
+
+<p>以下是一些常见的<a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/dom-obj-event.html">DOM事件</a>：</p>
 <ol>
 <li><strong>鼠标事件</strong>：<ul>
 <li><code>click</code>：当用户在元素上单击鼠标按钮时触发。</li>
@@ -545,40 +1001,320 @@ el.hasAttributes();
 </ul>
 <h3 id="窗口对象window"><a href="#窗口对象window" class="headerlink" title="窗口对象window"></a><strong>窗口对象window</strong></h3><p>BOM 的核心是 <code>window</code> 窗口对象对象，表示浏览器的实例。<code>window</code> 对象在浏览器中有两重身份，一个是全局对象，另一个就是浏览器窗口的 JavaScript 接口。这意味着网页中定义的所有对象、变量和函数都以 <code>window</code> 作为其 Global 对象，都可以访问其上定义全局方法。</p>
 <p>window对象不需要创建可以直接使用，<code>window.方法名();</code>，甚至可以把window直接省略<code>方法名();</code></p>
-<pre><code class="jsx">window.alert(&quot;hello window&quot;);
-//两种写法都可以
-alert(&quot;hello window&quot;);
-</code></pre>
-<p>以下是一些常见的Window对象方法：</p>
-<ol>
-<li><p><code>alert()</code>：显示一个带有指定消息和OK按钮的警告框</p>
-</li>
-<li><p><code>confirm()</code>：显示一个带有指定消息以及确定和取消按钮的对话框。如果用户点击确定按钮，则返回<code>true</code>；如果用户点击取消按钮或关闭对话框，则返回<code>false</code></p>
+<p>以下是一些常见的<a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/obj-window.html">Window对象方法</a>：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<p>以下是一些常用的<code>window</code>属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<p>一些使用示例：</p>
 <pre><code class="jsx">var userInput = window.confirm(&quot;你确定要继续吗?&quot;);  
 if (userInput) &#123;  
   console.log(&quot;用户点击确定&quot;);  
 &#125; else &#123;  
   console.log(&quot;用户点击取消或关闭&quot;);  
 &#125;
-</code></pre>
-</li>
-<li><p><code>prompt()</code>：显示一个对话框，提示用户输入一些文本。对话框包含一个确定按钮和一个取消按钮。如果用户点击确定按钮，则返回用户输入的文本；如果用户点击取消按钮或关闭对话框，则返回<code>null</code></p>
-<pre><code class="jsx">var userName = window.prompt(&quot;请输入你的姓名:&quot;, &quot;默认姓名&quot;);  
+
+var userName = window.prompt(&quot;请输入你的姓名:&quot;, &quot;默认姓名&quot;);  
 if (userName != null) &#123;  
   console.log(&quot;你好，&quot; + userName + &quot;!&quot;);  
 &#125; else &#123;  
   console.log(&quot;用户未输入姓名或点击了取消&quot;);  
 &#125;
-</code></pre>
-</li>
-<li><p><code>open()</code>：打开一个新的浏览器窗口或查找一个已命名的窗口。此方法接收 4个参数：要加载的 URL、目标窗口、特性字符串和表示新窗口在浏览器历史记录中是否替代当前加载页面的布尔值</p>
-<pre><code class="jsx">window.open(&quot;https://www.example.com&quot;, 
-&quot;_blank&quot;, 
-&quot;width=500,height=500&quot;);
-</code></pre>
-</li>
-<li><p><code>close()</code>：关闭当前窗口或指定的窗口。但是，需要注意的是，此方法只对通过JavaScript打开的窗口有效，对于用户直接打开的窗口（如浏览器中的标签页）则不起作用</p>
-<pre><code class="jsx">&lt;button id=&quot;openWindow&quot;&gt;打开窗口&lt;/button&gt;
+
+&lt;button id=&quot;openWindow&quot;&gt;打开窗口&lt;/button&gt;
 &lt;button id=&quot;closeWindow&quot;&gt;关闭窗口&lt;/button&gt;
 &lt;script&gt;
     var openWindow = document.getElementById(&quot;openWindow&quot;);
@@ -592,36 +1328,22 @@ if (userName != null) &#123;
         newWindow.close(); //关闭调用它的窗口
     &#125;
 &lt;/script&gt;
-</code></pre>
-</li>
-<li><p><code>setTimeout()</code> 和 <code>clearTimeout()</code>：用于在指定的毫秒数后调用函数或计算表达式。<code>clearTimeout()</code> 方法用于取消由 <code>setTimeout()</code> 方法设置的 <code>timeout</code></p>
-<pre><code class="jsx">var myTimer = setTimeout(function() &#123;  
+
+var myTimer = setTimeout(function() &#123;  
   console.log(&quot;Hello, World!&quot;);  
 &#125;, 2000); // 2秒后执行  
   
 // 取消定时器  
 clearTimeout(myTimer);
 </code></pre>
-</li>
-<li><p><code>setInterval()</code> 和 <code>clearInterval()</code>：与 <code>setTimeout()</code> 类似，但 <code>setInterval()</code> 是在每个指定的间隔重复执行指定的函数或代码。<code>clearInterval()</code> 方法用于取消由 <code>setInterval()</code> 方法设置的间隔</p>
-</li>
-<li><p><code>resizeTo()</code>：调整窗口大小，有两个参数，分别设置窗口的高度和宽度。</p>
-</li>
-<li><p><code>moveTo()</code>：移动窗口，两个参数，接收的是新位置的x和y坐标值。</p>
-</li>
-</ol>
-<h3 id="window对象中的属性"><a href="#window对象中的属性" class="headerlink" title="window对象中的属性"></a><strong>window对象中的属性</strong></h3><ul>
-<li><p>第一类：<code>window</code>中的属性包括其他对象</p>
-<ul>
-<li><p><code>history</code>：该对象保存着用户上网的历史记录。出于安全方面的考虑，开发人员无法得知用户浏览过的URL，不过借由用户访问过的页面列表，同样可以在不知道实际URL的情况下实现后退前进</p>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a><code>history</code></h3><p>该对象保存着用户上网的历史记录。出于安全方面的考虑，开发人员无法得知用户浏览过的URL，不过借由用户访问过的页面列表，同样可以在不知道实际URL的情况下实现后退前进</p>
 <ul>
 <li><code>length</code>：返回历史列表中的网址数</li>
 <li><code>back()</code>：加载 <code>history</code> 列表中的前一个 URL</li>
 <li><code>forward()</code>：加载 <code>history</code> 列表中的下一个 URL</li>
 <li><code>go()</code>：加载 <code>history</code> 列表中的某个具体页面，负数表示向后跳转，正数表示向前跳转</li>
 </ul>
-</li>
-<li><p><code>location</code>：浏览器当前窗口的<strong>地址栏对象，</strong>通过<code>window.location</code>对象，可以解析URL、重定向浏览器到新的页面、重新加载当前页面等</p>
+<h3 id="location"><a href="#location" class="headerlink" title="location"></a><code>location</code></h3><p>浏览器当前窗口的<strong>地址栏对象，</strong>通过<code>window.location</code>对象，可以解析URL、重定向浏览器到新的页面、重新加载当前页面等</p>
 <ul>
 <li><code>window.location.href</code>：获取或设置当前页面的完整URL。</li>
 <li><code>window.location.protocol</code>：获取URL的协议部分（如 <code>&quot;http:&quot;</code> 或 <code>&quot;https:&quot;</code>）。</li>
@@ -653,8 +1375,7 @@ clearTimeout(myTimer);
 <li><code>replace()</code>：参数为一个url，打开新url，替换当前页面，不会在历史记录中生成新记录，替换页面后无法再次返回之前页面</li>
 <li><code>reload()</code>：重新加载当前显示的页面，参数可以为<code>boolean</code>类型，默认为<code>false</code>，表示以最有效方式重新加载，可能从缓存中直接加载。如果参数为<code>true</code>，强制从服务器中重新加载</li>
 </ul>
-</li>
-<li><p><code>navigator</code>：浏览器对象，提供了与浏览器相关的信息和操作接口。在前端开发中，通常使用<code>Navigator</code>对象来获取用户浏览器的相关信息，例如浏览器的名称、版本、语言设置、设备类型、操作系统等。这些信息对于实现浏览器兼容性、设备适配等功能非常重要。<code>Navigator</code>对象还包含了一些方法和属性，用于获取当前设备的地理位置信息、访问设备的媒体设备等</p>
+<h3 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a><code>navigator</code></h3><p>浏览器对象，提供了与浏览器相关的信息和操作接口。在前端开发中，通常使用<code>Navigator</code>对象来获取用户浏览器的相关信息，例如浏览器的名称、版本、语言设置、设备类型、操作系统等。这些信息对于实现浏览器兼容性、设备适配等功能非常重要。<code>Navigator</code>对象还包含了一些方法和属性，用于获取当前设备的地理位置信息、访问设备的媒体设备等</p>
 <ul>
 <li><code>navigator.appName</code>：浏览器名称；注意：<code>“Netscape”</code>是 IE11、Chrome、Firefox 以及 Safari 的应用程序名称的统称；</li>
 <li><code>navigator.appVersion</code>：浏览器版本；</li>
@@ -665,55 +1386,11 @@ clearTimeout(myTimer);
 <li><code>navigator.cookieEnabled</code>：返回一个布尔值，表示是否启用<code>cookie</code>；</li>
 <li><code>navigator.product</code>：返回浏览器引擎的产品名称</li>
 </ul>
-</li>
-<li><p><code>screen</code></p>
-<ul>
+<h3 id="screen"><a href="#screen" class="headerlink" title="screen"></a><code>screen</code></h3><ul>
 <li><code>screen.width</code>和<code>screen.height</code>：屏幕总宽度&#x2F;高度</li>
 <li><code>screen.availWidth</code>和<code>screen.availHeight</code>：可用宽度&#x2F;高度，（即减去系统界面元素后的宽度和高度）</li>
 <li><code>screen.colorDepth</code>：颜色深度</li>
 <li><code>screen.pixelDepth</code>：颜色分辨率</li>
-</ul>
-</li>
-<li><p><code>document</code></p>
-</li>
-</ul>
-</li>
-<li><p>第二类：<code>window</code>窗口属性</p>
-<ul>
-<li><strong>滚动属性</strong><ul>
-<li><code>scrollY</code>（或<code>pageYOffset</code>）：返回文档在垂直方向已滚动的像素值。</li>
-<li><code>scrollTop</code>：元素顶部到视口可见内容顶部的距离（只读），通常用于获取或设置特定元素的滚动位置（如<code>&lt;div&gt;</code>或<code>&lt;body&gt;</code>）。</li>
-<li><code>scrollLeft</code>：元素左边到视口可见内容左边的距离（只读），同样用于获取或设置特定元素的滚动位置。</li>
-</ul>
-</li>
-<li><strong>尺寸属性</strong><ul>
-<li><code>innerWidth</code>：返回浏览器窗口的视口（viewport）宽度（以像素为单位），包括右边距（如果有）。</li>
-<li><code>innerHeight</code>：返回浏览器窗口的视口（viewport）高度（以像素为单位），包括下边距（如果有）。</li>
-<li><code>outerWidth</code>：返回整个浏览器窗口的宽度（包括工具栏和滚动条）。</li>
-<li><code>outerHeight</code>：返回整个浏览器窗口的高度（包括工具栏和滚动条）。</li>
-</ul>
-</li>
-<li><strong>位置属性</strong><ul>
-<li><code>screenX</code>（或<code>screenLeft</code>）：返回窗口相对于屏幕的X坐标（只读）。</li>
-<li><code>screenY</code>（或<code>screenTop</code>）：返回窗口相对于屏幕的Y坐标（只读）。</li>
-</ul>
-</li>
-<li><strong>窗口控制属性</strong><ul>
-<li><p><code>length</code>：返回当前窗口中的iframe数量，<code>&lt;iframe&gt;</code> 即内联框架，常用于嵌入网页、广告、视频播放器、地图等</p>
-</li>
-<li><p><code>frames</code>：返回当前窗口中的所有iframe的集合（类似于数组）</p>
-</li>
-</ul>
-</li>
-<li><strong>其他属性</strong><ul>
-<li><code>name</code>：设置或返回窗口的名称。</li>
-<li><code>status</code>：设置或返回窗口的状态栏文本（尽管现代浏览器可能不再支持或显示它）。</li>
-<li><code>history</code>：返回History对象，它提供了与浏览器历史记录相关的功能。</li>
-<li><code>document</code>：返回对Document对象的引用，该对象表示窗口中加载的网页。</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 
              -->
@@ -724,7 +1401,7 @@ clearTimeout(myTimer);
         <a href="/2024/05/15/gongju/">
             
                 <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/nodejs.jpeg" data-sizes="auto" alt="Node常用工具模块" class="lazyload">
+                    <img data-src="/images/post/1.jpeg" data-sizes="auto" alt="Node常用工具模块" class="lazyload">
                     <h1>Node常用工具模块</h1>
                 </div>
             
@@ -1484,7 +2161,7 @@ person1.sayHello(); // 输出: Hello, my name is Alice
         <a href="/2024/04/30/Node-js_Tutorial/">
             
                 <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
-                    <img data-src="/images/post/nodejs.jpeg" data-sizes="auto" alt="Node.js介绍" class="lazyload">
+                    <img data-src="/images/post/nodejs.png" data-sizes="auto" alt="Node.js介绍" class="lazyload">
                     <h1>Node.js介绍</h1>
                 </div>
             
@@ -3005,7 +3682,7 @@ git config --global --get https.proxy
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1716045238888"></script>
+<script src="/js/app.js?v=1716211065040"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -3024,6 +3701,10 @@ git config --global --get https.proxy
 <!-- hexo injector body_end start -->
 <script src="/js/clock.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script src="/js/search.js"></script>
+
 <script src="/js/webapp.js"></script>
 
 <script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
@@ -3037,11 +3718,7 @@ git config --global --get https.proxy
 <script src="/lib/codeBlock/codeShrink.js"></script>
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-<script src="/js/search.js"></script>
-<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"position":"relative","z-index":1,"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
 <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/250cb4aa.js","daovoice")</script>
