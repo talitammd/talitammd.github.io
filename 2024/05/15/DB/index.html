@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  
+  <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
+  <title>DOM和BOM - 卷不过没事了</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+    <!-- Site Verification -->
+    <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
+
+  <link rel="shortcut icon" href="/images/head/head.jpg" type="image/png" />
+  <meta name="description" content="Document Object Model 基本概念DOM，即文档对象模型。它是一种跨平台的、独立于编程语言的API，它把HTML、XHTML或XML文档当作一个树结构，而每个节点视为一个对象，这些对象可以被编程语言操作，进而改变文档的结构，映射到文档的显示。 简单来说，DOM就是我们为了方便编程语言对HTML等文档进行操作，把HTML文档中的节点全部视为一个个的对象，所有可用于操作和创建网页的属">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM和BOM">
+<meta property="og:url" content="http://example.com/2024/05/15/DB/index.html">
+<meta property="og:site_name" content="卷不过没事了">
+<meta property="og:description" content="Document Object Model 基本概念DOM，即文档对象模型。它是一种跨平台的、独立于编程语言的API，它把HTML、XHTML或XML文档当作一个树结构，而每个节点视为一个对象，这些对象可以被编程语言操作，进而改变文档的结构，映射到文档的显示。 简单来说，DOM就是我们为了方便编程语言对HTML等文档进行操作，把HTML文档中的节点全部视为一个个的对象，所有可用于操作和创建网页的属">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/05/15/DB/Untitled.png">
+<meta property="og:image" content="http://example.com/2024/05/15/DB/Untitled1.png">
+<meta property="article:published_time" content="2024-05-15T15:24:59.000Z">
+<meta property="article:modified_time" content="2024-05-28T06:02:05.404Z">
+<meta property="article:author" content="Talita">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/05/15/DB/Untitled.png">
+  <link rel="stylesheet" href="https://lib.baomitu.com/highlight.js/9.15.8/styles/atom-one-dark.min.css" crossorigin>
+  <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css">
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+  <link rel="stylesheet" href="/lib/fancybox/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://lib.baomitu.com/justifiedGallery/3.8.1/css/justifiedGallery.min.css">
+  
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1719645310106">
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(/images/background/xiaomai.png)"></div>
+    <div class="nexmoe-small" style="background-image: url(/images/background/lihui.png)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Talita" class="mdui-btn mdui-btn-icon"><img src="/images/head/me.jpeg" alt="Talita"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Talita">
+            <img src="/images/head/me.jpeg" alt="Talita" alt="Talita">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div class="nexmoe-count-item"><span>文章</span>7 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
+        <div class="nexmoe-count-item"><span>标签</span>5<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+        <div class="nexmoe-count-item"><span>分类</span>5<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-meishi"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-hanbao1"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-jiubei1"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friend.html" title="友链">
+            <i class="mdui-list-item-icon nexmoefont icon-cola"></i>
+            <div class="mdui-list-item-content">
+                友链
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/download.html" title="下载中心">
+            <i class="mdui-list-item-icon nexmoefont icon-tangguo"></i>
+            <div class="mdui-list-item-content">
+                下载中心
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  
+<!-- 站内搜索 -->
+
+<div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search" >
+        <form id="search-form">
+            <label><input type="text" id="local-search-input" name="q" results="0" placeholder="站内搜索" class="input form-control" autocomplete="off" autocorrect="off"/></label>
+            <!-- 清空/重置搜索框 -->
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+        </form>
+    </div>
+    <div id="local-search-result"></div> <!-- 搜索结果区 -->
+    <!-- <p class='no-result'></p> 无匹配时显示，注意在 CSS 中设置默认隐藏 -->
+</div>
+
+
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="http://wpa.qq.com/msgrd?v=3&uin=2120252100&site=qq&menu=yes" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(64, 196, 255);background-color: rgba(64, 196, 255, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="mailto:tangyuxian@vip.qq.com" target="_blank" mdui-tooltip="{content: 'mail'}" style="color: rgb(249,8,8);background-color: rgba(249,8,8,.1);">
+            <i class="nexmoefont icon-mail-fill"></i>
+        </a><a class="mdui-ripple" href="https://blog.csdn.net/qq_40621378?type=blog" target="_blank" mdui-tooltip="{content: 'CSDN'}" style="color: rgb(199,29,35);background-color: rgba(199,29,35,.1);">
+            <i class="nexmoefont icon-csdn"></i>
+        </a><a class="mdui-ripple" href="https://www.cnblogs.com/lovetangyuxian/" target="_blank" mdui-tooltip="{content: '博客园'}" style="color: rgb(66, 214, 29);background-color: rgba(66, 214, 29, .1);">
+            <i class="nexmoefont icon-bokeyuan"></i>
+        </a><a class="mdui-ripple" href="https://github.com/tangyuxian/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/tangyuxian" target="_blank" mdui-tooltip="{content: 'gitee'}" style="color: rgb(255, 255, 255);background-color: rgb(199,29,35);">
+            <i class="nexmoefont icon-mayun"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Node-js/">Node.js</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/TypeScript/">TypeScript</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/react/">react</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/代码管理/">代码管理</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/node/" style="font-size: 20px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+<style>
+.nexmoe-widget .archive-list-count{
+	position : absolute;
+	right: 15px;
+	top:9px;
+	color: #DDD;
+}
+</style>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 Talita
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/tangyuxian/hexo-theme-tangyuxian" target="_blank">Tangyuxian</a><br/>
+        <a href="http://beian.miit.gov.cn" target="_blank">辽ICP备2021002341号</a><br/>
+        
+        <div style="font-size: 12px">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            本站总访问量  <a id="busuanzi_value_site_pv"></a> 次<br />
+            本站访客数<a id="busuanzi_value_site_uv"></a>人次
+        </div>
+        
+        
+    </div>
+
+</div><!-- .nexmoe-drawer -->
+
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 26.666666666666668%;">
+            <img data-src="/images/post/JavaScript.png" data-sizes="auto" alt="DOM和BOM"
+                 class="lazyload">
+            <h1>DOM和BOM</h1>
+        </div>
+    
+
+        <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月15日</a>
+    <a><i class="nexmoefont icon-areachart"></i>8.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 35 分钟</a>
+</div>
+
+        <div class="nexmoe-post-right">
+            
+                <div class="nexmoe-fixed">
+                    <div class="nexmoe-valign">
+                        <div class="nexmoe-toc">
+                            
+                            
+                                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Document-Object-Model"><span class="toc-number">1.</span> <span class="toc-text">Document Object Model</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">网页加载过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Document%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.</span> <span class="toc-text">Document对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.4.</span> <span class="toc-text">元素对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.5.</span> <span class="toc-text">属性对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.6.</span> <span class="toc-text">事件对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Browser-Object-Model"><span class="toc-number">2.</span> <span class="toc-text">Browser Object Model</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text">BOM的组成部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1window"><span class="toc-number">2.2.</span> <span class="toc-text">窗口对象window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#history"><span class="toc-number">2.3.</span> <span class="toc-text">history</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#location"><span class="toc-number">2.4.</span> <span class="toc-text">location</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#navigator"><span class="toc-number">2.5.</span> <span class="toc-text">navigator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#screen"><span class="toc-number">2.6.</span> <span class="toc-text">screen</span></a></li></ol></li></ol>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+
+        <article>
+            <h2 id="Document-Object-Model"><a href="#Document-Object-Model" class="headerlink" title="Document Object Model"></a><strong>Document Object Model</strong></h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/05/15/DB/Untitled.png" alt="Untitled" class="lazyload"></p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>DOM</strong>，即文档对象模型。它是一种跨平台的、独立于编程语言的API，它把HTML、XHTML或XML文档当作一个树结构，而每个节点视为一个对象，这些对象可以被编程语言操作，进而改变文档的结构，映射到文档的显示。</p>
+<p>简单来说，DOM就是我们为了方便编程语言对HTML等文档进行操作，把HTML文档中的节点全部视为一个个的对象，所有可用于操作和创建网页的属性、方法和事件都被组织到对象中，这些对象依照层级关系形成一棵树，这棵树就命名为DOM树。有了对象，编程就方便多了，只要一层层拿到对象就可以优雅地改变对象的属性进而动态地改变HTML等文档的展示。</p>
+<p>例如，DOM 中指定下面代码中的 <code>querySelectorAll</code> 方法必须要返回文档中所有 <code>&lt;p&gt;</code> 元素组成的列表：</p>
+<pre><code class="jsx">const paragraphs = document.querySelectorAll(&quot;p&quot;);
+// paragraphs[0] 是第一个 &lt;p&gt; 元素
+// paragraphs[1] 是第二个 &lt;p&gt; 元素，依此类推
+alert(paragraphs[0].nodeName);
+</code></pre>
+<p><em><strong>DOM 不是一种编程语言，也不是 JavaScript 语言的一部分，而是用于建立网站的 Web API。DOM 被设计成与特定编程语言相独立，使文档的结构化表述可以通过单一，一致的 API 获得。</strong></em></p>
+<h3 id="网页加载过程"><a href="#网页加载过程" class="headerlink" title="网页加载过程"></a>网页加载过程</h3><ol>
+<li><strong>HTML下载到本地内存</strong>：当浏览器请求一个HTML页面时，会从服务器下载HTML文件并将其存储在本地内存中。这个过程是通过HTTP请求完成的，并且通常会遵循TCP&#x2F;IP协议</li>
+<li><strong>解析成DOM树</strong>：浏览器会解析HTML文档，将HTML标签和属性转换为DOM树</li>
+<li><strong>展示页面到屏幕</strong>：在构建DOM树的同时或之后，浏览器还会开始解析CSS并构建<code>CSSOM</code>（CSS对象模型）树。然后，它会将DOM树和CSSOM树合并成一个渲染树（<code>render tree</code>），这个渲染树包含了页面上需要显示的内容以及这些内容如何显示（例如颜色、字体大小等）。最后，浏览器会根据渲染树在屏幕上绘制页面</li>
+<li><strong>DOM API 动态修改</strong>：DOM API允许JavaScript等网络编程语言动态地访问和更新HTML文档的内容、结构和样式。例如，你可以使用JavaScript来修改DOM树中的元素、添加或删除元素、更改元素的属性或样式等<ul>
+<li><strong>在页面加载过程中</strong>：当浏览器接收到 HTML 文档并开始解析时，它会同时或随后构建一个 DOM 树。一旦 DOM 树构建完成，浏览器就可以开始渲染页面了，但此时页面可能还没有完全加载完成，比如可能还有 CSS 和 JavaScript 文件需要加载和执行。此时，JavaScript 可以使用 DOM API 来修改已经解析并添加到 DOM 树中的元素</li>
+<li><strong>在页面加载完成后</strong>：一旦页面完全加载并渲染完成（例如，所有图片都已加载），JavaScript 可以使用 DOM API 来添加新元素、删除现有元素或执行其他操作。这通常通过监听 <code>DOMContentLoaded</code> 或 <code>load</code> 事件来实现，这些事件会在页面加载的不同阶段触发</li>
+</ul>
+</li>
+<li><strong>网页加载优化</strong>：为了提高网页的加载性能，开发者可以采取一系列优化措施，如压缩HTML、CSS和JavaScript文件、使用CDN（内容分发网络）来加速资源的加载、通过异步加载和延迟加载来减少阻塞等</li>
+</ol>
+<h3 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h3><p>当浏览器载入 HTML 文档，浏览器会解析它并创建一个DOM树。在DOM树中，HTML文档中的每个元素都被表示为<strong>一个节点，</strong>根节点为 <strong><code>Document</code> 对象，</strong>使我们可以从脚本中对 HTML 页面中的所有元素进行访问。。这些节点具有属性和方法，允许你通过编程的方式与它们进行交互。</p>
+<p>在 HTML DOM (Document Object Model) 中 ，每一个元素都是<strong>节点</strong>:</p>
+<ul>
+<li>文档是一个<strong>文档节点</strong>。</li>
+<li>所有的HTML元素都是<strong>元素节点</strong>。</li>
+<li>所有 HTML 属性都是<strong>属性节点</strong>。</li>
+<li>文本插入到 HTML 元素是<strong>文本节点</strong>。</li>
+<li>注释是<strong>注释节点</strong>。</li>
+</ul>
+<blockquote>
+<p><code>Document</code> 对象是 <code>Window</code> 对象的一部分，可通过 <code>window.document</code>属性对其进行访问。</p>
+</blockquote>
+<p><strong>Document 对象属性和方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<p><strong>常用DOM API：</strong></p>
+<p><strong>（1）创建DOM对象</strong></p>
+<pre><code class="jsx">var el2 = document.createElement(&#39;input&#39;);
+var node = document.createTextNode(&#39;hello world!&#39;);
+</code></pre>
+<p><strong>（2）查找DOM对象</strong></p>
+<pre><code class="jsx">*// 返回当前文档中第一个类名为 &quot;myclass&quot; 的元素*
+var el = document.querySelector(&quot;.myclass&quot;);
+
+*// 返回一个文档中所有的class为&quot;note&quot;或者 &quot;alert&quot;的div元素*
+var els = document.querySelectorAll(&quot;div.note, div.alert&quot;);
+
+*// 获取元素*
+var el = document.getElementById(&#39;xxx&#39;);
+var els = document.getElementsByClassName(&#39;highlight&#39;);
+var els = document.getElementsByTagName(&#39;td&#39;);
+
+// 获取父元素、父节点
+var parent = ele.parentElement;
+var parent = ele.parentNode;
+
+// 获取子节点，子节点可以是任何一种节点，可以通过nodeType来判断
+var nodes = ele.children;    
+
+// 查询子元素
+var els = ele.getElementsByTagName(&#39;td&#39;);
+var els = ele.getElementsByClassName(&#39;highlight&#39;);
+
+// 当前元素的第一个/最后一个子元素节点
+var el = ele.firstElementChild;
+var el = ele.lastElementChild;
+
+// 下一个/上一个兄弟元素节点
+var el = ele.nextElementSibling;
+var el = ele.previousElementSibling;
+</code></pre>
+<p><strong>（3）更改DOM对象</strong></p>
+<pre><code class="jsx">*// 添加、删除子元素*
+ele.appendChild(el);
+ele.removeChild(el);
+
+*// 替换子元素*
+ele.replaceChild(el1, el2);
+
+*// 插入子元素*
+parentElement.insertBefore(newElement, referenceElement);
+</code></pre>
+<p><strong>（4）操作DOM对象的属性</strong></p>
+<pre><code class="jsx">*// 获取一个&#123;name, value&#125;的数组*
+var attrs = el.attributes;
+
+*// 获取、设置属性*
+var c = el.getAttribute(&#39;class&#39;);
+el.setAttribute(&#39;class&#39;, &#39;highlight&#39;);
+
+*// 判断、移除属性*
+el.hasAttribute(&#39;class&#39;);
+el.removeAttribute(&#39;class&#39;);
+
+*// 是否有属性设置*
+el.hasAttributes();
+</code></pre>
+<h3 id="元素对象"><a href="#元素对象" class="headerlink" title="元素对象"></a>元素对象</h3><p>以下是HTML中常见的元素节点类型及其分类列举：</p>
+<ol>
+<li><p><strong>文档结构元素</strong>：</p>
+<ul>
+<li><code>&lt;html&gt;</code>: 根元素，包含了整个HTML文档。</li>
+<li><code>&lt;head&gt;</code>: 包含了文档的元（meta）数据，如<code>&lt;title&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;script&gt;</code>等。</li>
+<li><code>&lt;body&gt;</code>: 包含了所有可见的页面内容，如文本、图片、音频、视频等。</li>
+</ul>
+</li>
+<li><p><strong>标题元素</strong>：</p>
+<ul>
+<li><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code>: 定义标题或子标题，<code>&lt;h1&gt;</code>表示最高级别的标题。</li>
+</ul>
+</li>
+<li><p><strong>段落元素</strong>：</p>
+<ul>
+<li><code>&lt;p&gt;</code>: 定义段落。</li>
+</ul>
+</li>
+<li><p><strong>列表元素</strong>：</p>
+<ul>
+<li><code>&lt;ul&gt;</code>: 无序列表（unordered list）。</li>
+<li><code>&lt;ol&gt;</code>: 有序列表（ordered list）。</li>
+<li><code>&lt;li&gt;</code>: 列表项（list item）。</li>
+</ul>
+</li>
+<li><p><strong>链接元素</strong>：</p>
+<ul>
+<li><p><code>&lt;a&gt;</code>: 定义超链接，可以链接到其他网页或同一网页的不同部分</p>
+<ul>
+<li><code>href</code>：指定链接的目标地址</li>
+<li><code>target</code>：指定在何处打开链接的文档</li>
+<li><code>rel</code>：定义当前文档与被链接文档之间的关系</li>
+</ul>
+<pre><code class="jsx">&lt;a href=&quot;https://example.com&quot; 
+target=&quot;_blank&quot; 
+rel=&quot;noopener noreferrer&quot;&gt;链接文本&lt;/a&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>图像元素</strong>：</p>
+<ul>
+<li><p><code>&lt;img&gt;</code>: 定义图像，通常与<code>src</code>、<code>alt</code>等属性一起使用</p>
+<ul>
+<li><code>src</code>：指定图像的来源</li>
+<li><code>alt</code>：为图像提供替代文本，以便在图像无法显示时显示</li>
+<li><code>width</code> 和 <code>height</code>：指定图像的宽度和高度</li>
+</ul>
+<pre><code class="jsx">&lt;img src=&quot;image.jpg&quot; alt=&quot;示例图片&quot; width=&quot;500&quot; height=&quot;600&quot;&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>表格元素</strong>：</p>
+<ul>
+<li><code>&lt;table&gt;</code>: 定义表格。</li>
+<li><code>&lt;tr&gt;</code>: 定义表格行。</li>
+<li><code>&lt;th&gt;</code>: 定义表格头部单元格。</li>
+<li><code>&lt;td&gt;</code>: 定义表格数据单元格。</li>
+</ul>
+</li>
+<li><p><strong>表单元素</strong>：</p>
+<ul>
+<li><code>&lt;form&gt;</code>: 定义HTML表单，用于用户输入。</li>
+<li><code>&lt;input&gt;</code>: 定义输入字段，如文本框、密码框、单选框、复选框等<ul>
+<li><code>type</code>、<code>name</code>、<code>value</code></li>
+</ul>
+</li>
+<li><code>&lt;textarea&gt;</code>: 定义多行文本输入字段<ul>
+<li><code>rows</code>、<code>cols</code></li>
+</ul>
+</li>
+<li><code>&lt;button&gt;</code>: 定义点击按钮。</li>
+<li><code>&lt;select&gt;</code>: 定义下拉选择列表<ul>
+<li><code>name</code>、<code>value</code></li>
+</ul>
+</li>
+<li><code>&lt;option&gt;</code>: 定义下拉选择列表中的选项<ul>
+<li><code>name</code>、<code>value</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="jsx">&lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;默认值&quot;&gt;  
+&lt;textarea rows=&quot;4&quot; cols=&quot;50&quot;&gt;默认文本&lt;/textarea&gt;  
+&lt;select name=&quot;color&quot;&gt;  
+  &lt;option value=&quot;red&quot;&gt;红色&lt;/option&gt;  
+  &lt;option value=&quot;blue&quot;&gt;蓝色&lt;/option&gt;  
+&lt;/select&gt;
+</code></pre>
+</li>
+<li><p><strong>分区和布局元素</strong>：</p>
+<ul>
+<li><code>&lt;div&gt;</code>: 定义一个区块或容器，通常与CSS一起使用来布局页面。</li>
+<li><code>&lt;span&gt;</code>: 定义内联元素，通常用于对文本的一部分应用样式。</li>
+<li><code>&lt;section&gt;</code>: 定义文档中的独立部分或章节。</li>
+<li><code>&lt;article&gt;</code>: 定义独立的内容，如博客文章、论坛帖子等。</li>
+<li><code>&lt;nav&gt;</code>: 定义导航链接的容器。</li>
+<li><code>&lt;header&gt;</code>: 定义文档的页眉或区域页眉。</li>
+<li><code>&lt;footer&gt;</code>: 定义文档的页脚或区域页脚。</li>
+</ul>
+</li>
+<li><p><strong>媒体元素</strong>：</p>
+<ul>
+<li><code>&lt;audio&gt;</code>: 定义音频内容。</li>
+<li><code>&lt;video&gt;</code>: 定义视频内容。</li>
+</ul>
+</li>
+<li><p><strong>其他常见元素</strong>：</p>
+<ul>
+<li><code>&lt;br&gt;</code>: 插入一个简单的换行符。</li>
+<li><code>&lt;hr&gt;</code>: 创建水平线。</li>
+<li><code>&lt;meta&gt;</code>: 提供关于HTML文档的元信息。</li>
+<li><code>&lt;link&gt;</code>: 定义文档与外部资源之间的关系。</li>
+<li><code>&lt;style&gt;</code>: 定义内部样式信息。</li>
+<li><code>&lt;script&gt;</code>: 定义客户端脚本，如JavaScript代码。</li>
+</ul>
+</li>
+</ol>
+<p>以下属性和方法可适用于所有 HTML 元素：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><em>如果你只需要在特定的元素上监听事件，那么使用 <code>element.addEventListener()</code> 通常是更好的选择，因为它更具体，并且可以减少不必要的计算。然而，如果你需要在整个文档中监听某种类型的事件（例如，点击任何元素或键盘输入），那么使用 <code>document.addEventListener()</code> 可能是更合适的选择。</em></p>
+</blockquote>
+<h3 id="属性对象"><a href="#属性对象" class="headerlink" title="属性对象"></a>属性对象</h3><p>所有主流浏览器都支持 Attr 对象，以下是一些常见的属性对象的属性和方法：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>简单来讲，事件就是一个动作，而 HTML 为这些动作指定了特定的对象，和 DOM 对象一样，事件不属于任何一门语言，但是可以作为元素（DOM对象）的属性嵌入元素中，也就是指定该元素为触发对象，当在该元素中触发了指定的事件时，就可以执行该事件绑定在该元素上的JavaScript代码。</p>
+<p><strong>DOM中的事件是如何触发的？</strong></p>
+<ol>
+<li><strong>事件源</strong>：事件的触发首先需要一个事件源，也就是引发事件的HTML元素。例如，当用户点击一个按钮时，这个按钮就是事件源。</li>
+<li><strong>事件类型</strong>：每个事件都有一个类型，如“click”、“keydown”等。当事件源上发生与事件类型匹配的动作时，事件就会被触发。</li>
+<li><strong>事件监听器</strong>：为了处理事件，需要在事件源上注册一个或多个事件监听器（也称为事件处理器）。事件监听器是一个函数，当事件被触发时，这个函数会被调用。在JavaScript中，通常使用<code>addEventListener()</code>方法为元素添加事件监听器。</li>
+<li><strong>事件流</strong>：DOM事件流描述了事件从发生到被处理的过程。这个过程包括三个阶段：捕获阶段、目标阶段和冒泡阶段。<ul>
+<li><strong>捕获阶段</strong>：从document对象开始，沿着DOM树向下传播，直到到达事件源。在捕获阶段，事件监听器可以被注册在DOM树的任何节点上，但默认情况下，事件监听器不会在捕获阶段被触发（除非在注册时特别指定）。</li>
+<li><strong>目标阶段</strong>：当事件到达事件源时，会触发注册在该元素上的事件监听器。</li>
+<li><strong>冒泡阶段</strong>：事件从事件源开始，沿着DOM树向上传播，直到回到document对象。在冒泡阶段，所有经过的节点（包括事件源本身）上注册的事件监听器都会被触发。<em>举个例子，两个元素A和B绑定了不同的点击事件，并且B元素在A元素的内部，那么在点击了B时，B事件会先发生，然后A事件发生。</em></li>
+</ul>
+</li>
+<li><strong>事件处理</strong>：当事件监听器被触发时，会执行相应的函数。这个函数可以执行任何需要的操作，如修改页面内容、发送网络请求等。</li>
+</ol>
+<aside>
+💡 *1. 不同浏览器对DOM事件的支持可能有所不同。例如，一些较旧的浏览器可能不支持某些事件类型或事件流特性。
+2. DOM 0级事件（直接在HTML元素上添加事件监听器，如`element.onclick = function() {...};`）和DOM 2级事件（使用`addEventListener()`方法添加事件监听器）在事件处理机制上也有所不同。DOM 0级事件只能在事件的目标阶段处理事件，而DOM 2级事件则可以在捕获阶段、目标阶段和冒泡阶段处理事件。*
+
+
+</aside>
+
+<p>以下是一些常见的<a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/dom-obj-event.html">DOM事件</a>：</p>
+<ol>
+<li><strong>鼠标事件</strong>：<ul>
+<li><code>click</code>：当用户在元素上单击鼠标按钮时触发。</li>
+<li><code>dblclick</code>：当用户在元素上双击鼠标按钮时触发。</li>
+<li><code>mousedown</code>：当用户在元素上按下鼠标按钮时触发。</li>
+<li><code>mouseup</code>：当用户在元素上释放鼠标按钮时触发。</li>
+<li><code>mousemove</code>：当鼠标指针在元素内部移动时触发。</li>
+<li><code>mouseover</code>：当鼠标指针从元素外部移动到元素内部时触发。</li>
+<li><code>mouseout</code>：当鼠标指针从元素内部移动到元素外部时触发。</li>
+<li><code>contextmenu</code>：当用户在元素上右键点击时触发（通常用于显示上下文菜单）。</li>
+</ul>
+</li>
+<li><strong>键盘事件</strong>：<ul>
+<li><code>keydown</code>：当用户在键盘上按下某个键时触发。</li>
+<li><code>keyup</code>：当用户在键盘上释放某个键时触发。</li>
+<li><code>keypress</code>：当用户在键盘上按下并释放一个键时触发（通常用于处理文本输入）。</li>
+</ul>
+</li>
+<li><strong>表单事件</strong>：<ul>
+<li><code>submit</code>：当表单提交时触发（常用于验证表单数据）。</li>
+<li><code>reset</code>：当表单重置时触发。</li>
+<li><code>focus</code>：当元素获得焦点时触发（例如，用户点击输入框）。</li>
+<li><code>blur</code>：当元素失去焦点时触发（例如，用户离开输入框）。</li>
+<li><code>change</code>：当元素的值发生变化且失去焦点时触发（常用于输入框和下拉列表）。</li>
+</ul>
+</li>
+<li><strong>文档&#x2F;窗口事件</strong>：<ul>
+<li><code>load</code>：当页面或图片加载完成时触发。</li>
+<li><code>unload</code>：当用户离开页面时触发（例如，关闭页面或跳转到其他页面）。</li>
+<li><code>scroll</code>：当用户滚动页面时触发。</li>
+<li><code>resize</code>：当浏览器窗口大小发生变化时触发。</li>
+</ul>
+</li>
+<li><strong>触摸事件</strong>（主要针对移动设备）：<ul>
+<li><code>touchstart</code>：当用户触摸屏幕时触发。</li>
+<li><code>touchmove</code>：当用户在屏幕上移动手指时触发。</li>
+<li><code>touchend</code>：当用户从屏幕上移开手指时触发。</li>
+<li><code>touchcancel</code>：当系统取消触摸事件时触发（例如，电话呼入）。</li>
+</ul>
+</li>
+<li><strong>拖放事件</strong>：<ul>
+<li><code>dragstart</code>：当用户开始拖动元素时触发。</li>
+<li><code>drag</code>：当用户在拖动元素时触发。</li>
+<li><code>dragend</code>：当用户结束拖动元素时触发。</li>
+<li><code>dragenter</code>：当拖动的元素进入目标元素时触发。</li>
+<li><code>dragover</code>：当拖动的元素在目标元素上移动时触发。</li>
+<li><code>dragleave</code>：当拖动的元素离开目标元素时触发。</li>
+<li><code>drop</code>：当用户在目标元素上释放拖动的元素时触发。</li>
+</ul>
+</li>
+<li><strong>其他事件</strong>：<ul>
+<li><code>error</code>：当发生错误时触发（例如，图片加载失败）。</li>
+<li><code>abort</code>：当加载被中止时触发（例如，用户停止加载页面）。</li>
+<li><code>beforeunload</code>：当页面即将卸载（关闭、刷新或跳转到其他页面）时触发。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Browser-Object-Model"><a href="#Browser-Object-Model" class="headerlink" title="Browser Object Model"></a><strong>Browser Object Model</strong></h2><p>BOM是浏览器对象模型，DOM 是将HTML文档中的各个元素封装成一个对象（Document），而 <strong>BOM</strong> 则是将一个浏览器的各个组成部分封装成对象（Browser）供调用使用。</p>
+<p>BOM的核心对象是<code>window</code>，它表示浏览器的一个实例（通常就是浏览器窗口或标签页）。由于<code>window</code>是BOM的顶层对象，其他BOM对象都是它的子对象或者方法。</p>
+<h3 id="BOM的组成部分"><a href="#BOM的组成部分" class="headerlink" title="BOM的组成部分"></a>BOM的组成部分</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/05/15/DB/Untitled1.png" alt="Untitled" class="lazyload"></p>
+<p>图中看出，BOM 对象大致包含五个部分：</p>
+<ul>
+<li>Window 对象：浏览器窗口对象</li>
+<li>Navigator：浏览器对象</li>
+<li>Screen：浏览器所处客户端的显示器屏幕对象</li>
+<li>History：浏览器当前窗口的访问历史记录对象</li>
+<li>Location：浏览器当前窗口的地址栏对象</li>
+</ul>
+<h3 id="窗口对象window"><a href="#窗口对象window" class="headerlink" title="窗口对象window"></a><strong>窗口对象window</strong></h3><p>BOM 的核心是 <code>window</code> 窗口对象对象，表示浏览器的实例。<code>window</code> 对象在浏览器中有两重身份，一个是全局对象，另一个就是浏览器窗口的 JavaScript 接口。这意味着网页中定义的所有对象、变量和函数都以 <code>window</code> 作为其 Global 对象，都可以访问其上定义全局方法。</p>
+<p>window对象不需要创建可以直接使用，<code>window.方法名();</code>，甚至可以把window直接省略<code>方法名();</code></p>
+<p>以下是一些常见的<a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/obj-window.html">Window对象方法</a>：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<p>以下是一些常用的<code>window</code>属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性 &#x2F; 方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>document.activeElement</code></td>
+<td align="left">返回当前获取焦点元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.addEventListener()</code></td>
+<td align="left">向文档添加句柄</td>
+</tr>
+<tr>
+<td align="left"><code>document.baseURI</code></td>
+<td align="left">返回文档的绝对基础 URI</td>
+</tr>
+<tr>
+<td align="left"><code>document.body</code></td>
+<td align="left">返回文档的<code>body</code>元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.open()</code></td>
+<td align="left">打开一个流，以收集来自任何 <code>document.write()</code> 或 <code>document.writeln() </code>方法的输出。</td>
+</tr>
+<tr>
+<td align="left"><code>document.close()</code></td>
+<td align="left">关闭用 <code>document.open() </code>方法打开的输出流，并显示选定的数据。</td>
+</tr>
+<tr>
+<td align="left"><code>document.cookie</code></td>
+<td align="left">设置或返回与当前文档有关的所有 <code>cookie</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createAttribute()</code></td>
+<td align="left">创建一个属性节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.createElement()</code></td>
+<td align="left">创建元素节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.createTextNode()</code></td>
+<td align="left">创建文本节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.doctype</code></td>
+<td align="left">返回与文档相关的文档类型声明 (DTD)。</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentElement</code></td>
+<td align="left">返回文档的根节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.documentMode</code></td>
+<td align="left">返回用于通过浏览器渲染文档的模式</td>
+</tr>
+<tr>
+<td align="left"><code>document.domain</code></td>
+<td align="left">返回当前文档的域名。</td>
+</tr>
+<tr>
+<td align="left"><code>document.embeds</code></td>
+<td align="left">返回文档中所有嵌入的内容（<code>embed</code>）集合</td>
+</tr>
+<tr>
+<td align="left"><code>document.forms</code></td>
+<td align="left">返回对文档中所有 <code>Form</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByClassName()</code></td>
+<td align="left">返回文档中所有指定类名的元素集合，作为 <code>NodeList</code> 对象。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementById()</code></td>
+<td align="left">返回对拥有指定 <code>id</code> 的第一个对象的引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByName()</code></td>
+<td align="left">返回带有指定名称的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.getElementsByTagName()</code></td>
+<td align="left">返回带有指定标签名的对象集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.images</code></td>
+<td align="left">返回对文档中所有 <code>Image</code> 对象引用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.importNode()</code></td>
+<td align="left">把一个节点从另一个文档复制到该文档以便应用。</td>
+</tr>
+<tr>
+<td align="left"><code>document.lastModified</code></td>
+<td align="left">返回文档被最后修改的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><code>document.normalize()</code></td>
+<td align="left">删除空文本节点，并连接相邻节点</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelector()</code></td>
+<td align="left">返回文档中匹配指定的CSS选择器的第一元素</td>
+</tr>
+<tr>
+<td align="left"><code>document.querySelectorAll()</code></td>
+<td align="left"><code>document.querySelectorAll() </code>是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表</td>
+</tr>
+<tr>
+<td align="left"><code>document.readyState</code></td>
+<td align="left">返回文档状态 (载入中……)</td>
+</tr>
+<tr>
+<td align="left"><code>document.removeEventListener()</code></td>
+<td align="left">移除文档中的事件句柄(由 <code>addEventListener() </code>方法添加)</td>
+</tr>
+<tr>
+<td align="left"><code>document.renameNode()</code></td>
+<td align="left">重命名元素或者属性节点。</td>
+</tr>
+<tr>
+<td align="left"><code>document.scripts</code></td>
+<td align="left">返回页面中所有脚本的集合。</td>
+</tr>
+<tr>
+<td align="left"><code>document.strictErrorChecking</code></td>
+<td align="left">设置或返回是否强制进行错误检查。</td>
+</tr>
+<tr>
+<td align="left"><code>document.title</code></td>
+<td align="left">返回当前文档的标题。</td>
+</tr>
+<tr>
+<td align="left"><code>document.URL</code></td>
+<td align="left">返回文档完整的URL</td>
+</tr>
+<tr>
+<td align="left"><code>document.write()</code></td>
+<td align="left">向文档写 HTML 表达式 或 JavaScript 代码。</td>
+</tr>
+<tr>
+<td align="left"><code>document.writeln()</code></td>
+<td align="left">等同于 <code>write()</code> 方法，不同的是在每个表达式之后写一个换行符。</td>
+</tr>
+</tbody></table>
+<p>一些使用示例：</p>
+<pre><code class="jsx">var userInput = window.confirm(&quot;你确定要继续吗?&quot;);  
+if (userInput) &#123;  
+  console.log(&quot;用户点击确定&quot;);  
+&#125; else &#123;  
+  console.log(&quot;用户点击取消或关闭&quot;);  
+&#125;
+
+var userName = window.prompt(&quot;请输入你的姓名:&quot;, &quot;默认姓名&quot;);  
+if (userName != null) &#123;  
+  console.log(&quot;你好，&quot; + userName + &quot;!&quot;);  
+&#125; else &#123;  
+  console.log(&quot;用户未输入姓名或点击了取消&quot;);  
+&#125;
+
+&lt;button id=&quot;openWindow&quot;&gt;打开窗口&lt;/button&gt;
+&lt;button id=&quot;closeWindow&quot;&gt;关闭窗口&lt;/button&gt;
+&lt;script&gt;
+    var openWindow = document.getElementById(&quot;openWindow&quot;);
+    var newWindow; //全局变量，对新创建的窗口进行操作
+    openWindow.onclick = function()&#123;
+        newWindow = open(&quot;https://www.baidu.com&quot;); //打开指定url的窗口
+    &#125;
+        
+    var closeWindow = document.getElementById(&quot;closeWindow&quot;);
+    closeWindow.onclick = function()&#123;
+        newWindow.close(); //关闭调用它的窗口
+    &#125;
+&lt;/script&gt;
+
+var myTimer = setTimeout(function() &#123;  
+  console.log(&quot;Hello, World!&quot;);  
+&#125;, 2000); // 2秒后执行  
+  
+// 取消定时器  
+clearTimeout(myTimer);
+</code></pre>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a><code>history</code></h3><p>该对象保存着用户上网的历史记录。出于安全方面的考虑，开发人员无法得知用户浏览过的URL，不过借由用户访问过的页面列表，同样可以在不知道实际URL的情况下实现后退前进</p>
+<ul>
+<li><code>length</code>：返回历史列表中的网址数</li>
+<li><code>back()</code>：加载 <code>history</code> 列表中的前一个 URL</li>
+<li><code>forward()</code>：加载 <code>history</code> 列表中的下一个 URL</li>
+<li><code>go()</code>：加载 <code>history</code> 列表中的某个具体页面，负数表示向后跳转，正数表示向前跳转</li>
+</ul>
+<h3 id="location"><a href="#location" class="headerlink" title="location"></a><code>location</code></h3><p>浏览器当前窗口的<strong>地址栏对象，</strong>通过<code>window.location</code>对象，可以解析URL、重定向浏览器到新的页面、重新加载当前页面等</p>
+<ul>
+<li><code>window.location.href</code>：获取或设置当前页面的完整URL。</li>
+<li><code>window.location.protocol</code>：获取URL的协议部分（如 <code>&quot;http:&quot;</code> 或 <code>&quot;https:&quot;</code>）。</li>
+<li><code>window.location.host</code>：获取URL的主机名和端口号（如果有）。</li>
+<li><code>window.location.hostname</code>：获取URL的主机名。</li>
+<li><code>window.location.pathname</code>：获取URL的路径名。</li>
+<li><code>window.location.search</code>：获取URL的查询字符串部分（包括问号）。</li>
+<li><code>window.location.hash</code>：获取URL的哈希（锚点）部分。</li>
+</ul>
+<p><strong>location对象中的方法：</strong></p>
+<pre><code class="jsx">&lt;button&gt;跳转页面&lt;/button&gt;
+&lt;button&gt;替换页面&lt;/button&gt;
+&lt;button&gt;刷新页面&lt;/button&gt;
+&lt;script&gt;
+  var btn = document.getElementsByTagName(&#39;button&#39;);//返回值为一个类数组
+  btn[0].onclick = function () &#123;
+    location.assign(&#39;./test2.html&#39;)
+  &#125;
+  btn[1].onclick = function () &#123;
+    location.replace(&#39;./test2.html&#39;)
+  &#125;
+  btn[2].onclick = function () &#123;
+    location.reload()
+  &#125;
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li><code>assign()</code>：传递一个url参数，打开新url，替换当前页面，并在浏览记录中生成一条记录，页面替换后可以返回上一个页面</li>
+<li><code>replace()</code>：参数为一个url，打开新url，替换当前页面，不会在历史记录中生成新记录，替换页面后无法再次返回之前页面</li>
+<li><code>reload()</code>：重新加载当前显示的页面，参数可以为<code>boolean</code>类型，默认为<code>false</code>，表示以最有效方式重新加载，可能从缓存中直接加载。如果参数为<code>true</code>，强制从服务器中重新加载</li>
+</ul>
+<h3 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a><code>navigator</code></h3><p>浏览器对象，提供了与浏览器相关的信息和操作接口。在前端开发中，通常使用<code>Navigator</code>对象来获取用户浏览器的相关信息，例如浏览器的名称、版本、语言设置、设备类型、操作系统等。这些信息对于实现浏览器兼容性、设备适配等功能非常重要。<code>Navigator</code>对象还包含了一些方法和属性，用于获取当前设备的地理位置信息、访问设备的媒体设备等</p>
+<ul>
+<li><code>navigator.appName</code>：浏览器名称；注意：<code>“Netscape”</code>是 IE11、Chrome、Firefox 以及 Safari 的应用程序名称的统称；</li>
+<li><code>navigator.appVersion</code>：浏览器版本；</li>
+<li><code>navigator.appCodeName</code>：返回浏览器的应用程序代码名称</li>
+<li><code>navigator.language</code>：浏览器设置的语言；</li>
+<li><code>navigator.platform</code>：操作系统类型；</li>
+<li><code>navigator.userAgent</code>：返回用户代理头的字符串表示（通常是浏览器类型、版本和操作系统信息）；</li>
+<li><code>navigator.cookieEnabled</code>：返回一个布尔值，表示是否启用<code>cookie</code>；</li>
+<li><code>navigator.product</code>：返回浏览器引擎的产品名称</li>
+</ul>
+<h3 id="screen"><a href="#screen" class="headerlink" title="screen"></a><code>screen</code></h3><ul>
+<li><code>screen.width</code>和<code>screen.height</code>：屏幕总宽度&#x2F;高度</li>
+<li><code>screen.availWidth</code>和<code>screen.availHeight</code>：可用宽度&#x2F;高度，（即减去系统界面元素后的宽度和高度）</li>
+<li><code>screen.colorDepth</code>：颜色深度</li>
+<li><code>screen.pixelDepth</code>：颜色分辨率</li>
+</ul>
+
+        </article>
+
+        
+            
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Talita<br>
+    
+      <strong>文章来源：</strong><a href="https://zhuanlan.zhihu.com/p/22184194" title="https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;22184194" target="_blank" rel="noopener">https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;22184194</a><br>
+    
+    <strong>本文链接：</strong><a href="http://example.com/2024/05/15/DB/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;05&#x2F;15&#x2F;DB&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;05&#x2F;15&#x2F;DB&#x2F;</a><br>
+
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+        
+
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/JavaScript/">JavaScript</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+    
+</div>
+
+    <div class="nexmoe-post-footer">
+        <section class="nexmoe-comment">
+    <div class="valine"></div>
+<script src='https://lib.baomitu.com/valine/1.3.9/Valine.min.js'></script>
+<script>
+    // 使用方法 https://valine.js.org/quickstart.html
+    new Valine({
+        el: '.valine',
+        appId: 'r5zxC0st0DDjPA9auXzMV7HY-gzGzoHsz',
+        appKey: '3bqCsovpyfTPHUzTHovd3V3V'
+    })
+</script>
+</section>
+    </div>
+</div>
+
+
+        <div class="nexmoe-post-right">
+          
+            <div class="nexmoe-fixed">
+              <div class="nexmoe-tool">
+                <a href="#" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+              </div>
+            </div>
+          
+        </div>
+    </div>
+  </div>
+  <div id="nexmoe-pendant">
+    <div class="nexmoe-drawer mdui-drawer nexmoe-pd" id="drawer">
+        
+            <div class="nexmoe-pd-item">
+                <div class="clock">
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="needle" id="hours"></div>
+        <div class="needle" id="minutes"></div>
+        <div class="needle" id="seconds"></div>
+        <div class="clock_logo">
+
+        </div>
+
+    </div>
+<style>
+    .clock {
+        background-color: #ffffff;
+        width: 70vw;
+        height: 70vw;
+        max-width: 70vh;
+        max-height: 70vh;
+        border: solid 2.8vw #242424;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        box-sizing: border-box;
+        box-shadow: 0 1.4vw 2.8vw rgba(0, 0, 0, 0.8);
+        zoom:0.2
+    }
+
+    .memory {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+    }
+
+    .memory:nth-child(1) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(0deg) translateY(-520%);
+    }
+
+    .memory:nth-child(2) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(6deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(3) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(12deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(4) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(18deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(5) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(24deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(6) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(30deg) translateY(-520%);
+    }
+
+    .memory:nth-child(7) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(36deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(8) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(42deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(9) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(48deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(10) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(54deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(11) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(60deg) translateY(-520%);
+    }
+
+    .memory:nth-child(12) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(66deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(13) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(72deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(14) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(78deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(15) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(84deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(16) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(90deg) translateY(-520%);
+    }
+
+    .memory:nth-child(17) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(96deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(18) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(102deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(19) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(108deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(20) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(114deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(21) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(120deg) translateY(-520%);
+    }
+
+    .memory:nth-child(22) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(126deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(23) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(132deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(24) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(138deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(25) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(144deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(26) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(150deg) translateY(-520%);
+    }
+
+    .memory:nth-child(27) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(156deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(28) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(162deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(29) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(168deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(30) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(174deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(31) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(180deg) translateY(-520%);
+    }
+
+    .memory:nth-child(32) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(186deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(33) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(192deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(34) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(198deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(35) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(204deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(36) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(210deg) translateY(-520%);
+    }
+
+    .memory:nth-child(37) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(216deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(38) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(222deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(39) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(228deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(40) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(234deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(41) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(240deg) translateY(-520%);
+    }
+
+    .memory:nth-child(42) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(246deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(43) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(252deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(44) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(258deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(45) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(264deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(46) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(270deg) translateY(-520%);
+    }
+
+    .memory:nth-child(47) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(276deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(48) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(282deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(49) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(288deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(50) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(294deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(51) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(300deg) translateY(-520%);
+    }
+
+    .memory:nth-child(52) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(306deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(53) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(312deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(54) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(318deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(55) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(324deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(56) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(330deg) translateY(-520%);
+    }
+
+    .memory:nth-child(57) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(336deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(58) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(342deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(59) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(348deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(60) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(354deg) translateY(-1461%);
+    }
+
+    .needle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+    }
+
+    .needle#hours {
+        background-color: #1f1f1f;
+        width: 4%;
+        height: 30%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#hours.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#hours:after {
+        content: '';
+        background-color: #1f1f1f;
+        width: 4vw;
+        height: 4vw;
+        max-width: 4vh;
+        max-height: 4vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .needle#minutes {
+        background-color: #1f1f1f;
+        width: 2%;
+        height: 45%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#minutes.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#minutes:after {
+        content: '';
+        background-color: #1f1f1f;
+        width: 4vw;
+        height: 4vw;
+        max-width: 4vh;
+        max-height: 4vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .needle#seconds {
+        background-color: #cb2f2f;
+        width: 1%;
+        height: 50%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#seconds.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#seconds:after {
+        content: '';
+        background-color: #cb2f2f;
+        width: 2.5vw;
+        height: 2.5vw;
+        max-width: 2.5vh;
+        max-height: 2.5vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .clock_logo{
+        width: 10vw;
+        height: 10vw;
+        max-width: 10vh;
+        max-height: 10vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    @media (min-width: 100vh) {
+        .clock {
+            border: solid 2.8vh #242424;
+            box-shadow: 0 1.4vh 2.8vh rgba(0, 0, 0, 0.8);
+        }
+    }
+
+</style>
+
+
+
+
+
+            </div>
+        
+            <div class="nexmoe-pd-item">
+                <div class="qweather" >
+    <div id="he-plugin-standard"></div>
+    <div class="qweather-logo">
+
+    </div>
+
+</div>
+<style>
+    .qweather{
+        position: relative;
+    }
+    .qweather-logo{
+        position: absolute;
+        right: 0;
+        top: -15px;
+        width: 40px;
+        height: 40px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+</style>
+<script>
+  WIDGET = {
+    "CONFIG": {
+      "layout": "2",
+      "width": "260",
+      "height": "220",
+      "background": "5",
+      "dataColor": "e67249",
+      "borderRadius": "15",
+      "key": "f74d1e1690e6432d801e97fa2f05a162"
+    }
+  }
+</script>
+<script src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"></script>
+
+            </div>
+        
+</div>
+<style>
+    .nexmoe-pd {
+        left: auto;
+        top: 40px;
+        right: 0;
+    }
+    .nexmoe-pd-item{
+       display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+</style>
+
+  </div>
+  <script src="https://lib.baomitu.com/lazysizes/5.1.0/lazysizes.min.js"></script>
+<script src="https://lib.baomitu.com/highlight.js/10.0.0/highlight.min.js"></script>
+<script src="https://lib.baomitu.com/mdui/0.4.3/js/mdui.min.js"></script>
+
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://lib.baomitu.com/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/app.js?v=1719645310106"></script>
+
+<script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+<!-- hexo injector body_end start -->
+<script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script src="/lib/codeBlock/codeBlockFuction.js"></script>
+
+<script src="/lib/codeBlock/codeLang.js"></script>
+
+<script src="/lib/codeBlock/codeCopy.js"></script>
+
+<script src="/lib/codeBlock/codeShrink.js"></script>
+
+<link rel="stylesheet" href="/lib/codeBlock/matery.css">
+
+<script src="/js/clock.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script src="/js/search.js"></script>
+
+<script src="/js/webapp.js"></script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"position":"relative","z-index":1,"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/250cb4aa.js","daovoice")</script>
+<script>
+  daovoice('init', {
+    app_id: "250cb4aa"
+  });
+  daovoice('update');
+</script>
+
