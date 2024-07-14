@@ -31,7 +31,7 @@
   
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
   
-  <link rel="stylesheet" href="/css/style.css?v=1720102878669">
+  <link rel="stylesheet" href="/css/style.css?v=1720920277372">
 <meta name="generator" content="Hexo 7.2.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -260,8 +260,8 @@
         
         <div class="nexmoe-post-meta nexmoe-rainbow">
             <a><i class="nexmoefont icon-calendar-fill"></i>2024年07月04日</a>
-            <a><i class="nexmoefont icon-areachart"></i>3.5k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 15 分钟</a>
+            <a><i class="nexmoefont icon-areachart"></i>3.3k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 14 分钟</a>
         </div>
         
         <article>
@@ -269,7 +269,7 @@
                 <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>服务器和个人电脑的区别：</p>
 <ol>
 <li><strong>设计目的和使用场景</strong>：<ul>
-<li><strong>服务器</strong>设计用于提供连续的服务，如数据存储、网站托管、应用程序运行等，通常服务于多个用户或客户端。</li>
+<li><strong>服务器</strong>设计用于提供连续的服务，如数据存储、网站托管、应用程序运行等，通常服务于多个用户或客 户端。</li>
 <li><strong>个人电脑</strong>主要用于个人工作、学习和娱乐，通常只服务于单个用户或少数用户。</li>
 </ul>
 </li>
@@ -296,23 +296,30 @@
 </ol>
 <p>Nginx本身也只是一台服务器，它之所以能够实现反向代理和负载均衡的功能，是通过人为的配置来实现的。</p>
 <p>Nginx的配置文件（通常是<code>nginx.conf</code>）允许管理员定义各种规则和指令，以控制Nginx如何处理请求。</p>
-<h2 id="Nginx-特点"><a href="#Nginx-特点" class="headerlink" title="Nginx 特点"></a>Nginx 特点</h2><ul>
-<li>更快：在高并发环境下，Nginx 比其他 WEB 服务器有更快的响应。</li>
-<li>高扩展性：Nginx 是基于模块化设计，由多个耦合度极低的模块组成，因此具有很高的扩展性。许多高流量的网站都倾向于开发符合自己业务特性的定制模块。</li>
-<li>高可靠性：Nginx 的可靠性来自于其核心框架代码的优秀设计，模块设计的简单性。另外，官方提供的常用模块都非常稳定，每个 worker 进程相对独立，master 进程在一个 worker 进程出错时可以快速拉起新的 worker 子进程提供服务。</li>
-<li>低内存消耗：一般情况下，10000个非活跃的 HTTP Keep-Alive 连接在 Nginx 中仅消耗 2.5MB 的内存，这是 Nginx 支持高并发连接的基础。</li>
-<li>单机支持10万以上的并发连接：理论上，Nginx 支持的并发连接上限取决于内存，10万远未封顶。</li>
-<li>热部署：master 进程与 worker 进程的分离设计，使得 Nginx 能够提供热部署功能，即在 7x24 小时不间断服务的前提下，升级 Nginx 的可执行文件。当然，它也支持不停止服务就更新配置项，更换日志文件等功能。</li>
-<li>最自由的 BSD 许可协议：这是 Nginx 可以快速发展的强大动力。BSD 许可协议不只是允许用户免费使用 Nginx ，它还允许用户在自己的项目中直接使用或修改 Nginx 源码，然后发布。</li>
+<h3 id="Nginx与前后的交互流程"><a href="#Nginx与前后的交互流程" class="headerlink" title="Nginx与前后的交互流程"></a>Nginx与前后的交互流程</h3><ol>
+<li><strong>用户请求</strong>：用户通过浏览器输入URL访问React应用。这个请求首先被发送到Nginx服务器。</li>
+<li><strong>Nginx处理请求</strong>：<ul>
+<li>如果请求的是静态文件（如HTML、CSS、JS等），Nginx会从指定的目录中查找这些文件，并将它们发送给浏览器。</li>
+<li>如果请求的是API（即需要后端处理的数据请求），Nginx会根据配置将请求转发到后端服务器（如Node.js应用、Java应用等）。</li>
 </ul>
-<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/07/04/Nginx/01.png" alt="Untitled" class="lazyload"></p>
+</li>
+<li><strong>后端服务器处理</strong>：后端服务器接收到请求后，会根据请求的内容进行相应的业务逻辑处理，并生成响应数据。</li>
+<li><strong>Nginx转发响应</strong>：后端服务器将响应数据发送给Nginx，Nginx再将响应数据转发给浏览器。</li>
+<li><strong>浏览器渲染</strong>：浏览器接收到响应数据后，会根据前端React代码中的逻辑来解析和渲染这些数据，最终呈现给用户。</li>
+</ol>
+<p>在这个过程中，Nginx主要起到两个作用：</p>
+<ul>
+<li><strong>静态文件托管</strong>：直接为静态文件请求提供服务，减轻后端服务器的压力。</li>
+<li><strong>反向代理</strong>：将需要后端处理的请求转发给后端服务器，并将后端服务器的响应转发给客户端。</li>
+</ul>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/07/04/Nginx/100.png" alt="Untitled" class="lazyload"></p>
 <p>正向代理： 我们平时访问国外的资源是受限的，比如看推特，看GitHub等等。由于大陆特有的防火墙策略，直接用国内的服务器是无法访问国外的服务器的，所以我们需要配置一个代理服务器来帮助我们去访问，这种就是正向代理。</p>
 <p>反向代理：当网站采用分布式部署时，即使用多台服务器共同处理用户请求，每台服务器都有自己独立的内存空间来存储Session数据，导致我们在服务器之间访问需要频繁登录，此时搭建一个反向代理服务器，由反向代理服务器去选择目标服务器获取数据，再返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，暴露的是反向代理服务器的地址，隐藏了真实服务器的地址。</p>
 <p>由于服务器一般用的都是Linux系统，所以安装和配置一般都用ubuntu</p>
 <h3 id="Nginx安装、常用命令"><a href="#Nginx安装、常用命令" class="headerlink" title="Nginx安装、常用命令"></a><strong>Nginx安装、常用命令</strong></h3><ul>
 <li>安装</li>
 </ul>
-<pre><code class="javascript">// ubuntu
+<pre><code class="bash">// ubuntu
 sudo apt install nginx
 
 安装成功后：
@@ -346,7 +353,7 @@ sudo apt install nginx
 <ul>
 <li>常用指令</li>
 </ul>
-<pre><code class="javascript"># 启动nginx
+<pre><code class="bash"># 启动nginx
 sevice nginx start
 nginx
 
@@ -368,7 +375,7 @@ nginx -t
 <p>nginx的log日志分为access log 和 error log。</p>
 <p>其中access log 记录了哪些用户，哪些页面以及用户浏览器、ip和其他的访问信息，error log 则是记录服务器错误日志</p>
 <h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a><strong>配置文件</strong></h3><p>常用Nginx配置：</p>
-<pre><code class="javascript">########### 每个指令必须有分号结束。#################
+<pre><code class="json">########### 每个指令必须有分号结束。#################
 # main 段配置信息 
 user  nginx;                        # 运行用户，默认即是 Nginx，可以不进行设置
 worker_processes  auto;             # Nginx 进程数，一般设置为和 CPU 核数一样
@@ -424,7 +431,7 @@ http &#123;
 <ol>
 <li><p>解决DNS域名服务器的映射问题：修改host文件<code>sudo vi /etc/hosts</code></p>
 <p>添加从 <a target="_blank" rel="noopener" href="http://172.19.187.151:8080/">http://172.19.187.151:8080/</a>到 <a target="_blank" rel="noopener" href="http://i.meituan.com/">http://i.meituan.com/</a> 的映射</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/07/04/Nginx/02.png" alt="Untitled" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/2024/07/04/Nginx/200.png" alt="Untitled" class="lazyload"></p>
 </li>
 <li><p>配置nginx转发（反向代理）：mac下nginx的配置文件地址 <code>/usr/local/etc/nginx/nginx.conf</code></p>
 </li>
@@ -438,7 +445,7 @@ http &#123;
 </ul>
 <p>现在我在 fe.com 对 dev.com 发起请求一定会出现跨域。</p>
 <p>现在我们只需要启动一个 Nginx 服务器，将 server_name 设置为 fe.com 然后设置相应的 location 以拦截前端需要跨域的请求，最后将请求代理回 dev.com。如下面的配置：</p>
-<pre><code class="javascript">server &#123;
+<pre><code class="json">server &#123;
   listen      80; 
   server_name  fe.com; 
   location / &#123;  
@@ -453,7 +460,7 @@ http &#123;
 </ul>
 <h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡是指Nginx将客户端的请求分发到多个后端服务器，以平衡每个服务器的负载。</p>
 <p>通过配置文件中的<code>upstream</code>块和<code>proxy_pass</code>指令来指定需要转发的目标服务器，可以实现负载均衡。</p>
-<pre><code class="javascript">upstream backend_servers &#123;
+<pre><code class="json">upstream backend_servers &#123;
     server backend1.example.com;
     server backend2.example.com;
     server backend3.example.com;
@@ -474,14 +481,14 @@ server &#123;
 <li><p>轮询策略：默认情况下采用的策略（上面这种就是），将所有客户端请求轮询分配给服务端。这种策略是可以正常工作的，但是如果其中某一台服务器压力太大，出现延迟，会影响所有分配在这台服务器下的用户。</p>
 </li>
 <li><p>设置权重：默认为1，权重越高，分配的请求越多</p>
-<pre><code class="javascript">upstream myserver&#123;
+<pre><code class="json">upstream myserver&#123;
     server 127.0.0.1:8080 weight=1;
     server 127.0.0.1:8081 weight=2;
 &#125;
 </code></pre>
 </li>
 <li><p>最小连接数策略：将请求优先分配给压力较小的服务器，它可以平衡每个队列的长度，并避免向压力大的服务器添加更多的请求。</p>
-<pre><code class="javascript">upstream myserver&#123;
+<pre><code class="json">upstream myserver&#123;
     least_conn;
     server 127.0.0.1:8080;
     server 127.0.0.1:8081;
@@ -489,7 +496,7 @@ server &#123;
 </code></pre>
 </li>
 <li><p>最快响应时间策略：优先分配给响应时间最短的服务器。</p>
-<pre><code class="javascript">upstream myserver&#123;
+<pre><code class="json">upstream myserver&#123;
     fair;
     server 127.0.0.1:8080;
     server 127.0.0.1:8081;
@@ -497,7 +504,7 @@ server &#123;
 </code></pre>
 </li>
 <li><p>客户端 IP 绑定策略：来自同一个 IP 的请求永远只分配一台服务器，有效解决了动态网页存在的 session 共享问题。</p>
-<pre><code class="javascript">upstream myserver&#123;
+<pre><code class="json">upstream myserver&#123;
     ip_hash;
     server 127.0.0.1:8080;
     server 127.0.0.1:8081;
@@ -505,10 +512,8 @@ server &#123;
 </code></pre>
 </li>
 </ol>
-<h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3><p>一般来说，都需要将动态资源和静态资源分开，由于 Nginx 的高并发和静态资源缓存等特性，经常将静态资源部署在 Nginx 上。如果请求的是静态资源，直接到静态资源目录获取资源，如果是动态资源的请求，则利用反向代理的原理，把请求转发给对应后台应用去处理，从而实现动静分离。</p>
-<p>使用前后端分离后，可以很大程度提升静态资源的访问速度，即使动态服务不可用，静态资源的访问也不会受到影响。</p>
-<h2 id="Nginx配置前端静态页面代码"><a href="#Nginx配置前端静态页面代码" class="headerlink" title="Nginx配置前端静态页面代码"></a><strong>Nginx配置前端静态页面代码</strong></h2><p>假设你的前端项目是一个单页面应用（SPA），所有的静态文件（HTML、CSS、JavaScript、图片等）都位于<code>/var/www/myfrontend</code>目录下，并且你希望你的网站通过<code>http://myfrontend.example.com</code>来访问，应该进行如下配置：</p>
-<pre><code class="javascript">server &#123;  
+<h2 id="Nginx配置前端静态页面"><a href="#Nginx配置前端静态页面" class="headerlink" title="Nginx配置前端静态页面"></a><strong>Nginx配置前端静态页面</strong></h2><p>假设你的前端项目是一个单页面应用（SPA），所有的静态文件（HTML、CSS、JavaScript、图片等）都位于<code>/var/www/myfrontend</code>目录下，并且你希望你的网站通过<code>http://myfrontend.example.com</code>来访问，应该进行如下配置：</p>
+<pre><code class="json">server &#123;  
     listen 80; # 监听80端口  
     server_name myfrontend.example.com; # 你的域名  
   
@@ -536,7 +541,7 @@ server &#123;
 </code></pre>
 <p>现在，你的前端静态页面应该可以通过<code>http://myfrontend.example.com</code>来访问了。请确保你的域名已经正确解析到了你的服务器IP地址，这个过程通常是通过在域名注册商那里设置DNS（域名系统）记录来完成的，并且服务器上的防火墙和安全组规则允许HTTP和HTTPS流量通过。</p>
 <h3 id="Nginx-配置后端接口转发-API"><a href="#Nginx-配置后端接口转发-API" class="headerlink" title="Nginx 配置后端接口转发(API)"></a><strong>Nginx 配置后端接口转发(API)</strong></h3><p>将<code>/api</code>路径下的所有请求转发到后端API服务器<code>http://192.168.1.100:3000/</code>：</p>
-<pre><code class="javascript">server &#123;  
+<pre><code class="json">server &#123;  
     listen 80;  
     server_name api.example.com; # 你的域名  
   
@@ -561,7 +566,7 @@ server &#123;
     # 错误页面配置...  
 &#125;
 </code></pre>
-<p>参考案例：前端请求添加水印的服务，是在div中请求一张背景图片的url，这个url就是一个api接口，需要在nginx中配置，导向实际要去的路径</p>
+<p>参考案例：前端请求添加水印的服务，是在div中请求一张背景图片的url，这个url就是一个api接口，需要在nginx中配置，转发给后端服务器后，服务器返回Nginx对应的背景图片，Nginx再转发给浏览器进行渲染</p>
 
              -->
         </article>
@@ -1282,7 +1287,7 @@ server &#123;
 <script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/app.js?v=1720102878670"></script>
+<script src="/js/app.js?v=1720920277372"></script>
 
 <script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 <script>
@@ -1299,8 +1304,6 @@ server &#123;
 
 
 <!-- hexo injector body_end start -->
-<script src="/js/clock.js"></script>
-
 <script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
 
 <script src="/lib/codeBlock/codeBlockFuction.js"></script>
@@ -1313,11 +1316,13 @@ server &#123;
 
 <link rel="stylesheet" href="/lib/codeBlock/matery.css">
 
+<script src="/js/webapp.js"></script>
+
+<script src="/js/clock.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <script src="/js/search.js"></script>
-
-<script src="/js/webapp.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"position":"relative","z-index":1,"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
