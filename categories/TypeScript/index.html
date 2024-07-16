@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  
+  <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
+  <title>分类：TypeScript - 卷不过没事了</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+    <!-- Site Verification -->
+    <meta name="baidu-site-verification" content="code-J1Qg17G6wT" />
+
+  <link rel="shortcut icon" href="/images/head/head.jpg" type="image/png" />
+  <meta property="og:type" content="website">
+<meta property="og:title" content="卷不过没事了">
+<meta property="og:url" content="http://example.com/categories/TypeScript/index.html">
+<meta property="og:site_name" content="卷不过没事了">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Talita">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://lib.baomitu.com/highlight.js/9.15.8/styles/atom-one-dark.min.css" crossorigin>
+  <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css">
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+  <link rel="stylesheet" href="/lib/fancybox/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://lib.baomitu.com/justifiedGallery/3.8.1/css/justifiedGallery.min.css">
+  
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1721141826487">
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(/images/background/xiaomai.png)"></div>
+    <div class="nexmoe-small" style="background-image: url(/images/background/lihui.png)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Talita" class="mdui-btn mdui-btn-icon"><img src="/images/head/me.jpeg" alt="Talita"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Talita">
+            <img src="/images/head/me.jpeg" alt="Talita" alt="Talita">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div class="nexmoe-count-item"><span>文章</span>8 <div class="item-radius"></div><div class="item-radius item-right"></div> </div>
+        <div class="nexmoe-count-item"><span>标签</span>6<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+        <div class="nexmoe-count-item"><span>分类</span>6<div class="item-radius"></div><div class="item-radius item-right"></div></div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-meishi"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-hanbao1"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-jiubei1"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friend.html" title="友链">
+            <i class="mdui-list-item-icon nexmoefont icon-cola"></i>
+            <div class="mdui-list-item-content">
+                友链
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/download.html" title="下载中心">
+            <i class="mdui-list-item-icon nexmoefont icon-tangguo"></i>
+            <div class="mdui-list-item-content">
+                下载中心
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  
+<!-- 站内搜索 -->
+
+<div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search" >
+        <form id="search-form">
+            <label><input type="text" id="local-search-input" name="q" results="0" placeholder="站内搜索" class="input form-control" autocomplete="off" autocorrect="off"/></label>
+            <!-- 清空/重置搜索框 -->
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+        </form>
+    </div>
+    <div id="local-search-result"></div> <!-- 搜索结果区 -->
+    <!-- <p class='no-result'></p> 无匹配时显示，注意在 CSS 中设置默认隐藏 -->
+</div>
+
+
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="http://wpa.qq.com/msgrd?v=3&uin=2120252100&site=qq&menu=yes" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(64, 196, 255);background-color: rgba(64, 196, 255, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="mailto:tangyuxian@vip.qq.com" target="_blank" mdui-tooltip="{content: 'mail'}" style="color: rgb(249,8,8);background-color: rgba(249,8,8,.1);">
+            <i class="nexmoefont icon-mail-fill"></i>
+        </a><a class="mdui-ripple" href="https://blog.csdn.net/qq_40621378?type=blog" target="_blank" mdui-tooltip="{content: 'CSDN'}" style="color: rgb(199,29,35);background-color: rgba(199,29,35,.1);">
+            <i class="nexmoefont icon-csdn"></i>
+        </a><a class="mdui-ripple" href="https://www.cnblogs.com/lovetangyuxian/" target="_blank" mdui-tooltip="{content: '博客园'}" style="color: rgb(66, 214, 29);background-color: rgba(66, 214, 29, .1);">
+            <i class="nexmoefont icon-bokeyuan"></i>
+        </a><a class="mdui-ripple" href="https://github.com/tangyuxian/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/tangyuxian" target="_blank" mdui-tooltip="{content: 'gitee'}" style="color: rgb(255, 255, 255);background-color: rgb(199,29,35);">
+            <i class="nexmoefont icon-mayun"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Node-js/">Node.js</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/TypeScript/">TypeScript</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/react/">react</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/代码管理/">代码管理</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/浏览器/">浏览器</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/node/" style="font-size: 20px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+<style>
+.nexmoe-widget .archive-list-count{
+	position : absolute;
+	right: 15px;
+	top:9px;
+	color: #DDD;
+}
+</style>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 Talita
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/tangyuxian/hexo-theme-tangyuxian" target="_blank">Tangyuxian</a><br/>
+        <a href="http://beian.miit.gov.cn" target="_blank">辽ICP备2021002341号</a><br/>
+        
+        <div style="font-size: 12px">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            本站总访问量  <a id="busuanzi_value_site_pv"></a> 次<br />
+            本站访客数<a id="busuanzi_value_site_uv"></a>人次
+        </div>
+        
+        
+    </div>
+
+</div><!-- .nexmoe-drawer -->
+
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2024/05/28/T1/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 26.666666666666668%;">
+                    <img data-src="/images/post/TypeScript.png" data-sizes="auto" alt="TypeScript" class="lazyload">
+                    <h1>TypeScript</h1>
+                </div>
+            
+        </a>
+        
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2024年05月28日</a>
+            <a><i class="nexmoefont icon-areachart"></i>4.5k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 21 分钟</a>
+        </div>
+        
+        <article>
+            <!-- 
+                <h1 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h1><h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><ol>
+<li>ts编译器</li>
+</ol>
+<p>js引擎运行ts代码需要先经过tsc编译器编译为可识别的的js代码，tsc基本用法：</p>
+<ol>
+<li>tsc：默认使用 tsconfig.json 的配置</li>
+<li>tsc <name>.ts：只编译<name>.ts</li>
+<li>tsc *.ts：编译所有ts文件</li>
+<li>tsc –project tsconfig.production.json：指定配置文件</li>
+<li>tsc index.js –declaration 或 -d –emitDeclarationOnly：只生成类型声明文件，不生成js代码</li>
+<li>tsc app.ts util.ts –target esnext –outfile index.js –outDir dist：target指定生成的js代码版本，outfile指定输出文件，outDir指定输出位置</li>
+<li>tsc app.ts <code>-noEmitOnError</code>：一旦报错就停止编译，不生成编译产物。</li>
+<li>tsc app.ts  <code>-noEmit</code>：只检查类型是否正确，不生成 js 文件。</li>
+</ol>
+<p><code>tsconfig.json</code>的具体配置项参见<a target="_blank" rel="noopener" href="https://www.bookstack.cn/read/wangdoc-typescript-tutorial/docs-tsconfig.json.md">https://www.bookstack.cn/read/wangdoc-typescript-tutorial/docs-tsconfig.json.md</a>。</p>
+<ol>
+<li>终端运行ts</li>
+</ol>
+<p><code>npm install -g ts-node</code>全局安装该模块，<code>ts-node script.ts</code> 编译并运行ts文件，退出环境Ctrl + d</p>
+<h3 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h3><p>一共8种：<code>boolean</code>、<code>string</code>、<code>number</code>、<code>bigint</code>、<code>symbol</code>、<code>object</code>、<code>undefined</code>、<code>null</code></p>
+<p>小写类型用于类型判断，大写类型为内置对象，一般是用来调用该对象方法的。例如，<code>Number.parseInt()</code>、<code>Number.parseFloat()</code>、<code>Number.isNaN()</code>。</p>
+<p>number：64位浮点数</p>
+<p>bigint：超出number的计算范围，要求编译参数<code>target</code>不低于<code>es2020</code></p>
+<p>boolean：任意类型转boolean只要加!!即可</p>
+<p>string：JSON字符串必须用双引号</p>
+<p>undefined 和 null ：是所有类型的子类型，分别表示未定义和空</p>
+<p><strong>object：</strong>大写Object和{}包含所有类型，小写object仅包含引用类型，即<strong>对象、数组和函数。</strong>如果声明某个对象类型为object，ts只会推断它拥有原生object的属性和方法，因此一般不用。</p>
+<pre><code class="jsx">const o1:Object = &#123; foo: 0 &#125;;
+const o2:object = &#123; foo: 0 &#125;;
+
+o1.toString()// 正确
+o1.foo// 报错
+
+o2.toString()// 正确
+o2.foo// 报错
+</code></pre>
+<p>为了给一个对象添加属性并让 TypeScript 知道这些属性，你可以使用接口（Interface）或类型别名（Type Alias）来明确地定义对象的结构。</p>
+<ol>
+<li><p>使用接口</p>
+<pre><code class="tsx">interface MyObject &#123;
+  foo: number;
+&#125;
+
+const o1: MyObject = &#123; foo: 0 &#125;;
+console.log(o1.foo); // 正确
+</code></pre>
+</li>
+<li><p>使用类型别名</p>
+<pre><code class="tsx">type MyObject = &#123;
+  foo: number;
+&#125;;
+
+const o1: MyObject = &#123; foo: 0 &#125;;
+console.log(o1.foo); // 正确
+</code></pre>
+</li>
+<li><p>使用类型断言</p>
+<pre><code class="tsx">const o1 = &#123; foo: 0 &#125; as &#123; foo: number &#125;;
+console.log(o1.foo); // 正确
+</code></pre>
+</li>
+<li><p>使用索引签名</p>
+<pre><code class="tsx">interface MyObject &#123;
+  [key: string]: number;
+&#125;
+
+const o1: MyObject = &#123; foo: 0 &#125;;
+console.log(o1.foo); // 正确
+o1.bar = 1; // 正确
+</code></pre>
+</li>
+</ol>
+<p>Symbol：用于创建一个唯一标识，可以传入字符串作为描述信息。</p>
+<ol>
+<li><p><strong>作为对象属性名：</strong>需要写在[]里</p>
+<pre><code class="tsx">const PROP_NAME = Symbol()
+const PROP_AGE = Symbol()
+
+let obj = &#123;
+  [PROP_NAME]: &quot;一斤代码&quot;
+&#125;
+obj[PROP_AGE] = 18
+obj[PROP_NAME]// &#39;一斤代码&#39;
+obj[PROP_AGE]// 18
+</code></pre>
+</li>
+<li><p>替代常量</p>
+<pre><code class="jsx">// const TYPE_IMAGE = &#39;IMAGE&#39;
+const TYPE_IMAGE = Symbol()
+</code></pre>
+</li>
+</ol>
+<h3 id="任意类型"><a href="#任意类型" class="headerlink" title="任意类型"></a>任意类型</h3><p><strong>any</strong></p>
+<p><strong>顶层类型</strong>，会关闭类型检查。</p>
+<p>赋值给其他变量时，其他变量也会变成any。</p>
+<p>如果不显式声明并且ts推断不出来时，会被认定为any，打开编译项<code>noImplicitAny</code> ，被推断为any时会报错。</p>
+<p>使用<code>let</code>和<code>var</code>时如果不赋值，也没有指定类型，ts 会推断它们的类型为<code>any</code>。即使打开了<code>noImplicitAny</code>也不会报错。</p>
+<p><strong>unknown（更加推荐）</strong></p>
+<p>any的安全类型，它让变量不能赋值给其他变量，并且变为<code>private</code>，不能被直接调用，除非使用类型断言和类型守卫</p>
+<ol>
+<li><p>类型断言</p>
+<pre><code class="tsx">let value: unknown = &quot;Hello, world!&quot;;
+
+// 使用类型断言
+(value as string).length; // 正确
+</code></pre>
+</li>
+<li><p>类型守卫（类型缩小）</p>
+<pre><code class="tsx">let value: unknown = &quot;Hello, world!&quot;;
+
+if (typeof value === &quot;string&quot;) &#123;
+  console.log(value.length); // 正确，因为在这个分支内，value 的类型被缩小为 string
+&#125;
+</code></pre>
+</li>
+</ol>
+<h3 id="Never类型"><a href="#Never类型" class="headerlink" title="Never类型"></a>Never类型</h3><p><code>never</code>等同于空集，不可能赋给它任何值，否则都会报错。</p>
+<p><code>never</code>类型的使用场景：</p>
+<ol>
+<li><p>在一些类型运算之中，保证类型运算的完整性</p>
+</li>
+<li><p>不可能返回值的函数，返回值的类型就可以写成<code>never</code></p>
+<pre><code class="tsx">function f():never &#123;
+  throw new Error(&#39;Error&#39;);
+&#125;
+
+let v1:number = f();// 不报错let v2:string = f();// 不报错let v3:boolean = f();// 不报错
+</code></pre>
+</li>
+<li><p>如果一个变量可能有多种类型（即联合类型），通常需要使用分支处理每一种类型。处理完所有可能的类型之后，剩余的情况就属于<code>never</code>类型。</p>
+<pre><code class="tsx">function fn(x:string|number) &#123;
+  if (typeof x === &#39;string&#39;) &#123;
+    *// ...*
+  &#125; else if (typeof x === &#39;number&#39;) &#123;
+    *// ...*
+  &#125; else &#123;
+    x; *// never 类型*
+  &#125;
+&#125;
+</code></pre>
+</li>
+</ol>
+<h3 id="interface-接口"><a href="#interface-接口" class="headerlink" title="interface 接口"></a>interface 接口</h3><p>注意：接口用作对象的模版，对象必须和接口的格式保持一致。</p>
+<p>对象属性：</p>
+<ol>
+<li>可选属性：<code>？</code></li>
+<li>只读属性：<code>readonly</code></li>
+<li>属性索引：<code>[prop: 类型]: 类型</code></li>
+</ol>
+<pre><code class="tsx">interface myObj &#123;
+  title?: string;
+  readonly name: string;
+  [prop: number]: number;
+&#125;
+const obj: myObj = &#123;
+  name: &quot;xmm&quot;,
+  123: 234,
+&#125;;
+</code></pre>
+<p>对象方法：允许函数重载</p>
+<pre><code class="tsx">interface myObj &#123;
+  f(x: number): boolean;
+  f(x: number, y: number): boolean;
+&#125;
+// 使用变量作为属性名
+const functionName = &quot;myFn&quot;;
+interface myObj &#123;
+  [functionName](x: number): boolean;
+&#125;
+</code></pre>
+<p>使用：</p>
+<ol>
+<li>属性名为表达式时，可以使用<code>[]</code></li>
+<li>接口允许使用<code>extends</code>继承，且多重继承，但不允许有冲突</li>
+<li>接口可以继承的对象包括 <code>interface、class、type</code></li>
+<li>同名接口会被合并，且后者生效</li>
+<li>type允许类型映射，interface不允许</li>
+</ol>
+<h3 id="数组和元祖"><a href="#数组和元祖" class="headerlink" title="数组和元祖"></a>数组和元祖</h3><p>数组两种写法：</p>
+<ol>
+<li><p><code>type[]</code></p>
+<pre><code class="tsx">let arr:number[] = [1, 2, 3];
+</code></pre>
+</li>
+<li><p><code>Array&lt;type&gt;</code></p>
+<pre><code class="tsx">let arr: Array&lt;number&gt; = [1, 2, 3];
+</code></pre>
+</li>
+</ol>
+<p>any数组：可以存放任意类型</p>
+<p>类数组<code>IArguments</code>：ts自己定义的一个接口，格式如下：</p>
+<pre><code class="tsx">interface IArguments &#123;
+    [index: number]: any;
+    length: number;
+    callee: Function;
+&#125;
+</code></pre>
+<p>它在函数被调用时自动创建，第一项为函数参数列表，第二项为数组长度</p>
+<p>因此，它的使用方法为：</p>
+<ol>
+<li>可以用索引访问</li>
+<li>具有length属性</li>
+<li>但不能调用真正的数组方法，除非使用<code>Array.from(arguments)</code> 或者扩展运算符将它转化为真正的数组</li>
+</ol>
+<pre><code class="jsx">function abc(a:number,b:number)&#123;
+  // const arr = Array.from(arguments)
+  const arr = [...arguments]
+  arr.push(32)
+&#125;
+abc(12,22)
+</code></pre>
+<p>比起<code>arguments</code> ，更推荐使用剩余参数，原因如下：</p>
+<ol>
+<li>剩余参数允许指定数据类型</li>
+<li>剩余参数是一个真正的数组，允许使用数组方法</li>
+<li>允许在不明确参数数量的时候使用</li>
+</ol>
+<pre><code class="tsx">function abc(...args:any[])&#123;
+  args.push(&#39;xmm&#39;)
+&#125;
+abc(12,22,23,34)
+</code></pre>
+<p>元组把数组的每个元素都固定了类型：</p>
+<pre><code class="tsx">let arr:[number,string] = [1,&#39;string&#39;]
+
+let arr2: readonly [number,boolean,string,undefined] 
+= [1,true,&#39;sring&#39;,undefined]
+</code></pre>
+<p>元祖的使用：</p>
+<ol>
+<li>元祖数量固定因此不允许越界，不允许使用push和pop等操作</li>
+<li>元祖同样支持索引访问</li>
+<li>元组的成员可以添加成员名，这个成员名是说明性的，可以任意取名，没有实际作用</li>
+</ol>
+<pre><code class="tsx">type Color = [
+  red: number,
+  green: number,
+  blue: number
+];
+
+const c:Color = [255, 255, 255];
+</code></pre>
+<h3 id="类型断言-联合类型-交叉类型"><a href="#类型断言-联合类型-交叉类型" class="headerlink" title="类型断言 | 联合类型 | 交叉类型"></a><strong>类型断言 | 联合类型 | 交叉类型</strong></h3><ol>
+<li>联合类型<code>｜</code>：允许多种类型</li>
+<li>交叉类型<code>&amp;</code> ：多种类型的集合，用于对象</li>
+<li>类型断言<code>as</code> ；<ol>
+<li>断言为其他类型：必须是相关类型，比如<code>string</code>断言为<code>object</code>或者<code>any</code>，如果是断言为完全无关的number，则需要断言两次<code>as unknown as number</code></li>
+<li>as any临时断言：访问只读对象的属性</li>
+<li>as const：把对象或者数组的长度和内容固定下来，变为只读的，不能再添加或修改，如果想改可以用临时断言。但如果赋值给预先声明类型的对象时，基本没啥用。</li>
+</ol>
+</li>
+<li>非空断言<code>！</code> ：告诉编译器该变量不会空</li>
+</ol>
+<pre><code class="tsx">const obj = &#123;
+  name: &quot;2&quot;,
+  age: 1,
+  gender: &quot;2&quot;,
+&#125; as const;
+(obj as any).name = &quot;xmm&quot;;
+</code></pre>
+<h3 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h3><p>ECMAScript 的内置对象：<code>RegExp</code>、<code>Date</code>、<code>Error</code></p>
+<p>DOM 和 BOM 的内置对象：<code>Document</code>、<code>HTMLElement</code>、<code>Event</code>、<code>NodeList</code> 等</p>
+<p><strong>RegExp：</strong></p>
+<pre><code class="tsx">let regex = new RegExp(&quot;ab+c&quot;);  
+let match = &quot;abc abcbbbc&quot;.match(regex);  
+console.log(match); // 输出: [&quot;abbc&quot;]
+</code></pre>
+<ul>
+<li><code>test(string)</code>: 测试字符串是否匹配正则表达式，返回布尔值</li>
+<li><code>match(string)</code>: 在字符串中执行匹配，返回匹配项</li>
+</ul>
+<p><strong>Date：</strong></p>
+<pre><code class="jsx">let now = new Date();  
+console.log(now); // 输出当前日期和时间  
+  
+let specificDate = new Date(&quot;December 17, 1995 03:24:00&quot;);  
+</code></pre>
+<ul>
+<li><code>getFullYear()</code>、<code>getMonth()</code>、<code>getDate()</code>: 获取年月日</li>
+<li><code>getHours()</code>、<code>getMinutes()</code>、<code>getSeconds()</code>: 获取时分秒</li>
+<li><code>setTime(milliseconds)</code>: 设置日期对象的毫秒数</li>
+</ul>
+<p><strong>Promise：</strong></p>
+<p>函数定义返回<code>promise</code> 的语法规则：<code>Promise&lt;T&gt;</code></p>
+<pre><code class="jsx">function promise():Promise&lt;number&gt; &#123;
+  return new Promise(resolve=&gt;&#123;
+    resolve(1)
+  &#125;)
+&#125;
+</code></pre>
+<p>代码雨案例：</p>
+<pre><code class="tsx">let canvas = document.querySelector(&#39;#canvas&#39;) as HTMLCanvasElement
+let ctx = canvas.getContext(&#39;2d&#39;) as CanvasRenderingContext2D
+canvas.height = screen.availHeight; //可视区域的高度
+canvas.width = screen.availWidth; //可视区域的宽度
+let str: string[] = &#39;XMZSWSSBXMZSWSSBXMZSWSSBXMZSWSSBXMZSWSSB&#39;.split(&#39;&#39;)
+let Arr = Array(Math.ceil(canvas.width / 10)).fill(0) //获取宽度例如1920 / 10 192
+console.log(Arr);
+ 
+const rain = () =&gt; &#123;
+    ctx.fillStyle = &#39;rgba(0,0,0,0.05)&#39;//填充背景颜色
+    ctx.fillRect(0, 0, canvas.width, canvas.height)//背景
+    ctx.fillStyle = &quot;#0f0&quot;; //文字颜色
+    Arr.forEach((item, index) =&gt; &#123;
+        ctx.fillText(str[ Math.floor(Math.random() * str.length) ], index * 10, item + 10)
+        Arr[index] = item &gt;= canvas.height || item &gt; 10000 *  Math.random() ? 0 : item + 10; //添加随机数让字符随机出现不至于那么平整
+    &#125;)
+    console.log(Arr);
+    
+&#125;
+setInterval(rain, 40)
+</code></pre>
+<h3 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h3><ol>
+<li><p>数字枚举：如果不定义将自动增长</p>
+</li>
+<li><p>字符串枚举</p>
+</li>
+<li><p>异构枚举：多种字面量类型</p>
+</li>
+<li><p>接口枚举：在接口中声明一个值为枚举类型，具体实现时也必须是该枚举类型</p>
+</li>
+<li><p>const枚举（推荐）：常量枚举会被编译为常量，普通枚举会被编译为对象</p>
+</li>
+<li><p>反向映射：上面都是正向映射（ <code>name</code> -&gt; <code>value</code>），反向映射（ <code>value</code> -&gt; <code>name</code>）为：</p>
+<pre><code class="tsx">enum Enum &#123;
+   fall
+&#125;
+let a = Enum.fall; // 正向映射
+let nameOfA = Enum[a]; //反向映射
+console.log(nameOfA); //fall
+</code></pre>
+<p><em>但是不会</em>为字符串枚举成员生成反向映射，数字枚举成员可以作为索引项才能生成反向映射</p>
+</li>
+</ol>
+<h3 id="类型别名-type"><a href="#类型别名-type" class="headerlink" title="类型别名 type"></a>类型别名 type</h3><ol>
+<li>类型别名</li>
+<li>函数别名</li>
+<li>联合类型别名</li>
+<li>值的别名</li>
+</ol>
+<pre><code class="tsx">type one = string
+type two = (x:number)=&gt;Promise&lt;void&gt;
+type three = string | number
+type four = 1|&#39;xmm&#39;|boolean
+</code></pre>
+<p><strong>类型别名type跟interface的区别：</strong></p>
+<ol>
+<li>interface可以 extends 继承  type 只能通过 &amp; 合并</li>
+<li>interface 遇到重名的会合并 type 不行</li>
+</ol>
+<p><strong>使用extends判断是否包含：</strong></p>
+<pre><code class="tsx">type IsNumber&lt;T&gt; = T extends number ? &#39;yes&#39; : &#39;no&#39;;  
+  
+type Result1 = IsNumber&lt;1&gt;;  // 类型为 &#39;yes&#39;  
+type Result2 = IsNumber&lt;string&gt;;  // 类型为 &#39;no&#39;
+</code></pre>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p><strong>函数泛型：</strong></p>
+<p>应用于当使用方式和参数数量一致，但是参数类型可能不同的时候</p>
+<p>定义的时候用大写字母，调用的时候一般不用补充类型，只有存在多个类型的时候才需要额外指定：</p>
+<pre><code class="tsx">function execute&lt;T&gt;(a:T,b:T):Array&lt;T&gt;&#123;
+  return [a,b]
+&#125;
+const arr1=execute(2,3)
+const arr2=execute(&#39;x&#39;,&#39;m&#39;)
+
+function Sub&lt;T,U&gt;(a:T,b:U):Array&lt;T|U&gt; &#123;
+    const params:Array&lt;T|U&gt; = [a,b]
+    return params
+&#125;
+Sub&lt;Boolean,number&gt;(false,1)
+</code></pre>
+<p><strong>泛型接口：</strong></p>
+<pre><code class="tsx">interface MyInter&lt;T&gt; &#123;
+   (arg: T): T
+&#125;
+ 
+function fn&lt;T&gt;(arg: T): T &#123;
+   return arg
+&#125;
+ 
+let result: MyInter&lt;number&gt; = fn
+result(123)
+</code></pre>
+<p><strong>对象字面量泛型：</strong></p>
+<pre><code class="tsx">let foo: &#123; &lt;T&gt;(arg: T): T &#125;
+foo = function &lt;T&gt;(arg:T):T &#123;
+   return arg
+&#125;
+foo(123)
+</code></pre>
+<p><strong>泛型约束：</strong></p>
+<pre><code class="tsx">interface Len &#123;
+   length:number
+&#125;
+function getLegnth&lt;T extends Len&gt;(arg:T) &#123;
+  return arg.length
+&#125;
+ 
+getLegnth(&#39;123&#39;)
+</code></pre>
+<p><strong>使用keyof 约束对象：</strong></p>
+<p>keyof操作符可以获取操作对象的所有键，这里表示K必须要是T的键</p>
+<pre><code class="tsx">function prop&lt;T, K extends keyof T&gt;(obj: T, key: K) &#123;
+   return obj[key]
+&#125;
+let o = &#123; a: 1, b: 2, c: 3 &#125;
+ 
+prop(o, &#39;a&#39;) 
+prop(o, &#39;d&#39;) //此时就会报错发现找不到
+</code></pre>
+<p><strong>Partial将所有属性变为可选，Required将所有可选属性变为必选：</strong></p>
+<pre><code class="tsx">interface User &#123;
+    name: string;
+    age: number;
+&#125;
+type select = Partial&lt;User&gt;
+
+interface User &#123;
+    name?: string;
+    age: number;
+&#125;
+type select = Required&lt;User&gt;
+</code></pre>
+<p><strong>Pick从一个类型中选取属性，Exclude和Omit从一个类型中排除属性</strong></p>
+<pre><code class="tsx">interface User &#123;
+  name: string;
+  age: number;
+&#125;
+type test1 = Pick&lt;User,&#39;name&#39;&gt;
+type test2 = Exclude&lt;User,&#39;age&#39;&gt;
+type test3 = Omit&lt;User,&#39;age&#39;&gt;
+</code></pre>
+<p><strong>Record规定键的可选值和值的类型：</strong></p>
+<pre><code class="tsx">// 定义一个Record类型，键是&#39;name&#39; | &#39;age&#39;，值是string  
+type PersonRecord = Record&lt;&#39;name&#39; | &#39;age&#39;, string&gt;;  
+  
+// 使用这个类型  
+let person: PersonRecord = &#123;  
+    name: &#39;Alice&#39;,  
+    age: &#39;30&#39; // 注意这里虽然用了字符串表示年龄，但在实际应用中可能会用number  
+&#125;;  
+  
+// 尝试添加一个不在Record定义中的属性会报错  
+person.height = &#39;170cm&#39;; 
+// Type &#39;&quot;height&quot;&#39; is not assignable to type &#39;&quot;name&quot; | &quot;age&quot;&#39;.
+</code></pre>
+<p><strong>ReturnType用于获取函数的返回类型：</strong></p>
+<pre><code class="tsx">function greet(name: string) &#123;  
+  return `Hello, $&#123;name&#125;!`;  
+&#125;  
+
+// 获取greet函数的返回类型string
+type rt = ReturnType&lt;typeof greet&gt;;  
+ 
+let greeting: rt = greet(&#39;Bob&#39;); // 正确  
+// greeting = 123; // 错误，因为rt是string类型
+</code></pre>
+<h3 id="Set和Map"><a href="#Set和Map" class="headerlink" title="Set和Map"></a>Set和Map</h3><p><strong>Set集合内元素唯一，且没有顺序概念，因此也不能用索引访问</strong></p>
+<p>操作方法：</p>
+<ul>
+<li>add：增加元素，返回Set本身</li>
+<li>delete：删除元素，返回布尔值</li>
+<li>has：是否含有某元素，返回布尔值</li>
+<li>clear：清空Set，无返回值</li>
+<li>size：返回Set的数据长度</li>
+</ul>
+<p>遍历方法：</p>
+<ul>
+<li>for……of：直接遍历</li>
+<li>entries和values方法返回迭代器，再使用for……of 遍历</li>
+</ul>
+<p><strong>Map是键值对的集合，各种类型的值都可以作为键，也不能用索引和属性访问</strong></p>
+<p>操作方法：</p>
+<ul>
+<li>set：设置键值对</li>
+<li>get：获取键对应的值</li>
+<li>has：是否含有某键</li>
+<li>delete：通过键删除某元素</li>
+<li>size：返回Map的数据长度</li>
+</ul>
+<p>遍历方法：</p>
+<ul>
+<li>for……of：直接遍历</li>
+<li>使用<code>keys()</code>、<code>values()</code>和<code>entries()</code>返回迭代器，再使用for……of 遍历</li>
+<li>forEach遍历，传入回调接收参数value、key和map本身</li>
+</ul>
+<p><strong>WeakSet和WeakMap：</strong></p>
+<ul>
+<li>成员和键值必须是对象</li>
+<li>成员对象是弱引用，一旦在其他地方没有被引用，将会被垃圾回收机制自动回收，可以防止内存泄漏</li>
+<li>不可以遍历</li>
+</ul>
+<h3 id="proxy-Reflect"><a href="#proxy-Reflect" class="headerlink" title="proxy &amp; Reflect"></a><strong>proxy &amp; Reflect</strong></h3><p><strong>定义与功能</strong>：</p>
+<ul>
+<li><p>Proxy是一个内置的构造函数，用于创建一个对象的代理，通过代理可以拦截并自定义对象的基本操作（如属性查找、赋值、枚举、函数调用等）。</p>
+</li>
+<li><p>Proxy通过定义一个handler对象来指定拦截器（trap）的行为，这些拦截器会在代理对象上执行相应操作时触发。</p>
+<pre><code class="tsx">let proxy = new Proxy(target, handler);  
+let target = &#123;  
+    foo: &#39;bar&#39;,  
+    method() &#123;  
+        return &#39;method called&#39;;  
+    &#125;  
+&#125;;  
+  
+let handler = &#123;  
+    get(target, prop, receiver) &#123;  
+        console.log(`getting $&#123;prop&#125; with receiver $&#123;receiver === proxy ? &#39;proxy&#39; : &#39;target prototype&#39;&#125;`);  
+        return Reflect.get(...arguments);  
+    &#125;,  
+    set(target, prop, value, receiver) &#123;  
+        console.log(`setting $&#123;prop&#125; to $&#123;value&#125; with receiver $&#123;receiver === proxy ? &#39;proxy&#39; : &#39;target prototype&#39;&#125;`);  
+        return Reflect.set(...arguments);  
+    &#125;  
+&#125;; 
+</code></pre>
+<p>Proxy构造函数传入操作对象target和handler对象，prop为被操作属性，value为被设置的新值，receiver为代理本身</p>
+</li>
+<li><p>Reflect是一个内置的对象，提供了一系列静态方法，用于执行与对象相关的默认操作，如属性访问、方法调用等。</p>
+</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ol>
+<li><strong>属性访问控制</strong>：通过拦截属性的读取和设置操作，可以实现属性的访问控制，如私有属性的封装、属性的只读或只写等。</li>
+<li><strong>性能监控</strong>：在访问或修改对象属性时，记录操作日志或执行性能分析，帮助开发者优化程序性能。</li>
+<li><strong>数据绑定和观察者模式</strong>：结合Reflect，可以实现数据绑定的功能，当对象属性发生变化时，自动通知相关组件或函数进行更新。</li>
+<li><strong>函数调用拦截</strong>：拦截函数的调用，执行额外的逻辑，如权限校验、参数校验等。</li>
+</ol>
+<pre><code class="tsx">let person = &#123; name: &#39;Alice&#39;, age: 25 &#125;;  
+  
+const handler = &#123;  
+    get(target: any, prop: any, receiver: unknown) &#123;  
+        console.log(`读取 $&#123;prop&#125; 属性`);  
+        return Reflect.get(target, prop, receiver);  
+    &#125;,  
+    set(target: any, prop: any, value: any, receiver: any) &#123;  
+        console.log(`设置 $&#123;prop&#125; 属性为 $&#123;value&#125;`);  
+        return Reflect.set(target, prop, value, receiver);  
+    &#125;  
+&#125;;  
+  
+const proxyPerson = new Proxy(person, handler);  
+  
+console.log(proxyPerson.name); // 输出：读取 name 属性，Alice  
+proxyPerson.age = 30; // 输出：设置 age 属性为 30
+</code></pre>
+<h3 id="类型守卫"><a href="#类型守卫" class="headerlink" title="类型守卫"></a>类型守卫</h3><p>在 TypeScript 中，类型守卫（Type Guards）是一种用于在运行时检查类型的机制。它们允许你在代码中执行特定的检查，以确定变量的类型，并在需要时执行相应的操作。</p>
+<p>typeof：输出“string”、“number”、“boolean”、“symbol”、“undefined” 和 “object”</p>
+<p>instanceof：检查某个对象是否是某个类的实例，输出true和false</p>
+<p>自定义类型守卫：专门用于给any或联合类型的数据做类型检查，比如：</p>
+<pre><code class="tsx">function isStr(value: any): value is string &#123;  
+    return typeof value === &#39;string&#39;;  
+&#125;
+</code></pre>
+<p>定义的<code>isStr</code>方法是一个类型谓词，它接收一个<code>any</code>类型的数据，如果是<code>typeof</code>返回<code>string</code>，函数就返回<code>true</code>，ts就可以通过<code>is string</code>知道可以安全的把<code>value</code>当作<code>string</code>处理，使用时：</p>
+<pre><code class="tsx">let myValue: any = &quot;Hello, TypeScript!&quot;;  
+  
+if (isStr(myValue)) &#123;  
+    // 在这里，TypeScript知道myValue是string类型  
+    console.log(myValue.toUpperCase()); // 正确的操作，因为TypeScript认为myValue是字符串  
+&#125; else &#123;  
+    // 如果需要，你可以在这里处理非字符串的情况  
+    console.log(&quot;myValue不是一个字符串&quot;);  
+&#125;
+</code></pre>
+<h3 id="infer关键字"><a href="#infer关键字" class="headerlink" title="infer关键字"></a>infer关键字</h3><p>infer就是<strong>推导泛型参数，</strong>infer声明只能出现在extends子语句中</p>
+<p>其中，T为引用类型，由a<T>可以推断出U</p>
+<p><strong>获取数组的元素类型</strong></p>
+<p>之前：</p>
+<pre><code class="tsx">type a = number[]
+type b =string[]
+type Inf&lt;T&gt; = T extends a ? number : T extends b ? string : never
+
+type atype = Inf&lt;a&gt;
+type btype = Inf&lt;b&gt;
+</code></pre>
+<p>如果使用了infer，获取方式就很简单了：</p>
+<pre><code class="tsx">type a&lt;T&gt; = T extends Array&lt;infer E&gt; ? E : never;
+type arr = string[];
+type atype = a&lt;arr&gt;
+</code></pre>
+<p><strong>获取对象的属性类型</strong></p>
+<pre><code class="tsx">type Foo&lt;T&gt; = T extends &#123; a: infer U &#125; ? U : never;
+
+type T10 = Foo&lt;&#123; a: string &#125;&gt;; // T10类型为 string
+</code></pre>
+<p><strong>推断联合类型</strong></p>
+<pre><code class="tsx">type Foo&lt;T&gt; = T extends &#123; a: infer U; b: infer U &#125; ? U : never;
+
+type T11 = Foo&lt;&#123; a: string; b: number &#125;&gt;; // T11类型为 string | number
+</code></pre>
+<p><strong>推断交叉类型</strong></p>
+<pre><code class="tsx">type T1 = &#123;name: string&#125;;
+type T2 = &#123;age: number&#125;;
+interface Props &#123;
+  a: (x: T1) =&gt; void;
+  b: (x: T2) =&gt; void;
+&#125;
+type K2&lt;T&gt; = T extends &#123;a: (x: infer U) =&gt; void, b: (x: infer U) =&gt; void&#125; ? U : never;
+type k3 = K2&lt;Props&gt;
+
+let obj:k3= &#123;name: &#39;123&#39;, age: 12&#125;;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://xiaoman.blog.csdn.net/article/details/128691340">typescript封装LocalStorage并支持过期时间_typescript localstorage-CSDN博客</a></p>
+
+             -->
+        </article>
+    </div>
+    
+</section>
+
+
+        <div class="nexmoe-post-right">
+          
+            <div class="nexmoe-fixed">
+              <div class="nexmoe-tool">
+                <a href="#" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+              </div>
+            </div>
+          
+        </div>
+    </div>
+  </div>
+  <div id="nexmoe-pendant">
+    <div class="nexmoe-drawer mdui-drawer nexmoe-pd" id="drawer">
+        
+            <div class="nexmoe-pd-item">
+                <div class="clock">
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="memory"></div>
+        <div class="needle" id="hours"></div>
+        <div class="needle" id="minutes"></div>
+        <div class="needle" id="seconds"></div>
+        <div class="clock_logo">
+
+        </div>
+
+    </div>
+<style>
+    .clock {
+        background-color: #ffffff;
+        width: 70vw;
+        height: 70vw;
+        max-width: 70vh;
+        max-height: 70vh;
+        border: solid 2.8vw #242424;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        box-sizing: border-box;
+        box-shadow: 0 1.4vw 2.8vw rgba(0, 0, 0, 0.8);
+        zoom:0.2
+    }
+
+    .memory {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+    }
+
+    .memory:nth-child(1) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(0deg) translateY(-520%);
+    }
+
+    .memory:nth-child(2) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(6deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(3) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(12deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(4) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(18deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(5) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(24deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(6) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(30deg) translateY(-520%);
+    }
+
+    .memory:nth-child(7) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(36deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(8) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(42deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(9) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(48deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(10) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(54deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(11) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(60deg) translateY(-520%);
+    }
+
+    .memory:nth-child(12) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(66deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(13) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(72deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(14) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(78deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(15) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(84deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(16) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(90deg) translateY(-520%);
+    }
+
+    .memory:nth-child(17) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(96deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(18) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(102deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(19) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(108deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(20) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(114deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(21) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(120deg) translateY(-520%);
+    }
+
+    .memory:nth-child(22) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(126deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(23) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(132deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(24) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(138deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(25) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(144deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(26) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(150deg) translateY(-520%);
+    }
+
+    .memory:nth-child(27) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(156deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(28) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(162deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(29) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(168deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(30) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(174deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(31) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(180deg) translateY(-520%);
+    }
+
+    .memory:nth-child(32) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(186deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(33) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(192deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(34) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(198deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(35) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(204deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(36) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(210deg) translateY(-520%);
+    }
+
+    .memory:nth-child(37) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(216deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(38) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(222deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(39) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(228deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(40) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(234deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(41) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(240deg) translateY(-520%);
+    }
+
+    .memory:nth-child(42) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(246deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(43) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(252deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(44) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(258deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(45) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(264deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(46) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(270deg) translateY(-520%);
+    }
+
+    .memory:nth-child(47) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(276deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(48) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(282deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(49) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(288deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(50) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(294deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(51) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(300deg) translateY(-520%);
+    }
+
+    .memory:nth-child(52) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(306deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(53) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(312deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(54) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(318deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(55) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(324deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(56) {
+        background-color: #424242;
+        width: 2%;
+        height: 8%;
+        transform: translate(-50%, -50%) rotate(330deg) translateY(-520%);
+    }
+
+    .memory:nth-child(57) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(336deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(58) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(342deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(59) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(348deg) translateY(-1461%);
+    }
+
+    .memory:nth-child(60) {
+        background-color: #949494;
+        width: 1%;
+        height: 3%;
+        transform: translate(-50%, -50%) rotate(354deg) translateY(-1461%);
+    }
+
+    .needle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+    }
+
+    .needle#hours {
+        background-color: #1f1f1f;
+        width: 4%;
+        height: 30%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#hours.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#hours:after {
+        content: '';
+        background-color: #1f1f1f;
+        width: 4vw;
+        height: 4vw;
+        max-width: 4vh;
+        max-height: 4vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .needle#minutes {
+        background-color: #1f1f1f;
+        width: 2%;
+        height: 45%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#minutes.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#minutes:after {
+        content: '';
+        background-color: #1f1f1f;
+        width: 4vw;
+        height: 4vw;
+        max-width: 4vh;
+        max-height: 4vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .needle#seconds {
+        background-color: #cb2f2f;
+        width: 1%;
+        height: 50%;
+        transform-origin: center 75%;
+        transform: translate(-50%, -75%);
+    }
+
+    .needle#seconds.moving {
+        transition: transform 150ms ease-out;
+    }
+
+    .needle#seconds:after {
+        content: '';
+        background-color: #cb2f2f;
+        width: 2.5vw;
+        height: 2.5vw;
+        max-width: 2.5vh;
+        max-height: 2.5vh;
+        display: block;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .clock_logo{
+        width: 10vw;
+        height: 10vw;
+        max-width: 10vh;
+        max-height: 10vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    @media (min-width: 100vh) {
+        .clock {
+            border: solid 2.8vh #242424;
+            box-shadow: 0 1.4vh 2.8vh rgba(0, 0, 0, 0.8);
+        }
+    }
+
+</style>
+
+
+
+
+
+            </div>
+        
+            <div class="nexmoe-pd-item">
+                <div class="qweather" >
+    <div id="he-plugin-standard"></div>
+    <div class="qweather-logo">
+
+    </div>
+
+</div>
+<style>
+    .qweather{
+        position: relative;
+    }
+    .qweather-logo{
+        position: absolute;
+        right: 0;
+        top: -15px;
+        width: 40px;
+        height: 40px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+</style>
+<script>
+  WIDGET = {
+    "CONFIG": {
+      "layout": "2",
+      "width": "260",
+      "height": "220",
+      "background": "5",
+      "dataColor": "e67249",
+      "borderRadius": "15",
+      "key": "f74d1e1690e6432d801e97fa2f05a162"
+    }
+  }
+</script>
+<script src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"></script>
+
+            </div>
+        
+</div>
+<style>
+    .nexmoe-pd {
+        left: auto;
+        top: 40px;
+        right: 0;
+    }
+    .nexmoe-pd-item{
+       display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+</style>
+
+  </div>
+  <script src="https://lib.baomitu.com/lazysizes/5.1.0/lazysizes.min.js"></script>
+<script src="https://lib.baomitu.com/highlight.js/10.0.0/highlight.min.js"></script>
+<script src="https://lib.baomitu.com/mdui/0.4.3/js/mdui.min.js"></script>
+
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://lib.baomitu.com/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="/lib/fancybox/js/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/app.js?v=1721141826487"></script>
+
+<script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+<!-- hexo injector body_end start -->
+<script src="/js/clock.js"></script>
+
+<script src="/js/webapp.js"></script>
+
+<script src="https://lib.baomitu.com/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script src="/lib/codeBlock/codeBlockFuction.js"></script>
+
+<script src="/lib/codeBlock/codeLang.js"></script>
+
+<script src="/lib/codeBlock/codeCopy.js"></script>
+
+<script src="/lib/codeBlock/codeShrink.js"></script>
+
+<link rel="stylesheet" href="/lib/codeBlock/matery.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script src="/js/search.js"></script>
+<!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"rect":{"opacity":0.7},"position":"relative","z-index":1,"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+<script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/250cb4aa.js","daovoice")</script>
+<script>
+  daovoice('init', {
+    app_id: "250cb4aa"
+  });
+  daovoice('update');
+</script>
+
